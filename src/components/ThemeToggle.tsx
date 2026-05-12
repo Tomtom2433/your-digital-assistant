@@ -17,9 +17,9 @@ export function ThemeToggle() {
   };
 
   const base: React.CSSProperties = {
-    padding: "4px 10px",
+    padding: "3px 9px",
     borderRadius: "16px",
-    fontSize: "12px",
+    fontSize: "11px",
     lineHeight: 1,
     border: "none",
     background: "transparent",
@@ -27,8 +27,8 @@ export function ThemeToggle() {
     transition: "all .2s ease",
     fontFamily: "var(--font-sans)",
   };
-  const active: React.CSSProperties = { background: "#CFA27A", color: "#F7F4EF" };
-  const inactive: React.CSSProperties = { background: "transparent", color: "#CFA27A" };
+  const active: React.CSSProperties = { background: "#071735", color: "#F7F4EF" };
+  const inactive: React.CSSProperties = { background: "transparent", color: "#071735" };
 
   return (
     <div
@@ -36,10 +36,11 @@ export function ThemeToggle() {
       aria-label="Choix du thème"
       className="inline-flex items-center shrink-0"
       style={{
-        border: "1px solid #CFA27A",
+        border: "1px solid #071735",
         borderRadius: "20px",
         padding: "2px",
         gap: "2px",
+        background: "transparent",
       }}
     >
       <button
