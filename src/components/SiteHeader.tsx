@@ -15,9 +15,20 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--background)]/85 border-b border-[color:var(--gold)]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-1 shrink-0">
-          <img src={wordmark} alt="MELIYA" className="h-20 md:h-28 w-auto" />
-        </Link>
+        <div className="flex flex-col items-start shrink-0">
+          <Link to="/" className="flex items-center gap-1">
+            <img src={wordmark} alt="MELIYA" className="h-20 md:h-28 w-auto" />
+          </Link>
+          <Link
+            to="/"
+            className="serif italic text-[11px] md:text-[12px] mt-1 ml-2 transition-colors"
+            style={{ color: "#CFA27A" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#D8B07A")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#CFA27A")}
+          >
+            Bienvenue chez Meliya ↩
+          </Link>
+        </div>
 
         <nav className="hidden md:flex items-center gap-2">
           {navItems.map((item) => (
