@@ -71,8 +71,9 @@ function APropos() {
           <p className="serif italic text-lg text-[#0D2B6B]">
             Transformer des contenus souvent flous ou dispersés en documents clairs, cohérents et professionnels, prêts à être utilisés ou présentés.
           </p>
-          <p className="mt-4 text-sm text-[#071735]/70">
-            Aujourd'hui, le véritable enjeu n'est plus de savoir faire, mais de <strong>savoir structurer et valoriser</strong>.
+          <p className="mt-4 text-sm text-[#071735]/70 whitespace-pre-line">
+            J'utilise des outils modernes ainsi que des solutions d'IA, toujours avec un contrôle humain,{"\n"}
+            pour garantir qualité, précision et cohérence.
           </p>
         </div>
         <div className="card-meliya">
