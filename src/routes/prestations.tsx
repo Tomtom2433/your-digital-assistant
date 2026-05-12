@@ -77,7 +77,7 @@ function Prestations() {
             "Palette de couleurs harmonisée",
             "Mini charte graphique",
             "Modèles devis & factures personnalisés",
-            "Carte de visite 100 exemplaires (impression standard incluse, livraison prioritaire comprise).",
+            "100 cartes de visite imprimées et livrées (finition standard, livraison prioritaire incluses).",
             "2 retouches incluses (ajustements mineurs)",
           ].map((f) => (
             <div key={f} className="flex gap-2"><Check className="h-4 w-4 mt-0.5 shrink-0" style={{color:"#CFA27A"}} /> {f}</div>
