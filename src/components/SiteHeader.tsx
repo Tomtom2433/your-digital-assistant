@@ -26,7 +26,7 @@ export function SiteHeader() {
             onMouseEnter={(e) => (e.currentTarget.style.color = "#D8B07A")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#CFA27A")}
           >
-            Bienvenue chez Meliya ↩
+            Retour à la page d'accueil ↩
           </Link>
         </div>
 
