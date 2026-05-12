@@ -42,7 +42,7 @@
 :root {
   --radius: 0.5rem;
   /* MELIYA palette */
-  --background: #FDF5F7;                          /* Rose Nude MELIYA */
+  --background: #F7F4EF;                          /* Ivoire MELIYA */
   --foreground: oklch(0.21 0.06 270);             /* Bleu Nuit #071735 */
   --ink: oklch(0.21 0.06 270);
   --gold: oklch(0.74 0.08 60);                    /* Rose Gold #CFA27A */
