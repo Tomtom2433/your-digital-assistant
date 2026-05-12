@@ -16,7 +16,7 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-        <div className="max-w-4xl mx-auto px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 text-center">
+        <div className="max-w-4xl mx-auto px-6 pt-8 pb-24 lg:pt-12 lg:pb-32 text-center">
           <div>
             <span className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[color:var(--gold)] mb-6 justify-center">
               <Sparkles className="h-3.5 w-3.5" /> Assistante digitale spécialisée
