@@ -15,8 +15,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--background)]/85 border-b border-[color:var(--gold)]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-1 shrink-0">
-          <img src={logoIcon} alt="MELIYA" className="h-20 w-auto md:h-24" />
-          <img src={wordmark} alt="MELIYA" className="hidden sm:block h-32 md:h-44 w-auto -ml-2" />
+          <img src={wordmark} alt="MELIYA" className="h-20 md:h-28 w-auto" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-2">
