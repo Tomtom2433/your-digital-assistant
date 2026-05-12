@@ -16,7 +16,7 @@ function APropos() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
       <div className="text-center mb-14">
         <span className="text-xs tracking-[0.25em] uppercase text-[color:var(--gold)]">Qui suis-je</span>
-        <h1 className="display text-4xl md:text-5xl mt-3 text-[#071735]">MELIYA, qui est-ce ?</h1>
+        <h1 className="display text-4xl md:text-5xl mt-3 text-[#071735]">Mais qui est MELIYA ?</h1>
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
       </div>
 
