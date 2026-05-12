@@ -80,7 +80,7 @@ function APropos() {
           <h3 className="serif italic text-center text-[#071735] mb-6" style={{ fontSize: "20px" }}>
             Outils &amp; Applications
           </h3>
-          <div className="flex flex-wrap justify-center items-end" style={{ gap: "48px" }}>
+          <div className="flex flex-wrap justify-center items-center" style={{ gap: "48px" }}>
             {[
               { name: "Gamma", src: "https://gamma.app/favicon.ico" },
               { name: "Lovable", src: "https://lovable.dev/favicon.ico" },
@@ -88,10 +88,7 @@ function APropos() {
               { name: "Microsoft Office", src: logoMicrosoft365 },
               { name: "Notion", src: "https://cdn.simpleicons.org/notion/071735" },
             ].map((t) => (
-              <div key={t.name} className="flex flex-col items-center bg-transparent border-0 shadow-none">
-                <img src={t.src} alt={t.name} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
-                <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
-              </div>
+              <img key={t.name} src={t.src} alt={t.name} style={{ height: "48px", width: "auto", objectFit: "contain" }} />
             ))}
           </div>
         </div>
@@ -100,19 +97,14 @@ function APropos() {
           <h3 className="serif italic text-center text-[#071735] mb-6" style={{ fontSize: "20px" }}>
             Intelligence Artificielle
           </h3>
-          <div className="flex flex-wrap justify-center items-end" style={{ gap: "48px" }}>
+          <div className="flex flex-wrap justify-center items-center" style={{ gap: "48px" }}>
             {[
               { name: "Claude", src: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg" },
               { name: "ChatGPT", src: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
               { name: "Gemini", src: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" },
-              { name: "Perplexity", src: logoPerplexity, hideName: true },
+              { name: "Perplexity", src: logoPerplexity },
             ].map((t) => (
-              <div key={t.name} className="flex flex-col items-center bg-transparent border-0 shadow-none">
-                <img src={t.src} alt={t.name} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
-                {!(t as { hideName?: boolean }).hideName && (
-                  <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
-                )}
-              </div>
+              <img key={t.name} src={t.src} alt={t.name} style={{ height: "48px", width: "auto", objectFit: "contain" }} />
             ))}
           </div>
         </div>
