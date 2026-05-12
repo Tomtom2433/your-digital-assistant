@@ -20,11 +20,8 @@ function APropos() {
           style={{
             fontSize: "22px",
             letterSpacing: "0.15em",
-            background: "linear-gradient(to right, #CFA27A, #D8B07A)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            color: "transparent",
+            color: "#CFA27A",
+            WebkitTextStroke: "1px #071735",
           }}
         >
           Qui suis-je
