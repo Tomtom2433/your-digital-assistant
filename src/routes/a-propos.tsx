@@ -57,7 +57,6 @@ function APropos() {
               </span>
             ))}
           </div>
-        </div>
       </div>
 
       <section className="mt-14">
