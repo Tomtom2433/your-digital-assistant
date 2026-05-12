@@ -53,13 +53,13 @@ function Contact() {
             <input required placeholder="Prénom & Nom" className="w-full px-4 py-3 rounded-lg border border-[#CFA27A]/40 bg-white focus:outline-none focus:ring-2 focus:ring-[#CFA27A]" />
             <input required type="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border border-[#CFA27A]/40 bg-white focus:outline-none focus:ring-2 focus:ring-[#CFA27A]" />
           </div>
-          <select className="w-full px-4 py-3 rounded-lg border border-[#CFA27A]/40 bg-white focus:outline-none focus:ring-2 focus:ring-[#CFA27A]">
-            <option>Type de prestation</option>
-            <option>Présentations</option>
-            <option>Mise en page premium</option>
-            <option>Documents professionnels</option>
-            <option>Identité visuelle</option>
-            <option>Sur mesure</option>
+          <select
+            className="w-full px-4 py-3 rounded-lg border border-[#CFA27A]/40 bg-white text-[#071735] focus:outline-none focus:ring-2 focus:ring-[#CFA27A]"
+            style={{ colorScheme: "light" }}
+          >
+            {["Type de prestation","Présentations","Mise en page premium","Documents professionnels","Identité visuelle","Sur mesure"].map((o) => (
+              <option key={o} style={{ background: "#CFA27A", color: "#071735" }}>{o}</option>
+            ))}
           </select>
           <textarea required rows={5} placeholder="Décrivez votre projet…" className="w-full px-4 py-3 rounded-lg border border-[#CFA27A]/40 bg-white focus:outline-none focus:ring-2 focus:ring-[#CFA27A]" />
           <button type="submit" className="btn-primary-meliya w-full justify-center">
