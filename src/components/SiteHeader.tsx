@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
 import logoIcon from "@/assets/meliya-logo-icon.png";
 import wordmark from "@/assets/meliya-wordmark.png";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
   { to: "/a-propos", label: "Qui est MELIYA ?" },
@@ -31,11 +32,14 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link to="/simulateur" className="btn-blink shrink-0">
-          <Sparkles className="h-4 w-4" />
-          <span className="hidden sm:inline">Simulateur</span>
-          <span className="sm:hidden">Simu</span>
-        </Link>
+        <div className="flex items-center gap-2 shrink-0">
+          <ThemeToggle />
+          <Link to="/simulateur" className="btn-blink shrink-0">
+            <Sparkles className="h-4 w-4" />
+            <span className="hidden sm:inline">Simulateur</span>
+            <span className="sm:hidden">Simu</span>
+          </Link>
+        </div>
       </div>
 
       {/* Mobile nav */}
