@@ -63,7 +63,7 @@ function Prestations() {
 
       {/* Pack visuel */}
       <div className="card-meliya mb-14 relative overflow-hidden" style={{background:"#071735", color:"#F7F4EF", borderColor:"#CFA27A"}}>
-        <div className="absolute top-4 right-4 text-xs px-3 py-1 rounded-full" style={{background:"#CFA27A", color:"#071735"}}>BEST-SELLER</div>
+        <div className="btn-blink absolute top-4 right-4">BEST-SELLER</div>
         <Palette className="h-8 w-8 mb-4" style={{color:"#CFA27A"}} />
         <h2 className="display text-3xl mb-1">Pack identité visuelle</h2>
         <p className="serif italic opacity-80 mb-6">Pour créateurs d'entreprise qui veulent démarrer avec une identité simple, cohérente et prête à l'emploi.</p>
