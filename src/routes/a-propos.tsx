@@ -63,6 +63,57 @@ function APropos() {
         </div>
       </div>
 
+      <section className="mt-14">
+        <div className="text-center mb-6">
+          <span
+            className="display uppercase gold-shimmer-text"
+            style={{ fontSize: "22px", letterSpacing: "0.15em" }}
+          >
+            Mes outils
+          </span>
+          <div className="gold-divider mt-4 max-w-xs mx-auto" />
+        </div>
+
+        <div className="mt-10">
+          <h3 className="serif italic text-center text-[#071735] mb-6" style={{ fontSize: "20px" }}>
+            Outils &amp; Applications
+          </h3>
+          <div className="flex flex-wrap justify-center items-end" style={{ gap: "32px" }}>
+            {[
+              { name: "Gamma", src: "https://gamma.app/favicon.ico" },
+              { name: "Lovable", src: "https://lovable.dev/favicon.ico" },
+              { name: "Google Workspace", src: "https://cdn.simpleicons.org/google" },
+              { name: "Microsoft Office", src: "https://cdn.simpleicons.org/microsoftoffice" },
+              { name: "Notion", src: "https://cdn.simpleicons.org/notion/071735" },
+            ].map((t) => (
+              <div key={t.name} className="flex flex-col items-center" style={{ width: "110px" }}>
+                <img src={t.src} alt={t.name} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
+                <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <h3 className="serif italic text-center text-[#071735] mb-6" style={{ fontSize: "20px" }}>
+            Intelligence Artificielle
+          </h3>
+          <div className="flex flex-wrap justify-center items-end" style={{ gap: "32px" }}>
+            {[
+              { name: "Claude", src: "https://cdn.simpleicons.org/anthropic/CFA27A" },
+              { name: "ChatGPT", src: "https://cdn.simpleicons.org/openai/071735" },
+              { name: "Gemini", src: "https://cdn.simpleicons.org/googlegemini" },
+              { name: "Perplexity", src: "https://cdn.simpleicons.org/perplexity" },
+            ].map((t) => (
+              <div key={t.name} className="flex flex-col items-center" style={{ width: "110px" }}>
+                <img src={t.src} alt={t.name} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
+                <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <div className="gold-divider my-14" />
 
       <div className="grid md:grid-cols-2 gap-8">
