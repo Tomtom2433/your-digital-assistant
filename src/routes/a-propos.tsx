@@ -38,8 +38,27 @@ function APropos() {
             Très vite, une évidence s'est imposée&nbsp;: ce qui me passionne réellement, c'est de transformer chaque support - quel qu'il soit - en un document plus clair, plus élégant et plus impactant.
           </p>
           <p>
-            Au fil des années, j'ai exercé dans des univers très différents&nbsp;: médical, immobilier, social, viticole, automobile, associatif, commerce et relation client. Cette diversité m'a permis de développer une vision globale et une véritable capacité d'adaptation aux exigences de chaque secteur.
+            Au fil des années, j'ai exercé dans des univers très différents. Cette diversité m'a permis de développer une vision globale et une véritable capacité d'adaptation aux exigences de chaque secteur.
           </p>
+          <div className="flex flex-wrap gap-2">
+            {["Médical","Immobilier","Social","Viticole","Automobile","Associatif","Commerce","Relation client"].map((s) => (
+              <span
+                key={s}
+                style={{
+                  backgroundColor: "rgba(207,162,122,0.15)",
+                  border: "1px solid #CFA27A",
+                  color: "#CFA27A",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 500,
+                  fontSize: "12px",
+                  borderRadius: "20px",
+                  padding: "4px 14px",
+                }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
