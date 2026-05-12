@@ -98,14 +98,19 @@
     font-size: 0.78rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    transition: all .3s ease;
+    transition: all .2s ease;
   }
   .nav-pill:hover {
-    background: #0D2B6B;
-    box-shadow: 0 8px 24px -10px rgba(7,23,53,0.6);
-    transform: translateY(-1px);
+    background: rgba(7,23,53,0.8);
+    color: #CFA27A;
+    border-color: #CFA27A;
   }
   .nav-pill[data-active="true"] {
+    background: #071735;
+    color: #CFA27A;
+    border-color: #CFA27A;
+  }
+  .nav-pill[data-active="true"]:hover {
     background: #071735;
     color: #CFA27A;
     border-color: #CFA27A;
