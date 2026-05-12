@@ -78,15 +78,15 @@ function APropos() {
           <h3 className="serif italic text-center text-[#071735] mb-6" style={{ fontSize: "20px" }}>
             Outils &amp; Applications
           </h3>
-          <div className="flex flex-wrap justify-center items-end" style={{ gap: "32px" }}>
+          <div className="flex flex-wrap justify-center items-end" style={{ gap: "48px" }}>
             {[
               { name: "Gamma", src: "https://gamma.app/favicon.ico" },
               { name: "Lovable", src: "https://lovable.dev/favicon.ico" },
               { name: "Google Workspace", src: "https://cdn.simpleicons.org/google" },
-              { name: "Microsoft Office", src: "https://cdn.simpleicons.org/microsoftoffice" },
+              { name: "Microsoft Office", src: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Microsoft_Office_logo_%282019%E2%80%93present%29.svg" },
               { name: "Notion", src: "https://cdn.simpleicons.org/notion/071735" },
             ].map((t) => (
-              <div key={t.name} className="flex flex-col items-center" style={{ width: "110px" }}>
+              <div key={t.name} className="flex flex-col items-center bg-transparent border-0 shadow-none">
                 <img src={t.src} alt={t.name} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
                 <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
               </div>
@@ -98,14 +98,14 @@ function APropos() {
           <h3 className="serif italic text-center text-[#071735] mb-6" style={{ fontSize: "20px" }}>
             Intelligence Artificielle
           </h3>
-          <div className="flex flex-wrap justify-center items-end" style={{ gap: "32px" }}>
+          <div className="flex flex-wrap justify-center items-end" style={{ gap: "48px" }}>
             {[
               { name: "Claude", src: "https://cdn.simpleicons.org/anthropic/CFA27A" },
-              { name: "ChatGPT", src: "https://cdn.simpleicons.org/openai/071735" },
+              { name: "ChatGPT", src: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
               { name: "Gemini", src: "https://cdn.simpleicons.org/googlegemini" },
               { name: "Perplexity", src: "https://cdn.simpleicons.org/perplexity" },
             ].map((t) => (
-              <div key={t.name} className="flex flex-col items-center" style={{ width: "110px" }}>
+              <div key={t.name} className="flex flex-col items-center bg-transparent border-0 shadow-none">
                 <img src={t.src} alt={t.name} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
                 <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
               </div>
