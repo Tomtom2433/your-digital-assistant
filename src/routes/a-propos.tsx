@@ -24,15 +24,15 @@ function APropos() {
         <div className="flex justify-center">
           <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" />
         </div>
-        <div className="space-y-6 text-[#071735]/85 leading-relaxed">
+        <div className="space-y-6 text-[#071735]/85 leading-relaxed text-justify">
           <p className="serif text-2xl italic text-[#0D2B6B]">
-            Aux commandes de MELIYA, je suis <strong>Mélody Roche</strong>, assistante digitale indépendante spécialisée dans la structuration, la mise en forme et la valorisation de documents professionnels.
+            Je suis <strong>Mélody Roche</strong>, fondatrice de MELIYA et assistante digitale indépendante. Mon métier&nbsp;: structurer, mettre en forme et valoriser vos documents professionnels pour qu'ils reflètent l'exigence de votre activité.
           </p>
           <p>
-            Depuis <strong>2005</strong>, j'accompagne professionnels et particuliers dans la gestion administrative de leur entreprise. Mais ce qui me passionne par-dessus tout, c'est de rendre les supports — de toutes sortes — plus beaux, plus professionnels et plus impactants.
+            Depuis <strong>2005</strong>, j'accompagne entreprises, indépendants et particuliers dans leur gestion administrative. Très vite, une évidence s'est imposée&nbsp;: ce qui me passionne réellement, c'est de transformer chaque support — quel qu'il soit — en un document plus clair, plus élégant et plus impactant.
           </p>
           <p>
-            Forte d'une expérience acquise dans des secteurs variés — médical, immobilier, social, viticole, automobile, associations, commerce et relation client — j'ai développé une vision globale et une grande capacité d'adaptation à chaque activité.
+            Au fil des années, j'ai exercé dans des univers très différents&nbsp;: médical, immobilier, social, viticole, automobile, associatif, commerce et relation client. Cette diversité m'a permis de développer une vision globale et une véritable capacité d'adaptation aux exigences de chaque secteur.
           </p>
         </div>
       </div>
