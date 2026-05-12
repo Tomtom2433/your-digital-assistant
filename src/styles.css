@@ -106,9 +106,9 @@
     transform: translateY(-1px);
   }
   .nav-pill[data-active="true"] {
-    background: #CFA27A;
-    color: #071735;
-    border-color: #071735;
+    background: #071735;
+    color: #CFA27A;
+    border-color: #CFA27A;
   }
 
   .btn-blink {
