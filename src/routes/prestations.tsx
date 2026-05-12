@@ -77,7 +77,7 @@ function Prestations() {
             "Palette de couleurs harmonisée",
             "Mini charte graphique",
             "Modèles devis & factures personnalisés",
-            "Carte de visite 100 exemplaires — impression standard incluse (livraison prioritaire comprise). Options premium disponibles en supplément au coût réel : bords arrondis, effet glacé, pelliculage, etc.",
+            "Carte de visite 100 exemplaires (impression standard incluse, livraison prioritaire comprise).",
             "2 retouches incluses (ajustements mineurs)",
           ].map((f) => (
             <div key={f} className="flex gap-2"><Check className="h-4 w-4 mt-0.5 shrink-0" style={{color:"#CFA27A"}} /> {f}</div>
