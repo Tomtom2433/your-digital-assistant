@@ -37,8 +37,9 @@ function APropos() {
             Depuis <strong>2005</strong>, j'accompagne entreprises, indépendants et particuliers dans leur gestion administrative.{"\n"}
             Très vite, une évidence s'est imposée&nbsp;: ce qui me passionne réellement, c'est de transformer chaque support - quel qu'il soit - en un document plus clair, plus élégant et plus impactant.
           </p>
-          <p>
-            Au fil des années, j'ai exercé dans des univers très différents. Cette diversité m'a permis de développer une vision globale et une véritable capacité d'adaptation aux exigences de chaque secteur.
+          <p className="whitespace-pre-line">
+            Au fil des années, j'ai exercé dans des univers très différents.{"\n"}
+            Cette diversité m'a permis de développer une vision globale et une véritable capacité d'adaptation aux exigences de chaque secteur.
           </p>
           <div className="flex flex-wrap gap-2">
             {["Médical","Immobilier","Social","Viticole","Automobile","Associatif","Commerce","Relation client"].map((s) => (
