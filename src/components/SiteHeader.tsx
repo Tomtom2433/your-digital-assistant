@@ -7,7 +7,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const navItems = [
   { to: "/a-propos", label: "Qui est MELIYA ?" },
   { to: "/prestations", label: "Prestations" },
-  { to: "/contact", label: "Parlons de votre projet" },
+  { to: "/contact", label: "Votre projet" },
   { to: "/faq", label: "FAQ" },
 ] as const;
 
