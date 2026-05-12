@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FileText, Sparkles, Layers, ShieldCheck } from "lucide-react";
-import logoIcon from "@/assets/meliya-logo-icon.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,9 +16,9 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-        <div className="max-w-7xl mx-auto px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-4xl mx-auto px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 text-center">
           <div>
-            <span className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[color:var(--gold)] mb-6">
+            <span className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[color:var(--gold)] mb-6 justify-center">
               <Sparkles className="h-3.5 w-3.5" /> Assistante digitale spécialisée
             </span>
             <h1 className="display text-4xl md:text-5xl lg:text-6xl leading-tight text-[#071735]">
@@ -28,11 +27,11 @@ function Home() {
             <p className="serif text-xl md:text-2xl mt-6 text-[#0D2B6B]/80 italic">
               Je transforme des contenus dispersés en supports clairs, cohérents et professionnels.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
               <Link to="/prestations" className="btn-primary-meliya">Inspirations</Link>
             </div>
-            <div className="gold-divider mt-12" />
-            <p className="mt-6 text-sm text-[#071735]/70 max-w-md">
+            <div className="gold-divider mt-12 max-w-md mx-auto" />
+            <p className="mt-6 text-sm text-[#071735]/70 max-w-md mx-auto">
               Aujourd'hui, le véritable enjeu n'est plus de savoir faire, mais de <strong>savoir structurer et valoriser</strong>.
             </p>
           </div>
