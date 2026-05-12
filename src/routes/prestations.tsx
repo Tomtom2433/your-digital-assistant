@@ -88,7 +88,7 @@ function Prestations() {
           <li>• Toute modification hors périmètre : 60€/h</li>
           <li>• Ce pack est fixe et non modulable.</li>
         </ul>
-        <p className="text-xs opacity-60 mt-4 italic">Ce pack ne remplace pas le travail d'un graphiste designer — il vous aide à démarrer professionnellement.</p>
+        <p className="text-xs opacity-60 mt-4 italic">Ce pack ne remplace pas le travail d'un graphiste designer - Il vous aide à démarrer professionnellement.</p>
       </div>
 
       {/* Tarif horaire */}
