@@ -5,7 +5,7 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-[color:var(--gold)]/30 bg-[#071735] text-[#F7F4EF]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
         <div>
-          <h3 className="display text-xl mb-3" style={{color:"#CFA27A"}}>MELIYA</h3>
+          <h3 className="display text-4xl md:text-5xl mb-3" style={{color:"#CFA27A"}}>MELIYA</h3>
           <p className="text-sm opacity-80 serif italic">L'élégance au service de vos documents.</p>
         </div>
         <div>
