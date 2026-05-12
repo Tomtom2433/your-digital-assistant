@@ -90,7 +90,7 @@ function Prestations() {
         <h2 className="display text-3xl mb-1">Pack visuel — Aide au démarrage</h2>
         <p className="serif italic opacity-80 mb-6">Pour créateurs & créatrices d'entreprise qui veulent démarrer avec une identité simple, cohérente et prête à l'emploi.</p>
         <div className="flex items-baseline gap-2 mb-6">
-          <span className="display text-5xl" style={{color:"#CFA27A"}}>490€</span>
+          <span className="display text-5xl" style={{color:"#CFA27A"}}>390€</span>
           <span className="text-sm opacity-70">tarif unique</span>
         </div>
         <div className="grid sm:grid-cols-2 gap-3 text-sm">
