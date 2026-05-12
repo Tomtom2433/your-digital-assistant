@@ -28,7 +28,7 @@ function APropos() {
 
       <div className="grid md:grid-cols-[260px_1fr] gap-8 items-start">
         <div className="flex justify-start">
-          <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" style={{ marginLeft: "-40px" }} />
+          <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" />
         </div>
         <div className="space-y-4 text-[#071735] leading-relaxed text-justify" style={{ paddingRight: "160px" }}>
           <p className="serif italic text-[#071735] whitespace-pre-line" style={{ fontSize: "20px" }}>
