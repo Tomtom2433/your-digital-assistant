@@ -113,7 +113,7 @@ function APropos() {
 
       <div className="grid md:grid-cols-2 gap-8">
         <div className="card-meliya">
-          <h2 className="display text-2xl text-[#071735] mb-4">Ma mission</h2>
+          <h2 className="display text-2xl text-[#071735] mb-4 text-center">Ma mission</h2>
           <p className="serif italic text-lg text-[#071735]">
             Transformer des contenus souvent flous ou dispersés en documents clairs, cohérents et professionnels, prêts à être utilisés ou présentés.
           </p>
@@ -123,7 +123,7 @@ function APropos() {
           </p>
         </div>
         <div className="card-meliya">
-          <h2 className="display text-2xl text-[#071735] mb-4">Mon approche</h2>
+          <h2 className="display text-2xl text-[#071735] mb-4 text-center">Mon approche</h2>
           <ul className="space-y-3 text-sm text-[#071735]">
             <li>✦ Une organisation rigoureuse</li>
             <li>✦ Une communication fluide</li>
