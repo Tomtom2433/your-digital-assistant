@@ -194,7 +194,7 @@
   .btn-secondary-meliya:hover { background: #0D2B6B; box-shadow: var(--shadow-gold); transform: translateY(-1px); }
 
   .card-meliya {
-    background: #fff;
+    background: rgba(239, 193, 203, 0.08);
     border: 1px solid color-mix(in oklab, #CFA27A 35%, transparent);
     border-radius: 1rem;
     padding: 2rem;
@@ -206,6 +206,12 @@
   .gold-divider {
     height: 1px;
     background: linear-gradient(to right, transparent, #CFA27A, #F5B8BF, #CFA27A, transparent);
+    width: 100%;
+  }
+
+  .nude-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #EFC1CB, #F5D3D9, #EFC1CB, transparent);
     width: 100%;
   }
 }

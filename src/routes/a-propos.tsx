@@ -71,7 +71,7 @@ function APropos() {
           >
             Mes outils
           </span>
-          <div className="gold-divider mt-4 max-w-xs mx-auto" />
+          <div className="nude-divider mt-4 max-w-xs mx-auto" />
         </div>
 
         <div className="mt-10">

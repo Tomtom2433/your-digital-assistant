@@ -48,7 +48,7 @@ function Home() {
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
           <h2 className="display text-3xl md:text-4xl text-[#071735]">Mon approche</h2>
-          <div className="gold-divider mt-4 max-w-xs mx-auto" />
+          <div className="nude-divider mt-4 max-w-xs mx-auto" />
         </div>
         <div className="grid md:grid-cols-4 gap-6">
           {[

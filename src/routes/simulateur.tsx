@@ -83,7 +83,7 @@ function Simulateur() {
               Remise dégressive {discount} appliquée
             </div>
           )}
-          <div className="gold-divider my-5 opacity-50" />
+          <div className="nude-divider my-5 opacity-50" />
           <ul className="text-sm space-y-1 opacity-90">
             {slides > 0 && <li>{slides} slides × 30€</li>}
             {pages > 0 && <li>{pages} pages × 25€</li>}
