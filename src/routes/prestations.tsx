@@ -5,7 +5,7 @@ export const Route = createFileRoute("/prestations")({
   head: () => ({
     meta: [
       { title: "Prestations & Tarifs — MELIYA" },
-      { name: "description", content: "Mise en forme de slides à 30€, pages à 25€, pack visuel à 490€. Tarifs clairs et dégressifs." },
+      { name: "description", content: "Mise en forme de slides à 30€, pages à 25€, pack visuel à 390€. Tarifs clairs et dégressifs." },
     ],
   }),
   component: Prestations,
