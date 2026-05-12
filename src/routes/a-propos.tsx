@@ -20,7 +20,7 @@ function APropos() {
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
       </div>
 
-      <div className="grid md:grid-cols-[260px_1fr] gap-12 items-start">
+      <div className="grid md:grid-cols-[260px_1fr] gap-8 items-start">
         <div className="flex justify-start">
           <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" />
         </div>
