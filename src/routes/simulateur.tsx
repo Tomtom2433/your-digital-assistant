@@ -68,7 +68,7 @@ function Simulateur() {
           <label className="card-meliya flex items-start gap-4 cursor-pointer">
             <input type="checkbox" checked={pack} onChange={(e) => setPack(e.target.checked)} className="mt-1 h-5 w-5 accent-[#CFA27A]" />
             <div>
-              <div className="display text-base text-[#071735]">Ajouter le Pack visuel — 579€</div>
+              <div className="display text-base text-[#071735]">Ajouter le Pack Up — 579€</div>
               <div className="text-sm text-[#071735]/60">Logo + carte de visite + modèles + mini charte graphique</div>
             </div>
           </label>
@@ -87,7 +87,7 @@ function Simulateur() {
           <ul className="text-sm space-y-1 opacity-90">
             {slides > 0 && <li>{slides} slides × 30€</li>}
             {pages > 0 && <li>{pages} pages × 25€</li>}
-            {pack && <li>Pack visuel — 579€</li>}
+            {pack && <li>Pack Up — 579€</li>}
             {total === 0 && <li className="opacity-60 italic">Configurez votre projet…</li>}
           </ul>
           <Link to="/contact" className="mt-6 inline-flex justify-center w-full btn-secondary-meliya">
