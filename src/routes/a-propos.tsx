@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logoIcon from "@/assets/meliya-logo-icon.png";
 import logoMicrosoft365 from "@/assets/logo_microsoft_365_ivoire.png";
-import logoPerplexity from "@/assets/logo_perplexity_ivoire.png";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
