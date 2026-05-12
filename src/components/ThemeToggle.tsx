@@ -49,7 +49,7 @@ export function ThemeToggle() {
         aria-pressed={!dark}
         style={{ ...base, ...(!dark ? active : inactive) }}
       >
-        ☀️ Jour
+        ☀️
       </button>
       <button
         type="button"
@@ -57,7 +57,7 @@ export function ThemeToggle() {
         aria-pressed={dark}
         style={{ ...base, ...(dark ? active : inactive) }}
       >
-        🌙 Nuit
+        🌙
       </button>
     </div>
   );
