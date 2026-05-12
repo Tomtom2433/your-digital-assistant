@@ -87,10 +87,8 @@ function Prestations() {
       <div className="card-meliya mb-14 relative overflow-hidden" style={{background:"#071735", color:"#F7F4EF", borderColor:"#CFA27A"}}>
         <div className="absolute top-4 right-4 text-xs px-3 py-1 rounded-full" style={{background:"#CFA27A", color:"#071735"}}>BEST-SELLER</div>
         <Palette className="h-8 w-8 mb-4" style={{color:"#CFA27A"}} />
-        <h2 className="display text-3xl mb-1">Pack visuel — Aide au démarrage</h2>
         <p className="serif italic opacity-80 mb-6">Pour créateurs & créatrices d'entreprise qui veulent démarrer avec une identité simple, cohérente et prête à l'emploi.</p>
         <div className="flex items-baseline gap-2 mb-6">
-          <span className="display text-5xl" style={{color:"#CFA27A"}}>390€</span>
           <span className="text-sm opacity-70">tarif unique</span>
         </div>
         <div className="grid sm:grid-cols-2 gap-3 text-sm">
