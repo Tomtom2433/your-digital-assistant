@@ -85,8 +85,7 @@ function Prestations() {
         </div>
         <ul className="text-xs opacity-80 mt-6 space-y-1">
           <li>• Livraison en 10 jours ouvrés après réception du brief complet</li>
-          <li>• Toute modification hors périmètre : 60€/h</li>
-          <li>• Ce pack est fixe et non modulable.</li>
+          <li>• Le tarif de ce pack est fixe et non modulable. Toute demande hors périmètre fera l'objet d'un devis séparé.</li>
           <li>• Carte de visite : finitions premium (bords arrondis, effet glacé, pelliculage, etc.) disponibles en option, facturées au coût réel d'impression.</li>
         </ul>
         <p className="text-xs opacity-60 mt-4 italic">Ce pack ne remplace pas le travail d'un graphiste designer - Il vous aide à démarrer professionnellement.</p>
