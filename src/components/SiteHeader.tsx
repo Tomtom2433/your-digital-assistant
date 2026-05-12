@@ -43,13 +43,13 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 shrink-0">
-          <ThemeToggle />
+        <div className="flex flex-col items-end gap-2 shrink-0">
           <Link to="/simulateur" className="btn-blink shrink-0">
             <Sparkles className="h-4 w-4" />
             <span className="hidden sm:inline">Simulateur</span>
             <span className="sm:hidden">Simu</span>
           </Link>
+          <ThemeToggle />
         </div>
       </div>
 
