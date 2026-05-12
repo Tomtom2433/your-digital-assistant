@@ -33,11 +33,11 @@ function APropos() {
             Je suis <strong>Mélody Roche</strong>, fondatrice de MELIYA et assistante digitale indépendante.{"\n"}
             Mon métier&nbsp;: structurer, mettre en forme et valoriser vos documents professionnels pour qu'ils reflètent l'exigence de votre activité.
           </p>
-          <p className="whitespace-pre-line">
+          <p className="whitespace-pre-line text-justify">
             Depuis <strong>2005</strong>, j'accompagne entreprises, indépendants et particuliers dans leur gestion administrative.{"\n"}
             Très vite, une évidence s'est imposée&nbsp;: ce qui me passionne réellement, c'est de transformer chaque support — quel qu'il soit — en un document plus clair, plus élégant et plus impactant.
           </p>
-          <p className="whitespace-pre-line">
+          <p className="whitespace-pre-line text-justify">
             Au fil des années, j'ai exercé dans des univers très différents.{"\n"}
             Cette diversité m'a permis de développer une vision globale et une véritable capacité d'adaptation aux exigences de chaque secteur.
           </p>
