@@ -99,12 +99,12 @@ function APropos() {
           </h3>
           <div className="flex flex-wrap justify-center items-center" style={{ gap: "48px" }}>
             {[
-              { name: "Claude", src: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg" },
+              { name: "Claude", src: "https://cdn.simpleicons.org/claude/D97757" },
               { name: "ChatGPT", src: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
-              { name: "Gemini", src: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" },
-              { name: "Perplexity", src: logoPerplexity },
+              { name: "Gemini", src: "https://cdn.simpleicons.org/googlegemini" },
+              { name: "Perplexity", src: "https://cdn.simpleicons.org/perplexity/20808C" },
             ].map((t) => (
-              <img key={t.name} src={t.src} alt={t.name} style={{ height: "48px", width: "auto", objectFit: "contain" }} />
+              <img key={t.name} src={t.src} alt={t.name} style={{ height: "48px", width: "48px", objectFit: "contain" }} />
             ))}
           </div>
         </div>
