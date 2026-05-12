@@ -84,8 +84,8 @@ function APropos() {
             <li>✦ Une confidentialité totale</li>
             <li>✦ Un accompagnement humain et personnalisé</li>
           </ul>
-          <p className="mt-4 text-xs text-[#071735]/60 italic">
-            J'utilise des outils modernes ainsi que des solutions d'IA, toujours avec un contrôle humain, pour garantir qualité, précision et cohérence.
+          <p className="mt-4 text-sm text-[#071735]/70">
+            Aujourd'hui, le véritable enjeu n'est plus de savoir faire, mais de <strong>savoir structurer et valoriser</strong>.
           </p>
         </div>
       </div>
