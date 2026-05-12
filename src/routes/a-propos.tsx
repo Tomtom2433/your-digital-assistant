@@ -15,7 +15,20 @@ function APropos() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
       <div className="text-center mb-14">
-        <span className="display text-xs tracking-[0.25em] uppercase text-[color:var(--gold)]">Qui suis-je</span>
+        <span
+          className="display uppercase"
+          style={{
+            fontSize: "22px",
+            letterSpacing: "0.15em",
+            background: "linear-gradient(to right, #CFA27A, #D8B07A)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            color: "transparent",
+          }}
+        >
+          Qui suis-je
+        </span>
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
       </div>
 
