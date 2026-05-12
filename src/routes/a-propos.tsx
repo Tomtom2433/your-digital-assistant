@@ -16,13 +16,8 @@ function APropos() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
       <div className="text-center mb-14">
         <span
-          className="display uppercase"
-          style={{
-            fontSize: "22px",
-            letterSpacing: "0.15em",
-            color: "#CFA27A",
-            WebkitTextStroke: "1px #071735",
-          }}
+          className="display uppercase gold-shimmer-text"
+          style={{ fontSize: "22px", letterSpacing: "0.15em" }}
         >
           Qui suis-je
         </span>
