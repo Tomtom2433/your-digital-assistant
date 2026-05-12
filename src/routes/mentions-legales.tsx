@@ -35,7 +35,7 @@ function LegalPage() {
 
       <div className="gold-divider mb-12" />
 
-      <section className="mb-12">
+      <section id="confidentialite" className="mb-12 scroll-mt-24">
         <h2 className="display text-2xl md:text-3xl mb-2 text-[color:var(--ink)]">Politique de confidentialité</h2>
         <p className="serif italic text-sm opacity-70 mb-6">
           Conformément au Règlement Général sur la Protection des Données — RGPD UE 2016/679
@@ -90,7 +90,7 @@ function LegalPage() {
 
       <div className="gold-divider mb-12" />
 
-      <section className="mb-12">
+      <section id="cgv" className="mb-12 scroll-mt-24">
         <h2 className="display text-2xl md:text-3xl mb-2 text-[color:var(--ink)]">Conditions générales de vente</h2>
         <p className="serif italic text-sm opacity-70 mb-6">
           Obligatoires pour toute prestation de services à des particuliers
