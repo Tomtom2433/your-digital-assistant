@@ -13,7 +13,7 @@ export const Route = createFileRoute("/a-propos")({
 
 function APropos() {
   return (
-    <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
       <div className="text-center mb-14">
         <span className="text-xs tracking-[0.25em] uppercase text-[color:var(--gold)]">Qui suis-je</span>
         <h1 className="display text-4xl md:text-5xl mt-3 text-[#071735]">MELIYA, qui est-ce ?</h1>
@@ -21,7 +21,7 @@ function APropos() {
       </div>
 
       <div className="grid md:grid-cols-[260px_1fr] gap-12 items-start">
-        <div className="flex justify-center">
+        <div className="flex justify-start">
           <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" />
         </div>
         <div className="space-y-6 text-[#071735]/85 leading-relaxed text-justify">
