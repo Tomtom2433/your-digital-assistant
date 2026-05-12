@@ -24,7 +24,7 @@ function Home() {
             <h1 className="display text-4xl md:text-5xl lg:text-6xl leading-tight text-[#071735]">
               L'élégance au service<br/>de vos <span style={{color:"#CFA27A"}}>documents</span>.
             </h1>
-            <p className="serif text-xl md:text-2xl mt-6 text-[#0D2B6B]/80 italic whitespace-pre-line">
+            <p className="serif text-xl md:text-2xl mt-6 text-[#071735] italic whitespace-pre-line">
               Je transforme des contenus dispersés{"\n"}en supports clairs, cohérents et professionnels.
             </p>
             <div className="mt-10 flex flex-wrap gap-4 justify-center">
@@ -37,7 +37,7 @@ function Home() {
               </Link>
             </div>
             <div className="gold-divider mt-12 max-w-md mx-auto" />
-            <p className="mt-6 text-sm text-[#071735]/70 max-w-md mx-auto whitespace-pre-line">
+            <p className="mt-6 text-sm text-[#071735] max-w-md mx-auto whitespace-pre-line">
               Aujourd'hui, le véritable enjeu n'est plus de savoir faire,{"\n"}mais de <strong>savoir structurer et valoriser</strong>.
             </p>
           </div>
@@ -60,7 +60,7 @@ function Home() {
             <div key={v.title} className="card-meliya text-center">
               <v.icon className="h-8 w-8 mx-auto mb-4" style={{color:"#CFA27A"}} />
               <h3 className="display text-lg mb-2 text-[#071735]">{v.title}</h3>
-              <p className="text-sm text-[#071735]/70">{v.text}</p>
+              <p className="text-sm text-[#071735]">{v.text}</p>
             </div>
           ))}
         </div>

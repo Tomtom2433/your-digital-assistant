@@ -18,10 +18,10 @@ function Prestations() {
         <span className="text-xs tracking-[0.25em] uppercase text-[color:var(--gold)]">Tarifs</span>
         <h1 className="display text-4xl md:text-5xl mt-3 text-[#071735]">Mes prestations</h1>
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
-        <p className="serif italic text-xl text-[#0D2B6B]/80 mt-6 max-w-3xl mx-auto">
+        <p className="serif italic text-xl text-[#071735] mt-6 max-w-3xl mx-auto">
           Des prestations professionnelles à tarif accessible — jusqu'à 3x moins cher qu'un graphiste freelance.
         </p>
-        <p className="text-xs text-[#071735]/60 mt-3 max-w-2xl mx-auto">
+        <p className="text-xs text-[#071735] mt-3 max-w-2xl mx-auto">
           Tous les tarifs sont fermes et définitifs. TVA non applicable — art. 293 B du CGI.
         </p>
       </div>
@@ -31,33 +31,33 @@ function Prestations() {
         <div className="card-meliya relative">
           <Presentation className="h-8 w-8 mb-4" style={{color:"#CFA27A"}} />
           <h2 className="display text-2xl text-[#071735] mb-1">Mise en forme de slides</h2>
-          <p className="text-sm text-[#071735]/60 mb-6">Présentations, pitchs, formations</p>
+          <p className="text-sm text-[#071735] mb-6">Présentations, pitchs, formations</p>
           <div className="flex items-baseline gap-2 mb-4">
-            <span className="display text-5xl text-[#0D2B6B]">30€</span>
-            <span className="text-sm text-[#071735]/60">/ slide (1 à 5 slides)</span>
+            <span className="display text-5xl text-[#071735]">30€</span>
+            <span className="text-sm text-[#071735]">/ slide (1 à 5 slides)</span>
           </div>
           <ul className="space-y-2 text-sm">
-            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 15 slides</span><span className="display text-[#0D2B6B]">389€</span></li>
-            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 20 slides</span><span className="display text-[#0D2B6B]">499€</span></li>
-            <li className="flex justify-between gap-2 py-1.5"><span>21 slides et +</span><span className="display text-[#0D2B6B]">Sur devis</span></li>
+            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 15 slides</span><span className="display text-[#071735]">389€</span></li>
+            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 20 slides</span><span className="display text-[#071735]">499€</span></li>
+            <li className="flex justify-between gap-2 py-1.5"><span>21 slides et +</span><span className="display text-[#071735]">Sur devis</span></li>
           </ul>
-          <p className="text-xs text-[#071735]/60 mt-4 italic">2 retouches incluses (ajustements mineurs) - au-delà : 60€/h</p>
+          <p className="text-xs text-[#071735] mt-4 italic">2 retouches incluses (ajustements mineurs) - au-delà : 60€/h</p>
         </div>
 
         <div className="card-meliya relative">
           <FileText className="h-8 w-8 mb-4" style={{color:"#CFA27A"}} />
           <h2 className="display text-2xl text-[#071735] mb-1">Mise en forme de pages</h2>
-          <p className="text-sm text-[#071735]/60 mb-6">Rapports, livrets, ebooks, dossiers</p>
+          <p className="text-sm text-[#071735] mb-6">Rapports, livrets, ebooks, dossiers</p>
           <div className="flex items-baseline gap-2 mb-4">
-            <span className="display text-5xl text-[#0D2B6B]">25€</span>
-            <span className="text-sm text-[#071735]/60">/ page (1 à 5 pages)</span>
+            <span className="display text-5xl text-[#071735]">25€</span>
+            <span className="text-sm text-[#071735]">/ page (1 à 5 pages)</span>
           </div>
           <ul className="space-y-2 text-sm">
-            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 15 pages</span><span className="display text-[#0D2B6B]">319€</span></li>
-            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 20 pages</span><span className="display text-[#0D2B6B]">399€</span></li>
-            <li className="flex justify-between gap-2 py-1.5"><span>21 pages et +</span><span className="display text-[#0D2B6B]">Sur devis</span></li>
+            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 15 pages</span><span className="display text-[#071735]">319€</span></li>
+            <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 20 pages</span><span className="display text-[#071735]">399€</span></li>
+            <li className="flex justify-between gap-2 py-1.5"><span>21 pages et +</span><span className="display text-[#071735]">Sur devis</span></li>
           </ul>
-          <p className="text-xs text-[#071735]/60 mt-4 italic">2 retouches incluses (ajustements mineurs) - au-delà : 60€/h</p>
+          <p className="text-xs text-[#071735] mt-4 italic">2 retouches incluses (ajustements mineurs) - au-delà : 60€/h</p>
         </div>
       </div>
 
@@ -95,12 +95,12 @@ function Prestations() {
       <div className="card-meliya text-center max-w-2xl mx-auto">
         <Clock className="h-8 w-8 mx-auto mb-4" style={{color:"#CFA27A"}} />
         <h2 className="display text-2xl text-[#071735] mb-2">Tarif horaire</h2>
-        <p className="text-sm text-[#071735]/60 mb-4">Pour toute prestation sur-mesure définie au cas par cas</p>
+        <p className="text-sm text-[#071735] mb-4">Pour toute prestation sur-mesure définie au cas par cas</p>
         <div className="flex items-baseline justify-center gap-2">
-          <span className="display text-5xl text-[#0D2B6B]">60€</span>
-          <span className="text-sm text-[#071735]/60">/ heure</span>
+          <span className="display text-5xl text-[#071735]">60€</span>
+          <span className="text-sm text-[#071735]">/ heure</span>
         </div>
-        <p className="text-xs text-[#071735]/60 mt-4">Devis personnalisé systématique avant toute intervention.</p>
+        <p className="text-xs text-[#071735] mt-4">Devis personnalisé systématique avant toute intervention.</p>
       </div>
 
       <div className="text-center mt-14">

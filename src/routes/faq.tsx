@@ -43,7 +43,7 @@ function FAQ() {
               {open === i ? <Minus className="h-5 w-5 shrink-0" style={{color:"#CFA27A"}} /> : <Plus className="h-5 w-5 shrink-0" style={{color:"#CFA27A"}} />}
             </button>
             {open === i && (
-              <div className="px-6 pb-6 text-sm text-[#071735]/80 leading-relaxed border-t border-[#CFA27A]/20 pt-4">
+              <div className="px-6 pb-6 text-sm text-[#071735] leading-relaxed border-t border-[#CFA27A]/20 pt-4">
                 {f.a}
               </div>
             )}
