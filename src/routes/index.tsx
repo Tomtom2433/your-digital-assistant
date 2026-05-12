@@ -28,7 +28,13 @@ function Home() {
               Je transforme des contenus dispersés{"\n"}en supports clairs, cohérents et professionnels.
             </p>
             <div className="mt-10 flex flex-wrap gap-4 justify-center">
-              <Link to="/prestations" className="btn-primary-meliya">Inspirations</Link>
+              <Link
+                to="/prestations"
+                className="btn-primary-meliya"
+                style={{ background: "transparent", color: "#CFA27A", borderColor: "#CFA27A", borderWidth: "1px" }}
+              >
+                Inspirations
+              </Link>
             </div>
             <div className="gold-divider mt-12 max-w-md mx-auto" />
             <p className="mt-6 text-sm text-[#071735]/70 max-w-md mx-auto whitespace-pre-line">
