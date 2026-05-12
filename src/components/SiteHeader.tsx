@@ -4,10 +4,10 @@ import logoIcon from "@/assets/meliya-logo-icon.png";
 import wordmark from "@/assets/meliya-wordmark.png";
 
 const navItems = [
-  { to: "/prestations", label: "Découvrir mes prestations" },
-  { to: "/faq", label: "FAQ" },
-  { to: "/contact", label: "Contact" },
   { to: "/a-propos", label: "Qui est MELIYA ?" },
+  { to: "/prestations", label: "Découvrir mes prestations" },
+  { to: "/contact", label: "Contact" },
+  { to: "/faq", label: "FAQ" },
 ] as const;
 
 export function SiteHeader() {
