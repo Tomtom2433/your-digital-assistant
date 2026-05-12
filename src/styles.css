@@ -92,7 +92,7 @@
     padding: 0.55rem 1.1rem;
     border-radius: 0.55rem;
     background: #071735;
-    color: #F7F4EF;
+    color: #CFA27A;
     border: 1.5px solid #CFA27A;
     font-family: var(--font-display);
     font-size: 0.78rem;
@@ -139,7 +139,7 @@
   .btn-primary-meliya {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: .6rem;
-    background: #071735; color: #F7F4EF;
+    background: #071735; color: #CFA27A;
     border: 1.5px solid #CFA27A;
     font-family: var(--font-display); letter-spacing: .14em; font-size: .8rem; text-transform: uppercase;
     transition: all .3s ease;
@@ -149,7 +149,7 @@
   .btn-secondary-meliya {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: .6rem;
-    background: #071735; color: #F7F4EF;
+    background: #071735; color: #CFA27A;
     border: 1.5px solid #CFA27A;
     font-family: var(--font-display); letter-spacing: .14em; font-size: .8rem; text-transform: uppercase;
     transition: all .3s ease;
