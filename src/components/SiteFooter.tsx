@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-[color:var(--gold)]/30 bg-[#FDF5F7] text-[#071735]">
+    <footer className="mt-24 border-t border-[color:var(--gold)]/30 bg-[#F7F4EF] text-[#071735]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
         <div>
           <h3 className="display text-4xl md:text-5xl mb-3" style={{color:"#CFA27A"}}>MELIYA</h3>
