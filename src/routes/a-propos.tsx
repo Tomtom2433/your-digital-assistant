@@ -35,7 +35,7 @@ function APropos() {
           </p>
           <p className="whitespace-pre-line text-justify text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: 1.6 }}>
             Depuis <strong>2005</strong>, j'accompagne entreprises, indépendants et particuliers dans leur gestion administrative.{"\n"}
-            Très vite, une évidence s'est imposée&nbsp;: ce qui me passionne réellement, c'est de transformer chaque support — quel qu'il soit — en un document plus clair, plus élégant et plus impactant.
+            Très vite, une évidence s'est imposée&nbsp;: ce qui me passionne réellement, c'est de transformer chaque support - quel qu'il soit - en un document plus clair, plus élégant et plus impactant.
           </p>
           <p className="whitespace-pre-line text-justify text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: 1.6 }}>
             Au fil des années, j'ai exercé dans des univers très différents.{"\n"}
