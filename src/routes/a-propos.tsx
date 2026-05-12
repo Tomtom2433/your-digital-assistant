@@ -24,7 +24,7 @@ function APropos() {
         <div className="flex justify-start">
           <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" style={{ marginLeft: "-40px" }} />
         </div>
-        <div className="space-y-6 text-[#071735]/85 leading-relaxed text-justify">
+        <div className="space-y-6 text-[#071735]/85 leading-relaxed text-justify" style={{ paddingRight: "160px" }}>
           <p className="serif text-2xl italic text-[#0D2B6B]">
             Je suis <strong>Mélody Roche</strong>, fondatrice de MELIYA et assistante digitale indépendante. Mon métier&nbsp;: structurer, mettre en forme et valoriser vos documents professionnels pour qu'ils reflètent l'exigence de votre activité.
           </p>
