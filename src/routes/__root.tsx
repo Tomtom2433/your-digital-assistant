@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { CookieBanner } from "@/components/CookieBanner";
 
 function NotFoundComponent() {
   return (
@@ -80,6 +81,7 @@ function RootComponent() {
         <SiteHeader />
         <main className="flex-1"><Outlet /></main>
         <SiteFooter />
+        <CookieBanner />
       </div>
     </QueryClientProvider>
   );

@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SimulateurRouteImport } from './routes/simulateur'
 import { Route as PrestationsRouteImport } from './routes/prestations'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AProposRouteImport } from './routes/a-propos'
@@ -30,6 +31,11 @@ const SimulateurRoute = SimulateurRouteImport.update({
 const PrestationsRoute = PrestationsRouteImport.update({
   id: '/prestations',
   path: '/prestations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/contact'
     | '/faq'
+    | '/mentions-legales'
     | '/prestations'
     | '/simulateur'
     | '/sitemap.xml'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/contact'
     | '/faq'
+    | '/mentions-legales'
     | '/prestations'
     | '/simulateur'
     | '/sitemap.xml'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/contact'
     | '/faq'
+    | '/mentions-legales'
     | '/prestations'
     | '/simulateur'
     | '/sitemap.xml'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   PrestationsRoute: typeof PrestationsRoute
   SimulateurRoute: typeof SimulateurRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/prestations'
       fullPath: '/prestations'
       preLoaderRoute: typeof PrestationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   PrestationsRoute: PrestationsRoute,
   SimulateurRoute: SimulateurRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
