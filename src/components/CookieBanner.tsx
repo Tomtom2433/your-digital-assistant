@@ -36,9 +36,8 @@ export function CookieBanner() {
       className="fixed bottom-4 left-4 right-4 md:left-6 md:right-6 z-[100] mx-auto max-w-4xl rounded-xl border border-[color:var(--gold)]/40 bg-[#071735] text-[#F7F4EF] shadow-2xl"
     >
       <div className="p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
-        <p className="text-sm leading-relaxed flex-1 serif">
-          Ce site utilise des cookies pour améliorer votre expérience. Certains cookies sont nécessaires au
-          fonctionnement du site, d'autres nous aident à mesurer l'audience.
+        <p className="text-sm leading-relaxed flex-1 serif whitespace-pre-line">
+          {"Ce site utilise des cookies pour améliorer votre expérience.\nCertains cookies sont nécessaires au fonctionnement du site, d'autres nous aident à mesurer l'audience."}
         </p>
         <div className="flex gap-3 shrink-0">
           <button
