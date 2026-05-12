@@ -5,8 +5,8 @@ import wordmark from "@/assets/meliya-wordmark.png";
 
 const navItems = [
   { to: "/a-propos", label: "Qui est MELIYA ?" },
-  { to: "/prestations", label: "Découvrir mes prestations" },
-  { to: "/contact", label: "Contact" },
+  { to: "/prestations", label: "Prestations" },
+  { to: "/contact", label: "Parlons de votre projet" },
   { to: "/faq", label: "FAQ" },
 ] as const;
 
