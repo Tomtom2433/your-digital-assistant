@@ -172,3 +172,37 @@
     width: 100%;
   }
 }
+
+/* ============ DARK MODE ============ */
+.dark {
+  --background: #071735;
+  --foreground: #F7F4EF;
+  --ink: #F7F4EF;
+  --card: #0D2147;
+  --card-foreground: #F7F4EF;
+  --popover: #0D2147;
+  --popover-foreground: #F7F4EF;
+  --primary: #CFA27A;
+  --primary-foreground: #071735;
+  --secondary: #0D2147;
+  --secondary-foreground: #F7F4EF;
+  --muted: #0D2147;
+  --muted-foreground: #CFA27A;
+  --accent: #CFA27A;
+  --accent-foreground: #071735;
+  --border: #CFA27A;
+  --input: #CFA27A;
+  --ring: #CFA27A;
+}
+
+.dark .nav-pill { background:#0D2147; color:#F7F4EF; border-color:#CFA27A; }
+.dark .nav-pill:hover { background:#162e5a; }
+.dark .nav-pill[data-active="true"] { background:#CFA27A; color:#071735; border-color:#CFA27A; }
+.dark .btn-primary-meliya, .dark .btn-secondary-meliya { background:#0D2147; color:#CFA27A; border-color:#CFA27A; }
+.dark .btn-primary-meliya:hover, .dark .btn-secondary-meliya:hover { background:#162e5a; }
+.dark .card-meliya { background:#0D2147; color:#F7F4EF; border-color: color-mix(in oklab, #CFA27A 60%, transparent); }
+
+/* Override hardcoded light-tone sections */
+.dark [class*="bg-[#F7F4EF]"] { background-color:#071735 !important; color:#F7F4EF !important; }
+.dark [class*="bg-[#FDF5F7]"] { background-color:#071735 !important; color:#F7F4EF !important; }
+.dark [class*="bg-white"] { background-color:#0D2147 !important; color:#F7F4EF !important; }
