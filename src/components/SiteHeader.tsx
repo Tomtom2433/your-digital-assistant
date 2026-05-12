@@ -14,7 +14,7 @@ const navItems = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--background)]/85 border-b border-[color:var(--gold)]/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-4">
         <div className="flex flex-col items-start shrink-0">
           <Link to="/" className="flex items-center gap-1">
             <img src={wordmark} alt="MELIYA" className="h-20 md:h-28 w-auto" />
@@ -30,7 +30,7 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-2 ml-4 mr-auto">
+        <nav className="hidden md:flex items-center justify-center gap-3 flex-1">
           {navItems.map((item) => (
             <Link
               key={item.to}
@@ -41,13 +41,16 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+        </nav>
+
+        <div className="hidden md:flex items-center gap-3 shrink-0" style={{ marginLeft: "40px" }}>
           <ThemeToggle />
           <Link to="/simulateur" className="btn-blink shrink-0">
             <Sparkles className="h-4 w-4" />
             <span className="hidden sm:inline">Simulateur</span>
             <span className="sm:hidden">Simu</span>
           </Link>
-        </nav>
+        </div>
       </div>
 
       {/* Mobile nav */}
