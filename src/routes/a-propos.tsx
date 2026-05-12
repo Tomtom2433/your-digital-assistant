@@ -46,8 +46,8 @@ function APropos() {
               <span
                 key={s}
                 style={{
-                  backgroundColor: "#EFC1CB",
-                  border: "1px solid #CFA27A",
+                  background: "linear-gradient(to right, #CFA27A, #D8B07A)",
+                  border: "none",
                   color: "#071735",
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 500,
