@@ -7,7 +7,7 @@ const navItems = [
   { to: "/prestations", label: "Découvrir mes prestations" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
-  { to: "/a-propos", label: "À Propos" },
+  { to: "/a-propos", label: "Qui est MELIYA ?" },
 ] as const;
 
 export function SiteHeader() {
