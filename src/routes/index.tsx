@@ -36,12 +36,6 @@ function Home() {
               Aujourd'hui, le véritable enjeu n'est plus de savoir faire, mais de <strong>savoir structurer et valoriser</strong>.
             </p>
           </div>
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="absolute -inset-8 rounded-full" style={{background:"radial-gradient(circle, rgba(207,162,122,0.25), transparent 70%)"}} />
-              <img src={logoIcon} alt="MELIYA" className="relative h-72 md:h-96 w-auto mix-blend-multiply" />
-            </div>
-          </div>
         </div>
       </section>
 
