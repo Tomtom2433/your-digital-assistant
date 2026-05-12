@@ -168,7 +168,7 @@
 
   .gold-divider {
     height: 1px;
-    background: linear-gradient(to right, transparent, #CFA27A, transparent);
+    background: linear-gradient(to right, transparent, #CFA27A, #F5B8BF, #CFA27A, transparent);
     width: 100%;
   }
 }
