@@ -29,7 +29,7 @@ function Home() {
               Je transforme des contenus dispersés en supports clairs, cohérents et professionnels.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/prestations" className="btn-primary-meliya">Découvrir mes prestations</Link>
+              <Link to="/prestations" className="btn-primary-meliya">Inspirations</Link>
             </div>
             <div className="gold-divider mt-12" />
             <p className="mt-6 text-sm text-[#071735]/70 max-w-md">
