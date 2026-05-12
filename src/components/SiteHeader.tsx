@@ -22,7 +22,7 @@ export function SiteHeader() {
           <Link
             to="/"
             className="serif italic text-[11px] md:text-[12px] mt-1 transition-colors"
-            style={{ color: "#CFA27A" }}
+            style={{ color: "#CFA27A", paddingLeft: "130px" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#D8B07A")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#CFA27A")}
           >
