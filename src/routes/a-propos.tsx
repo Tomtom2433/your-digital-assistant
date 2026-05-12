@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logoIcon from "@/assets/meliya-logo-icon.png";
+import logoMicrosoft365 from "@/assets/logo_microsoft_365_ivoire.png";
+import logoPerplexity from "@/assets/logo_perplexity_ivoire.png";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
@@ -83,7 +85,7 @@ function APropos() {
               { name: "Gamma", src: "https://gamma.app/favicon.ico" },
               { name: "Lovable", src: "https://lovable.dev/favicon.ico" },
               { name: "Google Workspace", src: "https://cdn.simpleicons.org/google" },
-              { name: "Microsoft Office", src: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Microsoft_Office_logo_%282019%E2%80%93present%29.svg" },
+              { name: "Microsoft Office", src: logoMicrosoft365 },
               { name: "Notion", src: "https://cdn.simpleicons.org/notion/071735" },
             ].map((t) => (
               <div key={t.name} className="flex flex-col items-center bg-transparent border-0 shadow-none">
@@ -103,11 +105,13 @@ function APropos() {
               { name: "Claude", src: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg" },
               { name: "ChatGPT", src: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
               { name: "Gemini", src: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" },
-              { name: "Perplexity", src: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Perplexity_AI_Logo.svg" },
+              { name: "Perplexity", src: logoPerplexity, hideName: true },
             ].map((t) => (
               <div key={t.name} className="flex flex-col items-center bg-transparent border-0 shadow-none">
                 <img src={t.src} alt={t.name} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
-                <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
+                {!(t as { hideName?: boolean }).hideName && (
+                  <span className="text-center mt-2 text-[#071735]" style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{t.name}</span>
+                )}
               </div>
             ))}
           </div>
