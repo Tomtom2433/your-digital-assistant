@@ -41,7 +41,7 @@ function Prestations() {
             <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 20 slides</span><span className="display text-[#0D2B6B]">499€</span></li>
             <li className="flex justify-between gap-2 py-1.5"><span>21 slides et +</span><span className="display text-[#0D2B6B]">Sur devis</span></li>
           </ul>
-          <p className="text-xs text-[#071735]/60 mt-4 italic">2 retouches incluses (ajustements mineurs) — au-delà : 60€/h</p>
+          <p className="text-xs text-[#071735]/60 mt-4 italic">2 retouches incluses (ajustements mineurs) - au-delà : 60€/h</p>
         </div>
 
         <div className="card-meliya relative">
@@ -57,7 +57,7 @@ function Prestations() {
             <li className="flex justify-between gap-2 py-1.5 border-b border-[#CFA27A]/20"><span>Pack 20 pages</span><span className="display text-[#0D2B6B]">399€</span></li>
             <li className="flex justify-between gap-2 py-1.5"><span>21 pages et +</span><span className="display text-[#0D2B6B]">Sur devis</span></li>
           </ul>
-          <p className="text-xs text-[#071735]/60 mt-4 italic">2 retouches incluses (ajustements mineurs) — au-delà : 60€/h</p>
+          <p className="text-xs text-[#071735]/60 mt-4 italic">2 retouches incluses (ajustements mineurs) - au-delà : 60€/h</p>
         </div>
       </div>
 
