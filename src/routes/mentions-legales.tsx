@@ -33,7 +33,7 @@ function LegalPage() {
         </ul>
       </section>
 
-      <div className="gold-divider mb-12" />
+      <div className="nude-divider mb-12" />
 
       <section id="confidentialite" className="mb-12 scroll-mt-24">
         <h2 className="display text-2xl md:text-3xl mb-2 text-[color:var(--ink)]">Politique de confidentialité</h2>
