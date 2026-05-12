@@ -79,7 +79,7 @@ function Simulateur() {
           <div className="text-xs uppercase tracking-widest opacity-70">Estimation totale</div>
           <div className="display text-5xl mt-2" style={{color:"#CFA27A"}}>{total.toFixed(0)}€</div>
           {discount && (
-            <div className="mt-3 inline-block text-xs px-3 py-1 rounded-full" style={{background:"#CFA27A", color:"#071735"}}>
+            <div className="mt-3 inline-block" style={{background:"linear-gradient(to right, #CFA27A, #D8B07A)", color:"#071735", fontFamily:"Inter, sans-serif", fontWeight:500, fontSize:"12px", borderRadius:"20px", padding:"4px 14px"}}>
               Remise dégressive {discount} appliquée
             </div>
           )}
