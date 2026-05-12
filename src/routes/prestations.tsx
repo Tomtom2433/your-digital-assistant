@@ -87,6 +87,7 @@ function Prestations() {
           <li>• Livraison en 10 jours ouvrés après réception du brief complet</li>
           <li>• Toute modification hors périmètre : 60€/h</li>
           <li>• Ce pack est fixe et non modulable.</li>
+          <li>• Pour l'impression de la carte de visite : options premium disponibles en supplément au coût réel : bords arrondis, effet glacé, pelliculage, etc.</li>
         </ul>
         <p className="text-xs opacity-60 mt-4 italic">Ce pack ne remplace pas le travail d'un graphiste designer - Il vous aide à démarrer professionnellement.</p>
       </div>
