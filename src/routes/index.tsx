@@ -61,7 +61,7 @@ function Home() {
       </section>
 
       {/* DIFFERENCE */}
-      <section className="bg-[#071735] text-[#F7F4EF] py-20">
+      <section className="bg-[#FDF5F7] text-[#071735] py-20">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="display text-3xl md:text-4xl mb-3" style={{color:"#CFA27A"}}>Pas une simple assistante</h2>
           <p className="serif text-xl italic opacity-80 mb-12">Une assistante digitale spécialisée - la nuance qui fait toute la différence.</p>
