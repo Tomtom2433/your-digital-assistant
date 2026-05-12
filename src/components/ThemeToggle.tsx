@@ -17,9 +17,9 @@ export function ThemeToggle() {
   };
 
   const base: React.CSSProperties = {
-    padding: "3px 9px",
-    borderRadius: "16px",
-    fontSize: "11px",
+    padding: "2px 7px",
+    borderRadius: "14px",
+    fontSize: "10px",
     lineHeight: 1,
     border: "none",
     background: "transparent",
@@ -37,9 +37,9 @@ export function ThemeToggle() {
       className="inline-flex items-center shrink-0"
       style={{
         border: "1px solid #071735",
-        borderRadius: "20px",
-        padding: "2px",
-        gap: "2px",
+        borderRadius: "16px",
+        padding: "1px",
+        gap: "1px",
         background: "transparent",
       }}
     >
