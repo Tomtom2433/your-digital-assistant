@@ -29,8 +29,9 @@ function APropos() {
           <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" style={{ marginLeft: "-40px" }} />
         </div>
         <div className="space-y-6 text-[#071735]/85 leading-relaxed text-justify" style={{ paddingRight: "160px" }}>
-          <p className="serif text-2xl italic text-[#0D2B6B]">
-            Je suis <strong>Mélody Roche</strong>, fondatrice de MELIYA et assistante digitale indépendante. Mon métier&nbsp;: structurer, mettre en forme et valoriser vos documents professionnels pour qu'ils reflètent l'exigence de votre activité.
+          <p className="serif text-2xl italic text-[#0D2B6B] whitespace-pre-line">
+            Je suis <strong>Mélody Roche</strong>, fondatrice de MELIYA et assistante digitale indépendante.{"\n"}
+            Mon métier&nbsp;: structurer, mettre en forme et valoriser vos documents professionnels pour qu'ils reflètent l'exigence de votre activité.
           </p>
           <p>
             Depuis <strong>2005</strong>, j'accompagne entreprises, indépendants et particuliers dans leur gestion administrative. Très vite, une évidence s'est imposée&nbsp;: ce qui me passionne réellement, c'est de transformer chaque support — quel qu'il soit — en un document plus clair, plus élégant et plus impactant.
