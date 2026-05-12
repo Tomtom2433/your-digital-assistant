@@ -27,7 +27,7 @@ function APropos() {
       </div>
 
       <div className="flex flex-row items-start gap-8">
-        <div className="shrink-0">
+        <div className="shrink-0" style={{ paddingLeft: "130px" }}>
           <img src={logoIcon} alt="MELIYA" className="mix-blend-multiply" style={{ maxWidth: "200px", height: "auto", width: "100%" }} />
         </div>
         <div className="flex-1 space-y-4 text-[#071735] leading-relaxed text-justify" style={{ paddingRight: "160px" }}>
