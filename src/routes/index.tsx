@@ -75,7 +75,7 @@ function Home() {
               <p className="text-sm opacity-80">Tâches administratives à distance, généralistes et polyvalentes.</p>
             </div>
             <div className="p-6 rounded-xl" style={{background:"linear-gradient(135deg, #CFA27A, #D8B07A)", color:"#071735"}}>
-              <h3 className="display text-base mb-2">MELIYA — Assistante digitale spécialisée</h3>
+              <h3 className="display text-base mb-2">MELIYA — ASSISTANTE DIGITALE SPECIALISEE</h3>
               <p className="text-sm">Spécialiste de la <strong>structuration, mise en forme et valorisation</strong> de documents digitaux haut de gamme.</p>
             </div>
           </div>
