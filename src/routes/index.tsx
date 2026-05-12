@@ -24,8 +24,8 @@ function Home() {
             <h1 className="display text-4xl md:text-5xl lg:text-6xl leading-tight text-[#071735]">
               L'élégance au service<br/>de vos <span style={{color:"#CFA27A"}}>documents</span>.
             </h1>
-            <p className="serif text-xl md:text-2xl mt-6 text-[#0D2B6B]/80 italic">
-              Je transforme des contenus dispersés en supports clairs, cohérents et professionnels.
+            <p className="serif text-xl md:text-2xl mt-6 text-[#0D2B6B]/80 italic whitespace-pre-line">
+              Je transforme des contenus dispersés{"\n"}en supports clairs, cohérents et professionnels.
             </p>
             <div className="mt-10 flex flex-wrap gap-4 justify-center">
               <Link to="/prestations" className="btn-primary-meliya">Inspirations</Link>
