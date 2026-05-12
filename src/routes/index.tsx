@@ -31,8 +31,8 @@ function Home() {
               <Link to="/prestations" className="btn-primary-meliya">Inspirations</Link>
             </div>
             <div className="gold-divider mt-12 max-w-md mx-auto" />
-            <p className="mt-6 text-sm text-[#071735]/70 max-w-md mx-auto">
-              Aujourd'hui, le véritable enjeu n'est plus de savoir faire, mais de <strong>savoir structurer et valoriser</strong>.
+            <p className="mt-6 text-sm text-[#071735]/70 max-w-md mx-auto whitespace-pre-line">
+              Aujourd'hui, le véritable enjeu n'est plus de savoir faire,{"\n"}mais de <strong>savoir structurer et valoriser</strong>.
             </p>
           </div>
         </div>
