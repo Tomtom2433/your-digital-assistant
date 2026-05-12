@@ -210,6 +210,21 @@
   }
 }
 
+@keyframes meliya-gold-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.gold-shimmer-text {
+  background: linear-gradient(to right, #CFA27A, #D8B07A, #CFA27A);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: meliya-gold-shimmer 4.5s linear infinite;
+}
+
 /* ============ DARK MODE ============ */
 .dark {
   --background: #071735;
