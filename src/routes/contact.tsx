@@ -55,10 +55,11 @@ function Contact() {
           </div>
           <select className="w-full px-4 py-3 rounded-lg border border-[#CFA27A]/40 bg-white focus:outline-none focus:ring-2 focus:ring-[#CFA27A]">
             <option>Type de prestation</option>
-            <option>Mise en forme de slides</option>
-            <option>Mise en forme de pages</option>
-            <option>Pack visuel — démarrage</option>
-            <option>Sur-mesure</option>
+            <option>Présentations</option>
+            <option>Mise en page premium</option>
+            <option>Documents professionnels</option>
+            <option>Identité visuelle</option>
+            <option>Sur mesure</option>
           </select>
           <textarea required rows={5} placeholder="Décrivez votre projet…" className="w-full px-4 py-3 rounded-lg border border-[#CFA27A]/40 bg-white focus:outline-none focus:ring-2 focus:ring-[#CFA27A]" />
           <button type="submit" className="btn-primary-meliya w-full justify-center">
