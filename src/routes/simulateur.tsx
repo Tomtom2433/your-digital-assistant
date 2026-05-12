@@ -42,7 +42,7 @@ function Simulateur() {
         </span>
         <h1 className="display text-4xl md:text-5xl mt-3 text-[#071735]">Estimez votre projet</h1>
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
-        <p className="serif italic text-xl text-[#0D2B6B]/80 mt-6 max-w-2xl mx-auto">
+        <p className="serif italic text-xl text-[#071735] mt-6 max-w-2xl mx-auto">
           Une estimation instantanée — un devis personnalisé sous 24h.
         </p>
       </div>
@@ -50,7 +50,7 @@ function Simulateur() {
       <div className="grid md:grid-cols-[1fr_360px] gap-8">
         <div className="space-y-6">
           <div className="card-meliya">
-            <label className="display text-sm uppercase tracking-widest text-[#071735]/70">Nombre de slides — 30€/u</label>
+            <label className="display text-sm uppercase tracking-widest text-[#071735]">Nombre de slides — 30€/u</label>
             <div className="flex items-center gap-4 mt-3">
               <input type="range" min={0} max={60} value={slides} onChange={(e) => setSlides(+e.target.value)} className="flex-1 accent-[#CFA27A]" />
               <input type="number" min={0} value={slides} onChange={(e) => setSlides(+e.target.value)} className="w-20 px-3 py-2 rounded-lg border border-[#CFA27A]/40 bg-white text-center" />
@@ -58,7 +58,7 @@ function Simulateur() {
           </div>
 
           <div className="card-meliya">
-            <label className="display text-sm uppercase tracking-widest text-[#071735]/70">Nombre de pages — 25€/u</label>
+            <label className="display text-sm uppercase tracking-widest text-[#071735]">Nombre de pages — 25€/u</label>
             <div className="flex items-center gap-4 mt-3">
               <input type="range" min={0} max={60} value={pages} onChange={(e) => setPages(+e.target.value)} className="flex-1 accent-[#CFA27A]" />
               <input type="number" min={0} value={pages} onChange={(e) => setPages(+e.target.value)} className="w-20 px-3 py-2 rounded-lg border border-[#CFA27A]/40 bg-white text-center" />
@@ -69,7 +69,7 @@ function Simulateur() {
             <input type="checkbox" checked={pack} onChange={(e) => setPack(e.target.checked)} className="mt-1 h-5 w-5 accent-[#CFA27A]" />
             <div>
               <div className="display text-base text-[#071735]">Ajouter le Pack Up — 579€</div>
-              <div className="text-sm text-[#071735]/60">Logo + carte de visite + modèles + mini charte graphique</div>
+              <div className="text-sm text-[#071735]">Logo + carte de visite + modèles + mini charte graphique</div>
             </div>
           </label>
         </div>

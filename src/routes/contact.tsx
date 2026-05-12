@@ -20,7 +20,7 @@ function Contact() {
         <span className="text-xs tracking-[0.25em] uppercase text-[color:var(--gold)]">Échangeons</span>
         <h1 className="display text-4xl md:text-5xl mt-3 text-[#071735]">Contact</h1>
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
-        <p className="serif italic text-xl text-[#0D2B6B]/80 mt-6 max-w-2xl mx-auto">
+        <p className="serif italic text-xl text-[#071735] mt-6 max-w-2xl mx-auto">
           Parlez-moi de votre projet — je vous réponds sous 24h.
         </p>
       </div>
@@ -29,17 +29,17 @@ function Contact() {
         <div className="space-y-4">
           <div className="card-meliya">
             <Mail className="h-6 w-6 mb-3" style={{color:"#CFA27A"}} />
-            <div className="text-xs uppercase tracking-widest text-[#071735]/60">Email</div>
+            <div className="text-xs uppercase tracking-widest text-[#071735]">Email</div>
             <div className="display text-base text-[#071735]">contact@meliya.fr</div>
           </div>
           <div className="card-meliya">
             <Phone className="h-6 w-6 mb-3" style={{color:"#CFA27A"}} />
-            <div className="text-xs uppercase tracking-widest text-[#071735]/60">Téléphone</div>
+            <div className="text-xs uppercase tracking-widest text-[#071735]">Téléphone</div>
             <div className="display text-base text-[#071735]">Sur rendez-vous</div>
           </div>
           <div className="card-meliya">
             <MapPin className="h-6 w-6 mb-3" style={{color:"#CFA27A"}} />
-            <div className="text-xs uppercase tracking-widest text-[#071735]/60">Localisation</div>
+            <div className="text-xs uppercase tracking-widest text-[#071735]">Localisation</div>
             <div className="display text-base text-[#071735]">100% à distance — France</div>
           </div>
         </div>
@@ -66,7 +66,7 @@ function Contact() {
             <Send className="h-4 w-4" /> Envoyer ma demande
           </button>
           {sent && (
-            <p className="text-sm text-center text-[#0D2B6B] mt-2">
+            <p className="text-sm text-center text-[#071735] mt-2">
               ✨ Merci ! Votre message a été pris en compte. Réponse sous 24h.
             </p>
           )}
