@@ -28,7 +28,7 @@ function APropos() {
         <div className="flex justify-start">
           <img src={logoIcon} alt="MELIYA" className="h-56 w-auto mix-blend-multiply" style={{ marginLeft: "-40px" }} />
         </div>
-        <div className="space-y-4 text-[#071735]/85 leading-relaxed text-justify" style={{ paddingRight: "160px" }}>
+        <div className="space-y-4 text-[#071735] leading-relaxed text-justify" style={{ paddingRight: "160px" }}>
           <p className="serif italic text-[#071735] whitespace-pre-line" style={{ fontSize: "20px" }}>
             Je suis <strong>Mélody Roche</strong>, fondatrice de MELIYA et assistante digitale indépendante.{"\n"}
             Mon métier&nbsp;: structurer, mettre en forme et valoriser vos documents professionnels pour qu'ils reflètent l'exigence de votre activité.
@@ -68,23 +68,23 @@ function APropos() {
       <div className="grid md:grid-cols-2 gap-8">
         <div className="card-meliya">
           <h2 className="display text-2xl text-[#071735] mb-4">Ma mission</h2>
-          <p className="serif italic text-lg text-[#0D2B6B]">
+          <p className="serif italic text-lg text-[#071735]">
             Transformer des contenus souvent flous ou dispersés en documents clairs, cohérents et professionnels, prêts à être utilisés ou présentés.
           </p>
-          <p className="mt-4 text-sm text-[#071735]/70 whitespace-pre-line">
+          <p className="mt-4 text-sm text-[#071735] whitespace-pre-line">
             J'utilise des outils modernes ainsi que des solutions d'IA, toujours avec un contrôle humain,{"\n"}
             pour garantir qualité, précision et cohérence.
           </p>
         </div>
         <div className="card-meliya">
           <h2 className="display text-2xl text-[#071735] mb-4">Mon approche</h2>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-3 text-sm text-[#071735]">
             <li>✦ Une organisation rigoureuse</li>
             <li>✦ Une communication fluide</li>
             <li>✦ Une confidentialité totale</li>
             <li>✦ Un accompagnement humain et personnalisé</li>
           </ul>
-          <p className="mt-4 text-sm text-[#071735]/70">
+          <p className="mt-4 text-sm text-[#071735]">
             Aujourd'hui, le véritable enjeu n'est plus de savoir faire, mais de <strong>savoir structurer et valoriser</strong>.
           </p>
         </div>
