@@ -108,6 +108,7 @@
   .nav-pill[data-active="true"] {
     background: #CFA27A;
     color: #071735;
+    border-color: #071735;
   }
 
   .btn-blink {
