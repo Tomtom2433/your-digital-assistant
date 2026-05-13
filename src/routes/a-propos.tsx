@@ -25,7 +25,8 @@ function APropos() {
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
       </div>
 
-      <div className="space-y-4 text-[#071735] leading-relaxed text-justify mx-auto">
+      <div className="flex flex-row items-start gap-8">
+        <div className="flex-1 space-y-4 text-[#071735] leading-relaxed text-justify" style={{ paddingRight: "160px" }}>
           <p className="serif italic text-[#071735] whitespace-pre-line" style={{ fontSize: "20px" }}>
             Je suis <strong>Mélody Roche</strong>, fondatrice de MELIYA et assistante digitale indépendante.{"\n"}
             <strong>Mon métier</strong>&nbsp;: structurer, mettre en forme et valoriser vos documents professionnels pour qu'ils reflètent l'exigence de votre activité.
@@ -57,6 +58,7 @@ function APropos() {
               </span>
             ))}
           </div>
+        </div>
       </div>
 
       <section className="mt-14">
