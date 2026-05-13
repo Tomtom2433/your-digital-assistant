@@ -15,9 +15,14 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--background)]/85 border-b border-[color:var(--gold)]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-4">
-        <div className="flex flex-col items-start shrink-0">
-          <Link to="/" className="flex items-center gap-1">
-            <img src={wordmark} alt="MELIYA" className="h-20 md:h-28 w-auto" />
+        <div className="flex flex-col items-start shrink-0" style={{ background: "transparent" }}>
+          <Link to="/" className="flex items-center gap-1" style={{ background: "transparent" }}>
+            <img
+              src={wordmark}
+              alt="MELIYA"
+              className="h-20 md:h-28 w-auto"
+              style={{ background: "transparent", objectFit: "contain", border: "none", outline: "none", boxShadow: "none" }}
+            />
           </Link>
           <Link
             to="/"
