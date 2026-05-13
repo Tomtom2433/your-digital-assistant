@@ -20,8 +20,8 @@ export function SiteHeader() {
             <img
               src={wordmark}
               alt="MELIYA"
-              className="h-20 md:h-28 w-auto"
-              style={{ background: "transparent", objectFit: "contain", border: "none", outline: "none", boxShadow: "none" }}
+              className="w-auto"
+              style={{ height: "80px", minHeight: "70px", background: "transparent", objectFit: "contain", border: "none", outline: "none", boxShadow: "none", display: "block" }}
             />
           </Link>
           <Link
