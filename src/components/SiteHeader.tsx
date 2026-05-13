@@ -18,12 +18,12 @@ export function SiteHeader() {
         <div className="flex flex-col items-start shrink-0" style={{ background: "transparent" }}>
           <Link
             to="/"
-            style={{ height: "80px", display: "flex", alignItems: "center", background: "transparent" }}
+            style={{ height: "80px", display: "flex", alignItems: "center" }}
           >
             <img
               src={wordmark}
               alt="MELIYA"
-              style={{ height: "80px", maxHeight: "80px", width: "auto", background: "transparent", objectFit: "contain", border: "none", outline: "none", boxShadow: "none", display: "block" }}
+              style={{ height: "80px", width: "auto", minHeight: "80px" }}
             />
           </Link>
           <Link
