@@ -264,3 +264,27 @@
 .dark [class*="bg-[#F7F4EF]"] { background-color:#071735 !important; color:#F7F4EF !important; }
 .dark [class*="bg-[#FDF5F7]"] { background-color:#071735 !important; color:#F7F4EF !important; }
 .dark [class*="bg-white"] { background-color:#0D2147 !important; color:#F7F4EF !important; }
+
+/* Force readable text colors in dark mode (override hardcoded ink-blue text) */
+.dark [class*="text-[#071735]"] { color:#F0F0F0 !important; }
+.dark .card-meliya [class*="text-[#071735]"] { color:#F0F0F0 !important; }
+.dark .card-meliya h1,
+.dark .card-meliya h2,
+.dark .card-meliya h3,
+.dark .card-meliya .display { color:#FFFFFF !important; }
+.dark .card-meliya p,
+.dark .card-meliya li,
+.dark .card-meliya span { color:#CBD5E1; }
+.dark .card-meliya .display.text-5xl,
+.dark .card-meliya [style*="#CFA27A"] { color:#CFA27A !important; opacity:1 !important; }
+
+/* Logo: guarantee transparent background in all themes */
+img[alt="MELIYA"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  object-fit: contain;
+}
