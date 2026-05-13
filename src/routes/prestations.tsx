@@ -4,8 +4,8 @@ import { Check, FileText, Presentation, Palette, Clock } from "lucide-react";
 export const Route = createFileRoute("/prestations")({
   head: () => ({
     meta: [
-      { title: "Prestations & Tarifs — MELIYA" },
-      { name: "description", content: "Prestations professionnelles à tarif accessible — jusqu'à 3x moins cher qu'un graphiste freelance. Slides dès 30€, pages dès 25€, Pack Up 579€." },
+       { title: "Prestations — MELIYA" },
+       { name: "description", content: "Retrouvez les tarifs de mes prestations de mise en forme de documents : slides, rapports, mini charte graphique et Pack Up pour créateurs." },
     ],
   }),
   component: Prestations,
@@ -18,9 +18,7 @@ function Prestations() {
         <span className="text-xs tracking-[0.25em] uppercase text-[color:var(--gold)]">Tarifs</span>
         <h1 className="display text-4xl md:text-5xl mt-3 text-[#071735]">Mes prestations</h1>
         <div className="gold-divider mt-4 max-w-xs mx-auto" />
-        <p className="serif italic text-xl text-[#071735] mt-6 max-w-3xl mx-auto">
-          Des prestations professionnelles à tarif accessible — jusqu'à 3x moins cher qu'un graphiste freelance.
-        </p>
+        <p className="serif italic text-xl text-[#071735] mt-6 max-w-3xl mx-auto">© 2026 MELIYA - Tous droits réservés</p>
         <p className="text-xs text-[#071735] mt-3 max-w-2xl mx-auto">
           Tous les tarifs sont fermes et définitifs. TVA non applicable — art. 293 B du CGI.
         </p>
