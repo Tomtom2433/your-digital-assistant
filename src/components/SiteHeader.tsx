@@ -21,7 +21,7 @@ export function SiteHeader() {
           </Link>
           <Link
             to="/"
-            className="serif italic text-[11px] md:text-[12px] mt-1 transition-colors"
+            className="serif italic text-[11px] md:text-[12px] mt-1 ml-2 transition-colors"
             style={{ color: "#CFA27A" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#D8B07A")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#CFA27A")}
