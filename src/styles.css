@@ -41,13 +41,13 @@
 
 :root {
   --radius: 0.5rem;
-  /* MELIYA palette */
-  --background: #FDF0EC;                          /* Crème rosé */
-  --foreground: oklch(0.21 0.06 270);             /* Bleu Nuit #071735 */
-  --ink: oklch(0.21 0.06 270);
-  --gold: oklch(0.74 0.08 60);                    /* Rose Gold #CFA27A */
-  --gold-soft: oklch(0.79 0.07 70);               /* Champagne #D8B07A */
-  --nude: oklch(0.86 0.05 10);                    /* Rose Nude #EFC1CB */
+  /* MELIYA palette — rose / cream / champagne */
+  --background: #FBEDE7;                          /* Crème rosé doux */
+  --foreground: #5C2A2E;                          /* Bordeaux profond */
+  --ink: #5C2A2E;
+  --gold: oklch(0.78 0.09 65);                    /* Champagne doré #D4A574 */
+  --gold-soft: oklch(0.86 0.07 70);               /* Champagne clair #E8C4A0 */
+  --nude: oklch(0.86 0.06 15);                    /* Rose nude #F5C8D0 */
 
   --card: #FFFFFF;
   --card-foreground: var(--foreground);
