@@ -42,16 +42,16 @@
 :root {
   --radius: 0.5rem;
   /* MELIYA palette */
-  --background: #F7F4EF;                          /* Ivoire MELIYA */
+  --background: #FDF0EC;                          /* Crème rosé */
   --foreground: oklch(0.21 0.06 270);             /* Bleu Nuit #071735 */
   --ink: oklch(0.21 0.06 270);
   --gold: oklch(0.74 0.08 60);                    /* Rose Gold #CFA27A */
   --gold-soft: oklch(0.79 0.07 70);               /* Champagne #D8B07A */
   --nude: oklch(0.86 0.05 10);                    /* Rose Nude #EFC1CB */
 
-  --card: oklch(0.985 0.005 80);
+  --card: #FFFFFF;
   --card-foreground: var(--foreground);
-  --popover: oklch(0.985 0.005 80);
+  --popover: #FFFFFF;
   --popover-foreground: var(--foreground);
   --primary: oklch(0.21 0.06 270);
   --primary-foreground: oklch(0.98 0 0);
@@ -287,4 +287,27 @@ img[alt="MELIYA"] {
   outline: none !important;
   box-shadow: none !important;
   object-fit: contain;
+}
+
+/* ============ GLOBAL ANIMATIONS & TRANSITIONS ============ */
+@keyframes meliya-fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: meliya-fade-in-up 0.6s ease-out both;
+}
+
+a, button, input, textarea, select,
+[role="button"], .btn-primary-meliya, .btn-secondary-meliya,
+.nav-pill, .btn-blink, .card-meliya {
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section { animation: none; }
+  a, button, input, textarea, select,
+  [role="button"], .btn-primary-meliya, .btn-secondary-meliya,
+  .nav-pill, .btn-blink, .card-meliya { transition: none; }
 }
