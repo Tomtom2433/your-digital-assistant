@@ -42,34 +42,35 @@
 :root {
   --radius: 0.5rem;
   /* MELIYA palette — rose / cream / champagne */
-  --background: #FFF5F8;                          /* Blanc rosé très doux */
-  --foreground: #3D2030;                          /* Brun-rose profond */
-  --ink: #3D2030;
-  --gold: #C9A96E;                                /* Or accent */
-  --gold-soft: #D8BE8A;                           /* Or doux */
-  --nude: #E8AABB;                                /* Rose pastel */
-  --rose-header-from: #D4899A;
-  --rose-header-to: #E8AABB;
-  --rose-border: #F0CCD6;                         /* Bordure rose poudré */
-  --text-soft: #8A6070;                           /* Texte secondaire brun-rose */
+  /* Inspirée du logo MELIYA — bourgogne, rose poudré, or chaud */
+  --background: #FFF6F2;                          /* Crème rosée */
+  --foreground: #6B1F3A;                          /* Bourgogne profond */
+  --ink: #6B1F3A;
+  --gold: #D4A574;                                /* Or chaud */
+  --gold-soft: #E8C9A0;                           /* Champagne */
+  --nude: #F2C6CE;                                /* Rose poudré */
+  --rose-header-from: #B8456A;                    /* Rose bourgogne */
+  --rose-header-to: #E8A4B5;                      /* Rose pastel */
+  --rose-border: #F2C6CE;
+  --text-soft: #9B5A6E;                           /* Mauve-rose secondaire */
 
   --card: #FFFFFF;
   --card-foreground: var(--foreground);
   --popover: #FFFFFF;
   --popover-foreground: var(--foreground);
-  --primary: #3D2030;
-  --primary-foreground: #FFF5F8;
-  --secondary: #C9A96E;
-  --secondary-foreground: #3D2030;
-  --muted: #FBE6EC;
-  --muted-foreground: #8A6070;
-  --accent: #C9A96E;
-  --accent-foreground: #3D2030;
+  --primary: #6B1F3A;
+  --primary-foreground: #FFF6F2;
+  --secondary: #D4A574;
+  --secondary-foreground: #6B1F3A;
+  --muted: #FBE4E8;
+  --muted-foreground: #9B5A6E;
+  --accent: #D4A574;
+  --accent-foreground: #6B1F3A;
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: #F0CCD6;
-  --input: #F0CCD6;
-  --ring: #C9A96E;
+  --border: #F2C6CE;
+  --input: #F2C6CE;
+  --ring: #D4A574;
 
   --gradient-hero: radial-gradient(ellipse at top, oklch(0.985 0.005 80) 0%, oklch(0.96 0.012 70) 60%, oklch(0.94 0.018 60) 100%);
   --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, var(--ink) 25%, transparent);
