@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
 import logoIcon from "@/assets/meliya-logo-icon.png";
-import wordmark from "@/assets/meliya-wordmark.png";
+import wordmark from "@/assets/meliya-logo-new.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
