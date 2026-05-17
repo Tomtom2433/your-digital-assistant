@@ -323,3 +323,39 @@ a, button, input, textarea, select,
   [role="button"], .btn-primary-meliya, .btn-secondary-meliya,
   .nav-pill, .btn-blink, .card-meliya { transition: none; }
 }
+
+/* ============ LEGACY COLOR OVERRIDES (remap to pastel palette) ============ */
+/* Old ink-blue text → gris foncé */
+[class*="text-[#071735]"] { color: #2D2D2D !important; }
+[class*="bg-[#071735]"]   { background-color: #C4B5E8 !important; color: #2D2D2D !important; }
+[class*="border-[#071735]"] { border-color: #C4B5E8 !important; }
+
+/* Old gold (#CFA27A / #D8B07A) → vert menthe */
+[class*="text-[#CFA27A]"], [class*="text-[#D8B07A]"] { color: #8ECDC4 !important; }
+[class*="bg-[#CFA27A]"], [class*="bg-[#D8B07A]"] { background-color: #8ECDC4 !important; }
+[class*="border-[#CFA27A]"], [class*="border-[#D8B07A]"] { border-color: #8ECDC4 !important; }
+[class*="accent-[#CFA27A]"] { accent-color: #8ECDC4 !important; }
+
+/* Old light section backgrounds → alternance pastel */
+[class*="bg-[#FDF5F7]"] { background-color: #F0EBF8 !important; }
+[class*="bg-[#F7F4EF]"] { background-color: #EAF5F2 !important; }
+[class*="bg-[#FFF6F2]"] { background-color: #FAFAF8 !important; }
+
+/* Inline-style overrides for the same legacy hex values */
+[style*="#071735"] { --legacy-ink: #2D2D2D; }
+[style*="color: #071735"], [style*="color:#071735"] { color: #2D2D2D !important; }
+[style*="background: #071735"], [style*="background:#071735"],
+[style*="background-color: #071735"], [style*="background-color:#071735"] {
+  background: #C4B5E8 !important; color: #2D2D2D !important;
+}
+[style*="borderColor: #071735"], [style*="border-color: #071735"] { border-color: #C4B5E8 !important; }
+
+[style*="color: #CFA27A"], [style*="color:#CFA27A"],
+[style*="color: #D8B07A"], [style*="color:#D8B07A"] { color: #8ECDC4 !important; }
+[style*="background: #CFA27A"], [style*="background:#CFA27A"],
+[style*="background-color: #CFA27A"] { background: #8ECDC4 !important; }
+[style*="borderColor: #CFA27A"], [style*="border-color: #CFA27A"] { border-color: #8ECDC4 !important; }
+[style*="linear-gradient"][style*="#CFA27A"] {
+  background: linear-gradient(to right, #8ECDC4, #C4B5E8) !important;
+  color: #FFFFFF !important;
+}
