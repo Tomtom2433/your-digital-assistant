@@ -41,46 +41,46 @@
 
 :root {
   --radius: 0.5rem;
-  /* MELIYA palette — rose / cream / champagne */
-  /* Inspirée du logo MELIYA — bourgogne, rose poudré, or chaud */
-  --background: #FFF6F2;                          /* Crème rosée */
-  --foreground: #6B1F3A;                          /* Bourgogne profond */
-  --ink: #6B1F3A;
-  --gold: #D4A574;                                /* Or chaud */
-  --gold-soft: #E8C9A0;                           /* Champagne */
-  --nude: #F2C6CE;                                /* Rose poudré */
-  --rose-header-from: #B8456A;                    /* Rose bourgogne */
-  --rose-header-to: #E8A4B5;                      /* Rose pastel */
-  --rose-border: #F2C6CE;
-  --text-soft: #9B5A6E;                           /* Mauve-rose secondaire */
+  /* MELIYA palette — pastel estival : lavande / blanc rosé / vert menthe */
+  --background: #F4EFF7;                          /* Lavande très doux */
+  --foreground: #2D2D2D;                          /* Gris foncé */
+  --ink: #2D2D2D;
+  --gold: #8ECDC4;                                /* Vert menthe (accent principal) */
+  --gold-soft: #B8DED8;                           /* Menthe clair */
+  --nude: #C4B5E8;                                /* Lavande (accent secondaire) */
+  --rose-header-from: #C4B5E8;                    /* Lavande */
+  --rose-header-to: #8ECDC4;                      /* Vert menthe */
+  --rose-border: #D8CFEF;
+  --text-soft: #6B6B6B;                           /* Gris moyen */
 
   --card: #FFFFFF;
   --card-foreground: var(--foreground);
   --popover: #FFFFFF;
   --popover-foreground: var(--foreground);
-  --primary: #6B1F3A;
-  --primary-foreground: #FFF6F2;
-  --secondary: #D4A574;
-  --secondary-foreground: #6B1F3A;
-  --muted: #FBE4E8;
-  --muted-foreground: #9B5A6E;
-  --accent: #D4A574;
-  --accent-foreground: #6B1F3A;
+  --primary: #8ECDC4;
+  --primary-foreground: #FFFFFF;
+  --secondary: #C4B5E8;
+  --secondary-foreground: #2D2D2D;
+  --muted: #F0EBF8;
+  --muted-foreground: #6B6B6B;
+  --accent: #8ECDC4;
+  --accent-foreground: #2D2D2D;
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: #F2C6CE;
-  --input: #F2C6CE;
-  --ring: #D4A574;
+  --border: #D8CFEF;
+  --input: #D8CFEF;
+  --ring: #8ECDC4;
 
-  --gradient-hero: radial-gradient(ellipse at top, oklch(0.985 0.005 80) 0%, oklch(0.96 0.012 70) 60%, oklch(0.94 0.018 60) 100%);
-  --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, var(--ink) 25%, transparent);
+  --gradient-hero: linear-gradient(135deg, #EDE8F5 0%, #F8F2F8 50%, #D8EDE8 100%);
+  --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, #C4B5E8 35%, transparent);
   --shadow-gold: 0 0 0 1px var(--gold), 0 12px 30px -12px color-mix(in oklab, var(--gold) 50%, transparent);
 }
 
 @layer base {
   * { border-color: var(--color-border); }
   body {
-    background-color: var(--color-background);
+    background: linear-gradient(135deg, #EDE8F5 0%, #F8F2F8 50%, #D8EDE8 100%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
@@ -128,9 +128,9 @@
     justify-content: center;
     padding: 0.55rem 1.1rem;
     border-radius: 0.55rem;
-    background: #6B1F3A;
-    color: #E8C9A0;
-    border: 1.5px solid #D4A574;
+    background: #FFFFFF;
+    color: #2D2D2D;
+    border: 1.5px solid #C4B5E8;
     font-family: var(--font-display);
     font-size: 0.78rem;
     letter-spacing: 0.14em;
@@ -138,19 +138,19 @@
     transition: all .2s ease;
   }
   .nav-pill:hover {
-    background: #8A2A4A;
-    color: #F2DCC0;
-    border-color: #D4A574;
+    background: #F0EBF8;
+    color: #2D2D2D;
+    border-color: #8ECDC4;
   }
   .nav-pill[data-active="true"] {
-    background: #6B1F3A;
-    color: #E8C9A0;
-    border-color: #D4A574;
+    background: #8ECDC4;
+    color: #FFFFFF;
+    border-color: #8ECDC4;
   }
   .nav-pill[data-active="true"]:hover {
-    background: #8A2A4A;
-    color: #F2DCC0;
-    border-color: #D4A574;
+    background: #7BBFB6;
+    color: #FFFFFF;
+    border-color: #7BBFB6;
   }
 
   .btn-blink {
@@ -160,70 +160,70 @@
     gap: 0.5rem;
     padding: 0.7rem 1.2rem;
     border-radius: 0.6rem;
-    background: linear-gradient(135deg, #D4A574, #E8C9A0);
-    color: #6B1F3A;
-    border: 1.5px solid #6B1F3A;
+    background: linear-gradient(135deg, #8ECDC4, #C4B5E8);
+    color: #FFFFFF;
+    border: 1.5px solid #8ECDC4;
     font-family: var(--font-display);
     font-size: 0.78rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 600;
     animation: meliya-blink 1.6s ease-in-out infinite;
-    box-shadow: 0 0 0 0 rgba(212,165,116,0.7);
+    box-shadow: 0 0 0 0 rgba(142,205,196,0.7);
   }
   .btn-blink:hover { animation-play-state: paused; transform: translateY(-1px); }
 
   @keyframes meliya-blink {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(212,165,116,0.7), 0 8px 20px -8px rgba(107,31,58,0.5); opacity: 1; }
-    50% { box-shadow: 0 0 0 12px rgba(212,165,116,0), 0 8px 20px -8px rgba(107,31,58,0.5); opacity: 0.92; }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(142,205,196,0.7), 0 8px 20px -8px rgba(196,181,232,0.5); opacity: 1; }
+    50% { box-shadow: 0 0 0 12px rgba(142,205,196,0), 0 8px 20px -8px rgba(196,181,232,0.5); opacity: 0.92; }
   }
 
   .btn-primary-meliya {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: .6rem;
-    background: #6B1F3A; color: #E8C9A0;
-    border: 1.5px solid #D4A574;
+    background: #8ECDC4; color: #FFFFFF;
+    border: 1.5px solid #8ECDC4;
     font-family: var(--font-display); letter-spacing: .14em; font-size: .8rem; text-transform: uppercase;
     transition: all .3s ease;
   }
-  .btn-primary-meliya:hover { background: #8A2A4A; box-shadow: var(--shadow-elegant); transform: translateY(-1px); }
+  .btn-primary-meliya:hover { background: #7BBFB6; box-shadow: var(--shadow-elegant); transform: translateY(-1px); }
 
   .btn-secondary-meliya {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: .6rem;
-    background: #6B1F3A; color: #E8C9A0;
-    border: 1.5px solid #D4A574;
+    background: #FFFFFF; color: #2D2D2D;
+    border: 1.5px solid #C4B5E8;
     font-family: var(--font-display); letter-spacing: .14em; font-size: .8rem; text-transform: uppercase;
     transition: all .3s ease;
   }
-  .btn-secondary-meliya:hover { background: #8A2A4A; box-shadow: var(--shadow-gold); transform: translateY(-1px); }
+  .btn-secondary-meliya:hover { background: #F0EBF8; box-shadow: var(--shadow-gold); transform: translateY(-1px); }
 
   .card-meliya {
     background: #FFFFFF;
-    border: 1px solid #F2C6CE;
+    border: 1px solid #D8CFEF;
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 10px 40px -20px rgba(107,31,58,0.12);
+    box-shadow: 0 10px 40px -20px rgba(196,181,232,0.20);
     transition: all .35s ease;
   }
-  .card-meliya:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -20px rgba(107,31,58,0.20); border-color: #D4A574; }
+  .card-meliya:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -20px rgba(142,205,196,0.30); border-color: #8ECDC4; }
 
   /* Headers — dégradé rose pastel */
   .header-rose,
   .meliya-header-bg {
-    background: linear-gradient(135deg, #B8456A 0%, #E8A4B5 100%);
-    color: #FFF6F2;
+    background: linear-gradient(135deg, #C4B5E8 0%, #8ECDC4 100%);
+    color: #2D2D2D;
   }
 
   .gold-divider {
     height: 1px;
-    background: linear-gradient(to right, transparent, #D4A574, #F2C6CE, #D4A574, transparent);
+    background: linear-gradient(to right, transparent, #8ECDC4, #C4B5E8, #8ECDC4, transparent);
     width: 100%;
   }
 
   .nude-divider {
     height: 1px;
-    background: linear-gradient(to right, transparent, #F2C6CE, #FBE4E8, #F2C6CE, transparent);
+    background: linear-gradient(to right, transparent, #C4B5E8, #F0EBF8, #C4B5E8, transparent);
     width: 100%;
   }
 }
@@ -234,7 +234,7 @@
 }
 
 .gold-shimmer-text {
-  background: linear-gradient(to right, #D4A574, #E8C9A0, #D4A574);
+  background: linear-gradient(to right, #8ECDC4, #C4B5E8, #8ECDC4);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -322,4 +322,40 @@ a, button, input, textarea, select,
   a, button, input, textarea, select,
   [role="button"], .btn-primary-meliya, .btn-secondary-meliya,
   .nav-pill, .btn-blink, .card-meliya { transition: none; }
+}
+
+/* ============ LEGACY COLOR OVERRIDES (remap to pastel palette) ============ */
+/* Old ink-blue text → gris foncé */
+[class*="text-[#071735]"] { color: #2D2D2D !important; }
+[class*="bg-[#071735]"]   { background-color: #C4B5E8 !important; color: #2D2D2D !important; }
+[class*="border-[#071735]"] { border-color: #C4B5E8 !important; }
+
+/* Old gold (#CFA27A / #D8B07A) → vert menthe */
+[class*="text-[#CFA27A]"], [class*="text-[#D8B07A]"] { color: #8ECDC4 !important; }
+[class*="bg-[#CFA27A]"], [class*="bg-[#D8B07A]"] { background-color: #8ECDC4 !important; }
+[class*="border-[#CFA27A]"], [class*="border-[#D8B07A]"] { border-color: #8ECDC4 !important; }
+[class*="accent-[#CFA27A]"] { accent-color: #8ECDC4 !important; }
+
+/* Old light section backgrounds → alternance pastel */
+[class*="bg-[#FDF5F7]"] { background-color: #F0EBF8 !important; }
+[class*="bg-[#F7F4EF]"] { background-color: #EAF5F2 !important; }
+[class*="bg-[#FFF6F2]"] { background-color: #FAFAF8 !important; }
+
+/* Inline-style overrides for the same legacy hex values */
+[style*="#071735"] { --legacy-ink: #2D2D2D; }
+[style*="color: #071735"], [style*="color:#071735"] { color: #2D2D2D !important; }
+[style*="background: #071735"], [style*="background:#071735"],
+[style*="background-color: #071735"], [style*="background-color:#071735"] {
+  background: #C4B5E8 !important; color: #2D2D2D !important;
+}
+[style*="borderColor: #071735"], [style*="border-color: #071735"] { border-color: #C4B5E8 !important; }
+
+[style*="color: #CFA27A"], [style*="color:#CFA27A"],
+[style*="color: #D8B07A"], [style*="color:#D8B07A"] { color: #8ECDC4 !important; }
+[style*="background: #CFA27A"], [style*="background:#CFA27A"],
+[style*="background-color: #CFA27A"] { background: #8ECDC4 !important; }
+[style*="borderColor: #CFA27A"], [style*="border-color: #CFA27A"] { border-color: #8ECDC4 !important; }
+[style*="linear-gradient"][style*="#CFA27A"] {
+  background: linear-gradient(to right, #8ECDC4, #C4B5E8) !important;
+  color: #FFFFFF !important;
 }
