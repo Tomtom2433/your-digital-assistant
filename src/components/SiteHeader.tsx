@@ -1,11 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { MoreVertical, X, ArrowRight } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { SimulateurModal } from "@/components/SimulateurModal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
+
+const SimulateurModal = lazy(() =>
+  import("@/components/SimulateurModal").then((m) => ({ default: m.SimulateurModal })),
+);
 
 /* ─── Charte MELIYA ────────────────────────────────────────────
- Champagne Gold #C89B6D CTA / contours premium
+ Champagne Gold #C8847C CTA / contours premium
  Rose Gold #E6B4AE Accueil actif + accents
  Taupe Luxe #5E5248 Textes nav
  Ivoire Premium #F7F2EE Fond
@@ -56,22 +58,22 @@ export function SiteHeader() {
       : "rgba(247, 242, 238, 0.88)"
     : "transparent";
   const navBackdrop = scrolled ? "blur(24px) saturate(1.05)" : "none";
-  const navBorderBot = scrolled ? "0.5px solid rgba(200,155,109,0.18)" : "none";
+  const navBorderBot = scrolled ? "0.5px solid rgba(200,132,124,0.18)" : "none";
   const navShadow = scrolled
     ? isDark
       ? "0 2px 32px rgba(0,0,0,0.45)"
-      : "0 2px 24px rgba(200,155,109,0.08)"
+      : "0 2px 24px rgba(200,132,124,0.08)"
     : "none";
 
   /* ── CTA : pill contour fin Champagne Gold → fond Rose Gold/Champagne au hover ── */
-  const ctaBorder = ctaHovered ? "1px solid #E6B4AE" : "1px solid #C89B6D";
+  const ctaBorder = ctaHovered ? "1px solid #E6B4AE" : "1px solid #C8847C";
   const ctaBg = ctaHovered
-    ? "linear-gradient(135deg, rgba(230,180,174,0.14), rgba(200,155,109,0.10))"
+    ? "linear-gradient(135deg, rgba(230,180,174,0.14), rgba(200,132,124,0.10))"
     : "transparent";
-  const ctaColor = ctaHovered ? "#E6B4AE" : "#C89B6D";
+  const ctaColor = ctaHovered ? "#E6B4AE" : "#C8847C";
   const ctaShadow = ctaHovered
-    ? "0 10px 28px rgba(230,180,174,0.25), 0 3px 10px rgba(200,155,109,0.14)"
-    : "0 4px 14px rgba(200,155,109,0.10)";
+    ? "0 10px 28px rgba(230,180,174,0.25), 0 3px 10px rgba(200,132,124,0.14)"
+    : "0 4px 14px rgba(200,132,124,0.10)";
 
   return (
     <header
@@ -223,21 +225,21 @@ export function SiteHeader() {
             Estimer mon projet
             <ArrowRight size={14} strokeWidth={1.6} style={{ marginTop: "-1px" }} />
           </button>
-
-          <ThemeToggle orientation="vertical" />
         </div>
 
-        <SimulateurModal open={simulOpen} onClose={() => setSimulOpen(false)} />
+        <Suspense fallback={null}>
+          <SimulateurModal open={simulOpen} onClose={() => setSimulOpen(false)} />
+        </Suspense>
 
         {/* ─── Mobile burger : 3 points verticaux ─── */}
         <button
           className="md:hidden ml-auto p-2.5 rounded-full"
           style={{
-            color: isDark ? "#D4B189" : "#C89B6D",
+            color: isDark ? "#D8A09A" : "#C8847C",
             background: "transparent",
             border: isDark
-              ? "0.5px solid rgba(200,155,109,0.25)"
-              : "0.5px solid rgba(200,155,109,0.30)",
+              ? "0.5px solid rgba(200,132,124,0.25)"
+              : "0.5px solid rgba(200,132,124,0.30)",
             transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
           }}
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -249,8 +251,8 @@ export function SiteHeader() {
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget as HTMLElement;
-            el.style.borderColor = isDark ? "rgba(200,155,109,0.25)" : "rgba(200,155,109,0.30)";
-            el.style.color = isDark ? "#D4B189" : "#C89B6D";
+            el.style.borderColor = isDark ? "rgba(200,132,124,0.25)" : "rgba(200,132,124,0.30)";
+            el.style.color = isDark ? "#D8A09A" : "#C8847C";
           }}
         >
           {mobileOpen ? (
@@ -267,8 +269,8 @@ export function SiteHeader() {
           className="md:hidden px-6 pb-6 flex flex-col gap-2"
           style={{
             borderTop: isDark
-              ? "0.5px solid rgba(200,155,109,0.16)"
-              : "0.5px solid rgba(200,155,109,0.20)",
+              ? "0.5px solid rgba(200,132,124,0.16)"
+              : "0.5px solid rgba(200,132,124,0.20)",
             background: isDark ? "rgba(26, 22, 16, 0.97)" : "rgba(247, 242, 238, 0.97)",
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
@@ -295,7 +297,7 @@ export function SiteHeader() {
                   background: isActive ? "rgba(94,82,72,0.06)" : "transparent",
                   color: "#5E5248",
                   textDecoration: "none",
-                  border: isActive ? "0.5px solid #C89B6D" : "0.5px solid rgba(200,155,109,0.20)",
+                  border: isActive ? "0.5px solid #C8847C" : "0.5px solid rgba(200,132,124,0.20)",
                   transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
                 }}
               >
@@ -318,13 +320,13 @@ export function SiteHeader() {
               padding: "13px 26px",
               borderRadius: "100px",
               background: "transparent",
-              color: "#C89B6D",
+              color: "#C8847C",
               fontSize: "11px",
               fontFamily: "var(--font-display)",
               letterSpacing: "0.22em",
               fontWeight: 600,
               textTransform: "uppercase",
-              border: "1px solid #C89B6D",
+              border: "1px solid #C8847C",
               cursor: "pointer",
               marginTop: "10px",
             }}

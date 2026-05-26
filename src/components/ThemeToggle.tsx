@@ -4,11 +4,11 @@ function SunIcon({ active, lightMode }: { active: boolean; lightMode?: boolean }
   /* Chaud brun/or en mode clair, or champagne en mode sombre */
   const c = active
     ? lightMode
-      ? "#B0875A"
-      : "#E6CEB0"
+      ? "#A86660"
+      : "#F0CFC9"
     : lightMode
       ? "rgba(94,82,72,0.35)"
-      : "rgba(200,155,109,0.38)";
+      : "rgba(200,132,124,0.38)";
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
       <circle cx="12" cy="12" r="4.5" fill={c} />
@@ -64,7 +64,7 @@ function MoonIcon({ active, lightMode }: { active: boolean; lightMode?: boolean 
       : "#FDF5E0"
     : lightMode
       ? "rgba(94,82,72,0.30)"
-      : "rgba(200,155,109,0.38)";
+      : "rgba(200,132,124,0.38)";
   return (
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
       <path
@@ -115,10 +115,10 @@ export function ThemeToggle({
 
   /* Pill bouton actif champagne chaud en mode clair, aubergine en mode sombre */
   const activeSunLight: React.CSSProperties = {
-    background: "linear-gradient(135deg, rgba(200,155,109,0.18) 0%, rgba(224,207,183,0.28) 100%)",
+    background: "linear-gradient(135deg, rgba(200,132,124,0.18) 0%, rgba(224,207,183,0.28) 100%)",
     boxShadow: [
-      "0 2px 10px rgba(176,135,90,0.22)",
-      "0 0 0 0.5px rgba(200,155,109,0.50)",
+      "0 2px 10px rgba(168,102,96,0.22)",
+      "0 0 0 0.5px rgba(200,132,124,0.50)",
       "inset 0 0.5px 0 rgba(255,255,255,0.60)",
     ].join(", "),
   };
@@ -126,7 +126,7 @@ export function ThemeToggle({
     background: "linear-gradient(135deg, #3B1250 0%, #2E0D40 100%)",
     boxShadow: [
       "0 2px 10px rgba(46,13,64,0.55)",
-      "0 0 0 0.5px rgba(200,155,109,0.38)",
+      "0 0 0 0.5px rgba(200,132,124,0.38)",
       "inset 0 0.5px 0 rgba(255,255,255,0.08)",
     ].join(", "),
   };
@@ -138,7 +138,7 @@ export function ThemeToggle({
     : "linear-gradient(135deg, #EDE0CC 0%, #F7F2EE 100%)";
   const pillShadow = dark
     ? "0 2px 16px rgba(46,13,64,0.50), inset 0 0.5px 0 rgba(255,255,255,0.06)"
-    : "0 2px 12px rgba(176,135,90,0.16), 0 0 0 0.5px rgba(200,155,109,0.28), inset 0 0.5px 0 rgba(255,255,255,0.70)";
+    : "0 2px 12px rgba(168,102,96,0.16), 0 0 0 0.5px rgba(200,132,124,0.28), inset 0 0.5px 0 rgba(255,255,255,0.70)";
 
   return (
     <div

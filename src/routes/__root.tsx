@@ -7,13 +7,16 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CookieBanner } from "@/components/CookieBanner";
-import { MeliCat } from "@/components/MeliCat";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Toaster } from "@/components/ui/sonner";
+
+const MeliCat = lazy(() => import("@/components/MeliCat").then((m) => ({ default: m.MeliCat })));
 
 function NotFoundComponent() {
   return (
@@ -78,6 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Structuration et présentation de documents professionnels haut de gamme.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "fr_FR" },
+      { property: "og:image", content: "/favicon.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
@@ -105,15 +112,24 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded focus:outline-none focus:ring-2 focus:ring-ring"
+      >
+        Aller au contenu
+      </a>
       <div className="min-h-screen flex flex-col">
         <SmoothScroll />
         <SiteHeader />
-        <main className="flex-1">
+        <main id="main-content" className="flex-1">
           <Outlet />
         </main>
         <SiteFooter />
         <CookieBanner />
-        <MeliCat />
+        <Suspense fallback={null}>
+          <MeliCat />
+        </Suspense>
+        <Toaster position="bottom-right" richColors closeButton />
       </div>
     </QueryClientProvider>
   );

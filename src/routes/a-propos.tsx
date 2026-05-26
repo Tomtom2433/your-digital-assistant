@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import logoMicrosoft365 from "@/assets/logo_microsoft_365_ivoire.png";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Heart, Shield, Zap, Sparkles } from "lucide-react";
 
 function useReveal() {
   useEffect(() => {
@@ -21,13 +21,27 @@ function useReveal() {
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
     meta: [
-      { title: "Qui est Meliya ? Mélody Roche" },
+      { title: "Qui est MELIYA ? Mélody Roche, assistante digitale" },
       {
         name: "description",
         content:
-          "Mélody Roche, fondatrice de MELIYA. Assistante digitale spécialisée en mise en forme et valorisation de supports professionnels depuis 2005.",
+          "Mélody Roche, fondatrice de MELIYA. Assistante digitale spécialisée en mise en forme et valorisation de supports professionnels depuis 2005. 100% à distance.",
       },
+      {
+        name: "keywords",
+        content:
+          "Mélody Roche, MELIYA, assistante digitale spécialisée, qui est MELIYA, création documents professionnels",
+      },
+      { property: "og:title", content: "Qui est MELIYA ? Mélody Roche, assistante digitale" },
+      {
+        property: "og:description",
+        content: "20 ans d'expérience au service de vos documents professionnels.",
+      },
+      { property: "og:url", content: "https://meliya.fr/a-propos" },
+      { name: "twitter:title", content: "Qui est MELIYA ? Mélody Roche" },
+      { name: "twitter:description", content: "Assistante digitale spécialisée depuis 2005." },
     ],
+    links: [{ rel: "canonical", href: "https://meliya.fr/a-propos" }],
   }),
   component: APropos,
 });
@@ -50,12 +64,14 @@ function SectorPill({ label }: { label: string }) {
         letterSpacing: "0.05em",
         whiteSpace: "nowrap",
         color: hovered ? "#5E5248" : "#5E5248",
-        background: hovered ? "rgba(212,184,150,0.22)" : "rgba(255,255,255,0.75)",
-        border: hovered ? "0.5px solid rgba(212,168,67,0.55)" : "0.5px solid rgba(212,168,67,0.3)",
+        background: hovered ? "rgba(240,207,201,0.22)" : "rgba(255,255,255,0.75)",
+        border: hovered
+          ? "0.5px solid rgba(230,180,174,0.55)"
+          : "0.5px solid rgba(230,180,174,0.3)",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
         boxShadow: hovered
-          ? "0 3px 14px rgba(212,168,67,0.14), inset 0 1px 0 rgba(255,255,255,0.7)"
+          ? "0 3px 14px rgba(230,180,174,0.14), inset 0 1px 0 rgba(255,255,255,0.7)"
           : "0 1px 6px rgba(107,74,126,0.06), inset 0 1px 0 rgba(255,255,255,0.8)",
         transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
         cursor: "default",
@@ -67,26 +83,25 @@ function SectorPill({ label }: { label: string }) {
   );
 }
 
-/* ─── Tool logo with hover ───────────────────────────────────────────────── */
-function ToolLogo({ name, src, size = 44 }: { name: string; src: string; size?: number }) {
-  const [hovered, setHovered] = useState(false);
+/* ─── Tool logo — CSS-only float + hover scale ───────────────────────────── */
+function ToolLogo({
+  name,
+  src,
+  size = 44,
+  floatClass = "logo-float-1",
+}: {
+  name: string;
+  src: string;
+  size?: number;
+  floatClass?: string;
+}) {
   return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "8px",
-        transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease",
-        transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        opacity: hovered ? 1 : 0.72,
-      }}
-    >
+    <div className={`logo-tile ${floatClass}`} style={{ opacity: 0.72 }}>
       <img
         src={src}
         alt={name}
+        loading="lazy"
+        decoding="async"
         style={{ height: `${size}px`, width: `${size}px`, objectFit: "contain" }}
       />
       <span
@@ -96,8 +111,7 @@ function ToolLogo({ name, src, size = 44 }: { name: string; src: string; size?: 
           letterSpacing: "0.1em",
           textTransform: "uppercase",
           color: "#5E5248",
-          opacity: hovered ? 0.7 : 0.4,
-          transition: "opacity 0.3s ease",
+          opacity: 0.45,
         }}
       >
         {name}
@@ -237,7 +251,7 @@ function APropos() {
           style={{
             width: "40px",
             height: "1px",
-            background: "linear-gradient(90deg, transparent, #C89B6D, transparent)",
+            background: "linear-gradient(90deg, transparent, #C8847C, transparent)",
             margin: "0 auto 1.6rem",
           }}
         />
@@ -304,7 +318,7 @@ function APropos() {
               fontFamily: "var(--font-display)",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#C89B6D",
+              color: "#C8847C",
               marginBottom: "1.25rem",
             }}
           >
@@ -345,8 +359,8 @@ function APropos() {
               background: "rgba(255,255,255,0.72)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "0.5px solid rgba(212,168,67,0.22)",
-              boxShadow: "0 4px 32px rgba(200,155,109,0.08), inset 0 1px 0 rgba(255,255,255,0.8)",
+              border: "0.5px solid rgba(230,180,174,0.22)",
+              boxShadow: "0 4px 32px rgba(200,132,124,0.08), inset 0 1px 0 rgba(255,255,255,0.8)",
             }}
           >
             <div
@@ -355,14 +369,13 @@ function APropos() {
                 height: "44px",
                 borderRadius: "12px",
                 marginBottom: "1.25rem",
-                background: "linear-gradient(135deg, #F6E6B8 0%, #E6CEB0 100%)",
+                background: "linear-gradient(135deg, #FBDDD7 0%, #F0CFC9 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "18px",
               }}
             >
-              ✦
+              <Heart size={18} style={{ color: "rgba(200,132,124,0.55)" }} />
             </div>
             <h2
               className="display"
@@ -399,8 +412,8 @@ function APropos() {
               background: "rgba(255,255,255,0.72)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "0.5px solid rgba(212,168,67,0.22)",
-              boxShadow: "0 4px 32px rgba(200,155,109,0.08), inset 0 1px 0 rgba(255,255,255,0.8)",
+              border: "0.5px solid rgba(230,180,174,0.22)",
+              boxShadow: "0 4px 32px rgba(200,132,124,0.08), inset 0 1px 0 rgba(255,255,255,0.8)",
             }}
           >
             <div
@@ -409,14 +422,13 @@ function APropos() {
                 height: "44px",
                 borderRadius: "12px",
                 marginBottom: "1.25rem",
-                background: "linear-gradient(135deg, #F6E6B8 0%, #E6CEB0 100%)",
+                background: "linear-gradient(135deg, #FBDDD7 0%, #F0CFC9 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "18px",
               }}
             >
-              ◇
+              <Shield size={18} style={{ color: "rgba(200,132,124,0.55)" }} />
             </div>
             <h2
               className="display"
@@ -452,7 +464,7 @@ function APropos() {
                     lineHeight: 1.55,
                   }}
                 >
-                  <span style={{ color: "#C89B6D", flexShrink: 0, marginTop: "1px" }}>✦</span>
+                  <span style={{ color: "#C8847C", flexShrink: 0, marginTop: "1px" }}>✦</span>
                   {item}
                 </li>
               ))}
@@ -497,7 +509,7 @@ function APropos() {
               fontFamily: "var(--font-display)",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#C89B6D",
+              color: "#C8847C",
               marginBottom: "1.75rem",
             }}
           >
@@ -513,13 +525,25 @@ function APropos() {
             }}
           >
             {[
-              { name: "Gamma", src: "https://gamma.app/favicon.ico" },
-              { name: "Lovable", src: "https://lovable.dev/favicon.ico" },
-              { name: "Google", src: "https://cdn.simpleicons.org/google" },
-              { name: "Microsoft", src: logoMicrosoft365 },
-              { name: "Notion", src: "https://cdn.simpleicons.org/notion/4A2A3A" },
+              { name: "Gamma", src: "https://gamma.app/favicon.ico", floatClass: "logo-float-1" },
+              {
+                name: "Lovable",
+                src: "https://lovable.dev/favicon.ico",
+                floatClass: "logo-float-2",
+              },
+              {
+                name: "Google",
+                src: "https://cdn.simpleicons.org/google",
+                floatClass: "logo-float-3",
+              },
+              { name: "Microsoft", src: logoMicrosoft365, floatClass: "logo-float-4" },
+              {
+                name: "Notion",
+                src: "https://cdn.simpleicons.org/notion/4A2A3A",
+                floatClass: "logo-float-5",
+              },
             ].map((t) => (
-              <ToolLogo key={t.name} name={t.name} src={t.src} />
+              <ToolLogo key={t.name} name={t.name} src={t.src} floatClass={t.floatClass} />
             ))}
           </div>
         </div>
@@ -528,7 +552,7 @@ function APropos() {
         <div
           style={{
             height: "0.5px",
-            background: "linear-gradient(90deg, transparent, rgba(212,168,67,0.3), transparent)",
+            background: "linear-gradient(90deg, transparent, rgba(230,180,174,0.3), transparent)",
             margin: "0 auto 2.5rem",
             maxWidth: "300px",
           }}
@@ -543,7 +567,7 @@ function APropos() {
               fontFamily: "var(--font-display)",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#C89B6D",
+              color: "#C8847C",
               marginBottom: "1.75rem",
             }}
           >
@@ -559,15 +583,28 @@ function APropos() {
             }}
           >
             {[
-              { name: "Claude", src: "https://cdn.simpleicons.org/claude/D97757" },
+              {
+                name: "Claude",
+                src: "https://cdn.simpleicons.org/claude/D97757",
+                floatClass: "logo-float-2",
+              },
               {
                 name: "ChatGPT",
                 src: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+                floatClass: "logo-float-4",
               },
-              { name: "Gemini", src: "https://cdn.simpleicons.org/googlegemini" },
-              { name: "Perplexity", src: "https://cdn.simpleicons.org/perplexity/20808C" },
+              {
+                name: "Gemini",
+                src: "https://cdn.simpleicons.org/googlegemini",
+                floatClass: "logo-float-1",
+              },
+              {
+                name: "Perplexity",
+                src: "https://cdn.simpleicons.org/perplexity/20808C",
+                floatClass: "logo-float-3",
+              },
             ].map((t) => (
-              <ToolLogo key={t.name} name={t.name} src={t.src} />
+              <ToolLogo key={t.name} name={t.name} src={t.src} floatClass={t.floatClass} />
             ))}
           </div>
         </div>
@@ -578,17 +615,17 @@ function APropos() {
         <div
           className="bento-card reveal"
           style={{
-            background: "linear-gradient(145deg, #C89B6D 0%, #D4B189 55%, #E6CEB0 100%)",
-            border: "0.5px solid rgba(255,255,255,0.35)",
+            background: "linear-gradient(150deg, #FFFFFF 0%, #FDF8F4 100%)",
+            border: "1.5px solid rgba(200,132,124,0.28)",
             boxShadow:
-              "0 20px 60px rgba(200,155,109,0.22), 0 0 80px rgba(200,155,109,0.10), inset 0 1px 0 rgba(255,255,255,0.45)",
+              "0 10px 40px -20px rgba(200,132,124,0.18), 0 2px 8px rgba(200,132,124,0.06), inset 0 1px 0 rgba(255,255,255,0.96)",
             textAlign: "center",
             padding: "clamp(2rem,5vw,3.5rem)",
             overflow: "hidden",
             position: "relative",
           }}
         >
-          {/* Halos */}
+          {/* Orbe rosé décoratif */}
           <div
             aria-hidden="true"
             style={{
@@ -599,37 +636,14 @@ function APropos() {
               height: "260px",
               borderRadius: "50%",
               background:
-                "radial-gradient(ellipse at center, rgba(200,155,109,0.12) 0%, transparent 72%)",
+                "radial-gradient(ellipse at center, rgba(230,180,174,0.14) 0%, transparent 72%)",
               filter: "blur(28px)",
               pointerEvents: "none",
             }}
           />
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              bottom: "-40px",
-              left: "-40px",
-              width: "200px",
-              height: "200px",
-              borderRadius: "50%",
-              background:
-                "radial-gradient(ellipse at center, rgba(200,155,109,0.10) 0%, transparent 70%)",
-              filter: "blur(24px)",
-              pointerEvents: "none",
-            }}
-          />
 
-          <span
-            className="tag-pill"
-            style={{
-              background: "rgba(255,255,255,0.12)",
-              border: "0.5px solid rgba(255,255,255,0.22)",
-              color: "rgba(240,230,255,0.85)",
-              display: "inline-flex",
-              marginBottom: "1.25rem",
-            }}
-          >
+          <span className="tag-pill" style={{ display: "inline-flex", marginBottom: "1.25rem" }}>
+            <Sparkles size={10} style={{ color: "rgba(200,132,124,0.55)" }} />
             Pour qui ?
           </span>
 
@@ -637,7 +651,7 @@ function APropos() {
             className="display"
             style={{
               fontSize: "clamp(24px,3vw,34px)",
-              color: "#FAFAFA",
+              color: "#5E5248",
               marginBottom: "1rem",
               letterSpacing: "-0.01em",
               lineHeight: 1.2,
@@ -650,7 +664,8 @@ function APropos() {
             className="serif italic"
             style={{
               fontSize: "17px",
-              color: "rgba(58,38,20,0.75)",
+              color: "#5E5248",
+              opacity: 0.72,
               lineHeight: 1.7,
               maxWidth: "520px",
               margin: "0 auto 2rem",
@@ -668,15 +683,15 @@ function APropos() {
               gap: "8px",
               padding: "14px 28px",
               borderRadius: "100px",
-              background: "linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%)",
-              color: "#3A2614",
+              background: "linear-gradient(135deg, #FBDDD7 0%, #C8847C 100%)",
+              color: "#4A2820",
               textDecoration: "none",
               fontFamily: "var(--font-display)",
               fontSize: "11.5px",
               letterSpacing: "0.1em",
               fontWeight: 700,
               textTransform: "uppercase",
-              border: "1px solid #C89B6D",
+              border: "1px solid #C8847C",
               boxShadow:
                 "0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55)",
               transition: "all 0.55s cubic-bezier(0.22,1,0.36,1)",
@@ -685,17 +700,17 @@ function APropos() {
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLElement;
               el.style.transform = "translateY(-1px)";
-              el.style.background = "linear-gradient(135deg, #E6B4AE, #B0875A)";
+              el.style.background = "linear-gradient(135deg, #E6B4AE, #A86660)";
               el.style.color = "#FFFFFF";
-              el.style.borderColor = "#B0875A";
-              el.style.boxShadow = "0 12px 35px rgba(176,135,90,0.22)";
+              el.style.borderColor = "#A86660";
+              el.style.boxShadow = "0 12px 35px rgba(168,102,96,0.22)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLElement;
               el.style.transform = "translateY(0)";
-              el.style.background = "linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%)";
-              el.style.color = "#3A2614";
-              el.style.borderColor = "#C89B6D";
+              el.style.background = "linear-gradient(135deg, #FBDDD7 0%, #C8847C 100%)";
+              el.style.color = "#4A2820";
+              el.style.borderColor = "#C8847C";
               el.style.boxShadow =
                 "0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55)";
             }}

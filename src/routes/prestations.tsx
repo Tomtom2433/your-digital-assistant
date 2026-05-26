@@ -20,7 +20,24 @@ export const Route = createFileRoute("/prestations")({
         content:
           "Prestations professionnelles à tarif accessible. Slides dès 30€, pages dès 25€, Pack Up identité 479€.",
       },
+      {
+        name: "keywords",
+        content:
+          "tarifs assistante digitale, slides sur mesure, documents sur mesure, pack identité visuelle, MELIYA prix",
+      },
+      { property: "og:title", content: "Prestations & Tarifs MELIYA" },
+      {
+        property: "og:description",
+        content: "Slides dès 30€/slide, documents dès 25€/page, Pack Up Identité 479€.",
+      },
+      { property: "og:url", content: "https://meliya.fr/prestations" },
+      { name: "twitter:title", content: "Prestations & Tarifs MELIYA" },
+      {
+        name: "twitter:description",
+        content: "Slides, documents, identité visuelle. Tarifs transparents.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://meliya.fr/prestations" }],
   }),
   component: Prestations,
 });
@@ -51,18 +68,42 @@ function HoverCard({
   className?: string;
 }) {
   const [hovered, setHovered] = useState(false);
+  const baseBorder = (style?.border as string | undefined) ?? "1px solid rgba(230,180,174,0.22)";
+  const baseShadow =
+    (style?.boxShadow as string | undefined) ??
+    "0 4px 32px rgba(200,132,124,0.08), inset 0 1px 0 rgba(255,255,255,0.8)";
   return (
     <div
       className={className}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        transition:
-          "transform 0.7s cubic-bezier(0.22,1,0.36,1), box-shadow 0.7s cubic-bezier(0.22,1,0.36,1)",
-        transform: hovered ? "translateY(-6px)" : "translateY(0)",
         ...style,
+        position: "relative",
+        transition:
+          "transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s cubic-bezier(0.22,1,0.36,1), border-color 0.6s ease",
+        transform: hovered ? "translateY(-6px) scale(1.01)" : "translateY(0)",
+        border: hovered ? "1.5px solid rgba(200,132,124,0.55)" : baseBorder,
+        boxShadow: hovered
+          ? "0 14px 44px rgba(200,132,124,0.22), 0 4px 12px rgba(200,132,124,0.10), inset 0 1px 0 rgba(255,255,255,0.85)"
+          : baseShadow,
       }}
     >
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "2.5px",
+          borderRadius: "inherit",
+          background: "linear-gradient(90deg, transparent, #C8847C, transparent)",
+          opacity: hovered ? 1 : 0,
+          transition: "opacity 0.45s ease",
+          pointerEvents: "none",
+        }}
+      />
       {children}
     </div>
   );
@@ -86,10 +127,10 @@ function DiscountRow({
         alignItems: "center",
         padding: "9px 14px",
         borderRadius: "10px",
-        background: highlight ? "rgba(200,155,109,0.14)" : "rgba(255,255,255,0.45)",
+        background: highlight ? "rgba(200,132,124,0.14)" : "rgba(255,255,255,0.45)",
         border: highlight
-          ? "0.5px solid rgba(200,155,109,0.40)"
-          : "0.5px solid rgba(212,168,67,0.15)",
+          ? "0.5px solid rgba(200,132,124,0.40)"
+          : "0.5px solid rgba(230,180,174,0.15)",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
         marginBottom: "6px",
@@ -104,7 +145,7 @@ function DiscountRow({
         className="display"
         style={{
           fontSize: "13px",
-          color: highlight ? "#B0875A" : "#5E5248",
+          color: highlight ? "#A86660" : "#5E5248",
           fontWeight: 700,
         }}
       >
@@ -180,9 +221,9 @@ function Prestations() {
               background: "rgba(255,255,255,0.72)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "0.5px solid rgba(212,168,67,0.22)",
+              border: "0.5px solid rgba(230,180,174,0.22)",
               boxShadow:
-                "0 4px 32px rgba(200,155,109,0.08), 0 1px 4px rgba(200,155,109,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
+                "0 4px 32px rgba(200,132,124,0.08), 0 1px 4px rgba(200,132,124,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
             }}
           >
             {/* Icon */}
@@ -192,14 +233,14 @@ function Prestations() {
                 height: "52px",
                 borderRadius: "14px",
                 marginBottom: "1.5rem",
-                background: "linear-gradient(135deg, #F6E6B8 0%, #E6CEB0 100%)",
+                background: "linear-gradient(135deg, #FBDDD7 0%, #F0CFC9 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "0 4px 14px rgba(200,155,109,0.18)",
+                boxShadow: "0 4px 14px rgba(200,132,124,0.18)",
               }}
             >
-              <Presentation size={24} style={{ color: "#C89B6D" }} />
+              <Presentation size={24} style={{ color: "#C8847C" }} />
             </div>
 
             <h2
@@ -298,9 +339,9 @@ function Prestations() {
               background: "rgba(255,255,255,0.72)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "0.5px solid rgba(212,168,67,0.22)",
+              border: "0.5px solid rgba(230,180,174,0.22)",
               boxShadow:
-                "0 4px 32px rgba(200,155,109,0.08), 0 1px 4px rgba(200,155,109,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
+                "0 4px 32px rgba(200,132,124,0.08), 0 1px 4px rgba(200,132,124,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
             }}
           >
             {/* Icon */}
@@ -310,14 +351,14 @@ function Prestations() {
                 height: "52px",
                 borderRadius: "14px",
                 marginBottom: "1.5rem",
-                background: "linear-gradient(135deg, #F6E6B8 0%, #E6CEB0 100%)",
+                background: "linear-gradient(135deg, #FBDDD7 0%, #F0CFC9 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "0 4px 14px rgba(200,155,109,0.18)",
+                boxShadow: "0 4px 14px rgba(200,132,124,0.18)",
               }}
             >
-              <FileText size={24} style={{ color: "#C89B6D" }} />
+              <FileText size={24} style={{ color: "#C8847C" }} />
             </div>
 
             <h2
@@ -414,12 +455,11 @@ function Prestations() {
         <HoverCard
           className="bento-card reveal mb-8"
           style={{
-            background:
-              "linear-gradient(145deg, #C89B6D 0%, #D4B189 40%, #E6CEB0 75%, #D4B189 100%)",
-            border: "0.5px solid rgba(255,255,255,0.35)",
+            background: "linear-gradient(150deg, #FFFFFF 0%, #FDF8F4 100%)",
+            border: "1.5px solid rgba(200,132,124,0.32)",
             padding: "clamp(1.5rem,4vw,3rem)",
             boxShadow:
-              "0 8px 48px rgba(200,155,109,0.28), 0 2px 12px rgba(200,155,109,0.16), inset 0 1px 0 rgba(255,255,255,0.45)",
+              "0 10px 40px -20px rgba(200,132,124,0.22), 0 2px 8px rgba(200,132,124,0.08), inset 0 1px 0 rgba(255,255,255,0.96)",
           }}
         >
           {/* Best-seller badge */}
@@ -446,28 +486,17 @@ function Prestations() {
                   height: "52px",
                   borderRadius: "14px",
                   marginBottom: "1.5rem",
-                  background: "rgba(255,255,255,0.18)",
-                  backdropFilter: "blur(8px)",
+                  background: "linear-gradient(135deg, #FBDDD7 0%, #F0CFC9 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.3)",
+                  boxShadow: "0 4px 14px rgba(200,132,124,0.18)",
                 }}
               >
-                <Palette size={24} style={{ color: "#FAFAFA" }} />
+                <Palette size={24} style={{ color: "#C8847C" }} />
               </div>
 
-              <span
-                className="tag-pill"
-                style={{
-                  background: "rgba(255,255,255,0.18)",
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  color: "#FAFAFA",
-                  marginBottom: "1rem",
-                  display: "inline-flex",
-                  backdropFilter: "blur(8px)",
-                }}
-              >
+              <span className="tag-pill" style={{ marginBottom: "1rem", display: "inline-flex" }}>
                 Pack complet
               </span>
 
@@ -475,7 +504,7 @@ function Prestations() {
                 className="display"
                 style={{
                   fontSize: "clamp(28px,3vw,40px)",
-                  color: "#FAFAFA",
+                  color: "#5E5248",
                   marginBottom: "0.5rem",
                 }}
               >
@@ -486,11 +515,12 @@ function Prestations() {
                 className="serif italic"
                 style={{
                   fontSize: "16px",
-                  color: "rgba(255,255,255,0.85)",
+                  color: "#5E5248",
+                  opacity: 0.72,
                   marginBottom: "0.6rem",
                 }}
               >
-                ✨ Une identité élégante et cohérente pensée pour valoriser votre image.
+                Une identité élégante et cohérente pensée pour valoriser votre image.
               </p>
 
               <div
@@ -503,11 +533,23 @@ function Prestations() {
               >
                 <span
                   className="display"
-                  style={{ fontSize: "clamp(48px,6vw,72px)", color: "#EDD8B0", lineHeight: 1 }}
+                  style={{
+                    fontSize: "clamp(48px,6vw,72px)",
+                    color: "#B57068",
+                    lineHeight: 1,
+                    fontWeight: 800,
+                  }}
                 >
                   479€
                 </span>
-                <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)" }}>
+                <span
+                  style={{
+                    fontSize: "13px",
+                    color: "#5E5248",
+                    opacity: 0.55,
+                    fontFamily: "var(--font-sans)",
+                  }}
+                >
                   prix unique
                 </span>
               </div>
@@ -530,15 +572,14 @@ function Prestations() {
                   alignItems: "flex-start",
                   padding: "10px 14px",
                   borderRadius: "10px",
-                  background: "rgba(255,255,255,0.14)",
-                  backdropFilter: "blur(6px)",
-                  border: "0.5px solid rgba(255,255,255,0.22)",
+                  background: "rgba(200,132,124,0.06)",
+                  border: "0.5px solid rgba(200,132,124,0.18)",
                   fontSize: "13px",
-                  color: "#FAFAFA",
+                  color: "#5E5248",
                   fontFamily: "var(--font-sans)",
                 }}
               >
-                <Check size={14} style={{ color: "#EDD8B0", marginTop: "2px", flexShrink: 0 }} />{" "}
+                <Check size={14} style={{ color: "#C8847C", marginTop: "2px", flexShrink: 0 }} />{" "}
                 {f}
               </div>
             ))}
@@ -547,7 +588,8 @@ function Prestations() {
           <p
             style={{
               fontSize: "11px",
-              color: "rgba(255,255,255,0.5)",
+              color: "#5E5248",
+              opacity: 0.45,
               marginTop: "1.5rem",
               fontStyle: "italic",
               fontFamily: "var(--font-sans)",
@@ -567,7 +609,7 @@ function Prestations() {
               background: "rgba(250,250,250,0.82)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "0.5px solid rgba(212,168,67,0.18)",
+              border: "0.5px solid rgba(230,180,174,0.18)",
               boxShadow: "0 4px 28px rgba(107,74,126,0.06), inset 0 1px 0 rgba(255,255,255,0.9)",
               textAlign: "center",
             }}
@@ -582,7 +624,7 @@ function Prestations() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "0 4px 14px rgba(212,184,150,0.3)",
+                boxShadow: "0 4px 14px rgba(240,207,201,0.3)",
               }}
             >
               <Clock size={24} style={{ color: "#5E5248" }} />
@@ -651,14 +693,14 @@ function Prestations() {
             </p>
           </HoverCard>
 
-          {/* CTA dark premium */}
+          {/* CTA ivoire avec accent rosé */}
           <HoverCard
             className="bento-card reveal delay-100"
             style={{
-              background: "linear-gradient(145deg, #5E5248 0%, #B0875A 55%, #C89B6D 100%)",
-              border: "0.5px solid rgba(255,255,255,0.22)",
+              background: "linear-gradient(150deg, #FFFFFF 0%, #FDF8F4 100%)",
+              border: "1.5px solid rgba(200,132,124,0.28)",
               boxShadow:
-                "0 20px 60px rgba(200,155,109,0.22), 0 0 80px rgba(200,155,109,0.10), inset 0 1px 0 rgba(255,255,255,0.18)",
+                "0 10px 40px -20px rgba(200,132,124,0.18), 0 2px 8px rgba(200,132,124,0.06), inset 0 1px 0 rgba(255,255,255,0.96)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -666,7 +708,7 @@ function Prestations() {
               overflow: "hidden",
             }}
           >
-            {/* Halo violet ambiant coin haut-droit */}
+            {/* Orbe rosé ambiant décoratif */}
             <div
               aria-hidden="true"
               style={{
@@ -677,24 +719,8 @@ function Prestations() {
                 height: "260px",
                 borderRadius: "50%",
                 background:
-                  "radial-gradient(ellipse at center, rgba(200,155,109,0.12) 0%, rgba(200,155,109,0.06) 50%, transparent 72%)",
+                  "radial-gradient(ellipse at center, rgba(230,180,174,0.14) 0%, rgba(230,180,174,0.06) 50%, transparent 72%)",
                 filter: "blur(28px)",
-                pointerEvents: "none",
-              }}
-            />
-            {/* Halo prune ambiant coin bas-gauche */}
-            <div
-              aria-hidden="true"
-              style={{
-                position: "absolute",
-                bottom: "-40px",
-                left: "-40px",
-                width: "200px",
-                height: "200px",
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(ellipse at center, rgba(200,155,109,0.10) 0%, transparent 70%)",
-                filter: "blur(24px)",
                 pointerEvents: "none",
               }}
             />
@@ -709,13 +735,13 @@ function Prestations() {
                 position: "relative",
               }}
             >
-              <Sparkles size={11} style={{ color: "#EDD8B0" }} />
+              <Sparkles size={11} style={{ color: "rgba(200,132,124,0.55)" }} />
               <span
                 style={{
                   fontSize: "10px",
                   fontFamily: "var(--font-display)",
                   letterSpacing: "0.18em",
-                  color: "rgba(237,216,176,0.8)",
+                  color: "#C8847C",
                   textTransform: "uppercase",
                   fontWeight: 600,
                 }}
@@ -729,7 +755,7 @@ function Prestations() {
               className="display"
               style={{
                 fontSize: "clamp(24px,2.4vw,30px)",
-                color: "#FAFAFA",
+                color: "#5E5248",
                 marginBottom: "1rem",
                 lineHeight: 1.15,
                 letterSpacing: "-0.01em",
@@ -743,7 +769,8 @@ function Prestations() {
             <p
               style={{
                 fontSize: "14px",
-                color: "rgba(246,240,236,0.80)",
+                color: "#5E5248",
+                opacity: 0.68,
                 marginBottom: "2.25rem",
                 fontFamily: "var(--font-sans)",
                 lineHeight: 1.75,
@@ -774,15 +801,15 @@ function Prestations() {
                   gap: "8px",
                   padding: "14px 24px",
                   borderRadius: "100px",
-                  background: "linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%)",
-                  color: "#3A2614",
+                  background: "linear-gradient(135deg, #FBDDD7 0%, #C8847C 100%)",
+                  color: "#4A2820",
                   textDecoration: "none",
                   fontFamily: "var(--font-display)",
                   fontSize: "11.5px",
                   letterSpacing: "0.1em",
                   fontWeight: 700,
                   textTransform: "uppercase",
-                  border: "1px solid #C89B6D",
+                  border: "1px solid #C8847C",
                   boxShadow:
                     "0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55)",
                   transition: "all 0.55s cubic-bezier(0.22,1,0.36,1)",
@@ -791,17 +818,17 @@ function Prestations() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(-1px)";
-                  el.style.background = "linear-gradient(135deg, #E6B4AE, #B0875A)";
+                  el.style.background = "linear-gradient(135deg, #E6B4AE, #A86660)";
                   el.style.color = "#FFFFFF";
-                  el.style.borderColor = "#B0875A";
-                  el.style.boxShadow = "0 12px 35px rgba(176,135,90,0.22)";
+                  el.style.borderColor = "#A86660";
+                  el.style.boxShadow = "0 12px 35px rgba(168,102,96,0.22)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(0)";
-                  el.style.background = "linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%)";
-                  el.style.color = "#3A2614";
-                  el.style.borderColor = "#C89B6D";
+                  el.style.background = "linear-gradient(135deg, #FBDDD7 0%, #C8847C 100%)";
+                  el.style.color = "#4A2820";
+                  el.style.borderColor = "#C8847C";
                   el.style.boxShadow =
                     "0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55)";
                 }}
@@ -827,7 +854,7 @@ function Prestations() {
                   fontFamily: "var(--font-display)",
                   fontSize: "11px",
                   fontWeight: 600,
-                  border: "1px solid #DCC6B0",
+                  border: "1px solid #E8C2BC",
                   boxShadow: "0 8px 25px rgba(230,180,174,0.10)",
                   transition: "all 0.55s cubic-bezier(0.22,1,0.36,1)",
                   WebkitFontSmoothing: "antialiased",
@@ -837,17 +864,17 @@ function Prestations() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(-1px)";
-                  el.style.background = "linear-gradient(135deg, #E6B4AE, #B0875A)";
+                  el.style.background = "linear-gradient(135deg, #E6B4AE, #A86660)";
                   el.style.color = "#FFFFFF";
-                  el.style.borderColor = "#B0875A";
-                  el.style.boxShadow = "0 12px 35px rgba(176,135,90,0.22)";
+                  el.style.borderColor = "#A86660";
+                  el.style.boxShadow = "0 12px 35px rgba(168,102,96,0.22)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(0)";
                   el.style.background = "rgba(246,240,236,0.75)";
                   el.style.color = "#5E5248";
-                  el.style.borderColor = "#DCC6B0";
+                  el.style.borderColor = "#E8C2BC";
                   el.style.boxShadow = "0 8px 25px rgba(230,180,174,0.10)";
                   el.style.color = "#EDD8B0";
                 }}
@@ -868,8 +895,8 @@ function Prestations() {
             background: "rgba(255,255,255,0.55)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
-            border: "0.5px solid rgba(200,155,109,0.22)",
-            boxShadow: "0 4px 24px rgba(200,155,109,0.06)",
+            border: "0.5px solid rgba(200,132,124,0.22)",
+            boxShadow: "0 4px 24px rgba(200,132,124,0.06)",
           }}
         >
           <div
@@ -889,7 +916,7 @@ function Prestations() {
                 fontSize: "10.5px",
                 letterSpacing: "0.28em",
                 textTransform: "uppercase",
-                color: "#C89B6D",
+                color: "#C8847C",
                 fontWeight: 500,
               }}
             >
@@ -931,7 +958,7 @@ function Prestations() {
                     width: "4px",
                     height: "4px",
                     borderRadius: "50%",
-                    background: "#C89B6D",
+                    background: "#C8847C",
                   }}
                 />
                 {c}

@@ -47,8 +47,8 @@ function Toggle({
   const bg = disabled
     ? "rgba(160,140,180,0.28)"
     : checked
-      ? "linear-gradient(90deg, #C89B6D, #E8D4A0)"
-      : "rgba(200,160,82,0.18)";
+      ? "linear-gradient(90deg, #C8847C, #E8D4A0)"
+      : "rgba(200,132,124,0.18)";
 
   return (
     <button
@@ -202,8 +202,8 @@ export function CookieBanner() {
   const bg = isDark ? "rgba(26,22,16,0.97)" : "rgba(246,240,236,0.97)";
   const ink = isDark ? "rgba(245,240,250,0.92)" : "#5E5248";
   const inkMuted = isDark ? "rgba(245,240,250,0.52)" : "rgba(94,82,72,0.55)";
-  const catBg = isDark ? "rgba(255,255,255,0.04)" : "rgba(200,155,109,0.04)";
-  const divider = isDark ? "rgba(200,160,82,0.14)" : "rgba(200,160,82,0.18)";
+  const catBg = isDark ? "rgba(255,255,255,0.04)" : "rgba(200,132,124,0.04)";
+  const divider = isDark ? "rgba(200,132,124,0.14)" : "rgba(200,132,124,0.18)";
 
   /* ── Bouton helper ── */
   const btnBase: React.CSSProperties = {
@@ -234,11 +234,11 @@ export function CookieBanner() {
         background: bg,
         backdropFilter: "blur(28px)",
         WebkitBackdropFilter: "blur(28px)",
-        border: "1px solid rgba(200,160,82,0.28)",
+        border: "1px solid rgba(200,132,124,0.28)",
         borderRadius: "20px",
         boxShadow: isDark
           ? "0 8px 48px rgba(0,0,0,0.60), 0 2px 8px rgba(0,0,0,0.35)"
-          : "0 8px 48px rgba(200,155,109,0.12), 0 2px 8px rgba(200,155,109,0.07)",
+          : "0 8px 48px rgba(200,132,124,0.12), 0 2px 8px rgba(200,132,124,0.07)",
       }}
     >
       {/* ═══ VUE RAPIDE ═══ */}
@@ -279,7 +279,7 @@ export function CookieBanner() {
             <Link
               to="/mentions-legales"
               hash="cookies"
-              style={{ color: "#C89B6D", textDecoration: "underline", textUnderlineOffset: "3px" }}
+              style={{ color: "#C8847C", textDecoration: "underline", textUnderlineOffset: "3px" }}
             >
               Politique des cookies ↗
             </Link>
@@ -301,7 +301,7 @@ export function CookieBanner() {
             onClick={refuseAll}
             style={{
               ...btnBase,
-              border: "1px solid rgba(200,160,82,0.42)",
+              border: "1px solid rgba(200,132,124,0.42)",
               background: "transparent",
               color: ink,
             }}
@@ -315,7 +315,7 @@ export function CookieBanner() {
             style={{
               ...btnBase,
               border: "1px solid rgba(184,146,42,0.42)",
-              background: "linear-gradient(135deg, #C89B6D 0%, #E6CEB0 50%, #FDF5E0 100%)",
+              background: "linear-gradient(135deg, #C8847C 0%, #F0CFC9 50%, #FDF5E0 100%)",
               color: "#1A0E06",
               boxShadow: "0 4px 18px rgba(184,146,42,0.28), inset 0 0.5px 0 rgba(255,255,255,0.65)",
             }}
@@ -328,7 +328,7 @@ export function CookieBanner() {
             onClick={() => setExpanded(!expanded)}
             style={{
               ...btnBase,
-              border: "1px solid rgba(200,160,82,0.22)",
+              border: "1px solid rgba(200,132,124,0.22)",
               background: "transparent",
               color: inkMuted,
               display: "inline-flex",
@@ -375,7 +375,7 @@ export function CookieBanner() {
                   >
                     <span
                       style={{
-                        color: "#C89B6D",
+                        color: "#C8847C",
                         display: "flex",
                         alignItems: "center",
                         flexShrink: 0,
@@ -399,12 +399,12 @@ export function CookieBanner() {
                       <span
                         style={{
                           fontSize: "9.5px",
-                          color: "#C89B6D",
+                          color: "#C8847C",
                           fontFamily: "var(--font-display)",
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           opacity: 0.8,
-                          border: "0.5px solid rgba(200,160,82,0.35)",
+                          border: "0.5px solid rgba(200,132,124,0.35)",
                           borderRadius: "100px",
                           padding: "2px 7px",
                         }}
@@ -465,7 +465,7 @@ export function CookieBanner() {
                                       fontFamily: "var(--font-display)",
                                       fontWeight: 600,
                                       letterSpacing: "0.06em",
-                                      color: "#C89B6D",
+                                      color: "#C8847C",
                                       fontSize: "9.5px",
                                       textTransform: "uppercase",
                                       padding: "3px 8px 7px 0",
@@ -543,7 +543,7 @@ export function CookieBanner() {
               style={{
                 ...btnBase,
                 border: "1px solid rgba(184,146,42,0.42)",
-                background: "linear-gradient(135deg, #C89B6D 0%, #E6CEB0 50%, #FDF5E0 100%)",
+                background: "linear-gradient(135deg, #C8847C 0%, #F0CFC9 50%, #FDF5E0 100%)",
                 color: "#1A0E06",
                 boxShadow:
                   "0 4px 18px rgba(184,146,42,0.28), inset 0 0.5px 0 rgba(255,255,255,0.65)",

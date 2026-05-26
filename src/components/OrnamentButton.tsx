@@ -37,7 +37,7 @@ export function OrnamentWrap({ children, style }: OrnamentButtonProps) {
             color: "#D4A843",
             fontSize: "10px",
             lineHeight: 1,
-            textShadow: "0 0 4px rgba(212,168,67,0.55)",
+            textShadow: "0 0 4px rgba(230,180,174,0.55)",
             flexShrink: 0,
           }}
         >

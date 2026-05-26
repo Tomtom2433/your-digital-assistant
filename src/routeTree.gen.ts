@@ -18,6 +18,8 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiEstimateRouteImport } from './routes/api/estimate'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -64,6 +66,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiEstimateRoute = ApiEstimateRouteImport.update({
+  id: '/api/estimate',
+  path: '/api/estimate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +87,8 @@ export interface FileRoutesByFullPath {
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/estimate': typeof ApiEstimateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +100,8 @@ export interface FileRoutesByTo {
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/estimate': typeof ApiEstimateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +114,8 @@ export interface FileRoutesById {
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/estimate': typeof ApiEstimateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +129,8 @@ export interface FileRouteTypes {
     | '/prestations'
     | '/simulateur'
     | '/sitemap.xml'
+    | '/api/chat'
+    | '/api/estimate'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +142,8 @@ export interface FileRouteTypes {
     | '/prestations'
     | '/simulateur'
     | '/sitemap.xml'
+    | '/api/chat'
+    | '/api/estimate'
   id:
     | '__root__'
     | '/'
@@ -133,6 +155,8 @@ export interface FileRouteTypes {
     | '/prestations'
     | '/simulateur'
     | '/sitemap.xml'
+    | '/api/chat'
+    | '/api/estimate'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +169,8 @@ export interface RootRouteChildren {
   PrestationsRoute: typeof PrestationsRoute
   SimulateurRoute: typeof SimulateurRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiChatRoute: typeof ApiChatRoute
+  ApiEstimateRoute: typeof ApiEstimateRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +238,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/estimate': {
+      id: '/api/estimate'
+      path: '/api/estimate'
+      fullPath: '/api/estimate'
+      preLoaderRoute: typeof ApiEstimateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +265,8 @@ const rootRouteChildren: RootRouteChildren = {
   PrestationsRoute: PrestationsRoute,
   SimulateurRoute: SimulateurRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiChatRoute: ApiChatRoute,
+  ApiEstimateRoute: ApiEstimateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

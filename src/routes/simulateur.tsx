@@ -5,12 +5,24 @@ import { Sparkles, Calculator, Check } from "lucide-react";
 export const Route = createFileRoute("/simulateur")({
   head: () => ({
     meta: [
-      { title: "Simulateur de prestations MELIYA" },
+      { title: "Simulateur de tarifs MELIYA — Estimez votre projet" },
       {
         name: "description",
-        content: "Estimez le coût de votre projet en quelques clics. Tarifs dégressifs intégrés.",
+        content:
+          "Estimez le coût de votre projet en quelques clics. Simulateur gratuit avec tarifs dégressifs intégrés pour slides, documents et identité visuelle.",
       },
+      {
+        name: "keywords",
+        content:
+          "simulateur tarifs, estimation document professionnel, calculateur slides, devis MELIYA, tarif assistante digitale",
+      },
+      { property: "og:title", content: "Simulateur de tarifs MELIYA" },
+      { property: "og:description", content: "Estimez votre projet en quelques clics. Gratuit." },
+      { property: "og:url", content: "https://meliya.fr/simulateur" },
+      { name: "twitter:title", content: "Simulateur de tarifs MELIYA" },
+      { name: "twitter:description", content: "Calcul instantané du coût de votre projet." },
     ],
+    links: [{ rel: "canonical", href: "https://meliya.fr/simulateur" }],
   }),
   component: Simulateur,
 });
@@ -68,11 +80,11 @@ function DiscountPill({
         borderRadius: "14px",
         overflow: "hidden",
         border: isGreen
-          ? "0.5px solid rgba(200,155,109,0.45)"
-          : "0.5px solid rgba(200,155,109,0.18)",
+          ? "0.5px solid rgba(200,132,124,0.45)"
+          : "0.5px solid rgba(200,132,124,0.18)",
         boxShadow: isGreen
-          ? "0 2px 10px rgba(200,155,109,0.14), inset 0 1px 0 rgba(255,255,255,0.6)"
-          : "0 2px 8px rgba(200,155,109,0.08), inset 0 1px 0 rgba(255,255,255,0.5)",
+          ? "0 2px 10px rgba(200,132,124,0.14), inset 0 1px 0 rgba(255,255,255,0.6)"
+          : "0 2px 8px rgba(200,132,124,0.08), inset 0 1px 0 rgba(255,255,255,0.5)",
       }}
     >
       {/* Range label */}
@@ -81,12 +93,12 @@ function DiscountPill({
           padding: "7px 13px",
           fontSize: "12px",
           fontFamily: "var(--font-sans)",
-          color: isGreen ? "#B0875A" : "#5E5248",
+          color: isGreen ? "#A86660" : "#5E5248",
           opacity: 0.88,
-          background: isGreen ? "rgba(200,155,109,0.18)" : "rgba(200,155,109,0.06)",
+          background: isGreen ? "rgba(200,132,124,0.18)" : "rgba(200,132,124,0.06)",
           borderRight: isGreen
-            ? "0.5px solid rgba(200,155,109,0.35)"
-            : "0.5px solid rgba(200,155,109,0.12)",
+            ? "0.5px solid rgba(200,132,124,0.35)"
+            : "0.5px solid rgba(200,132,124,0.12)",
           lineHeight: 1,
         }}
       >
@@ -100,8 +112,8 @@ function DiscountPill({
           fontFamily: "var(--font-display)",
           fontWeight: 700,
           letterSpacing: "0.05em",
-          color: isGreen ? "#B0875A" : "#5E5248",
-          background: isGreen ? "rgba(200,155,109,0.28)" : "rgba(200,155,109,0.10)",
+          color: isGreen ? "#A86660" : "#5E5248",
+          background: isGreen ? "rgba(200,132,124,0.28)" : "rgba(200,132,124,0.10)",
           lineHeight: 1,
           whiteSpace: "nowrap" as const,
         }}
@@ -172,13 +184,13 @@ function Simulateur() {
           maxWidth: "620px",
           margin: "0 auto 2.75rem",
           background: "rgba(255,252,245,0.80)",
-          border: "0.5px solid rgba(212,168,67,0.3)",
+          border: "0.5px solid rgba(230,180,174,0.3)",
           borderRadius: "20px",
           padding: "22px 28px 20px",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           boxShadow:
-            "0 4px 28px rgba(212,168,67,0.07), 0 1px 4px rgba(212,168,67,0.04), inset 0 1px 0 rgba(255,255,255,0.92)",
+            "0 4px 28px rgba(230,180,174,0.07), 0 1px 4px rgba(230,180,174,0.04), inset 0 1px 0 rgba(255,255,255,0.92)",
           animation: "modal-fade-in 0.55s ease both",
           textAlign: "center" as const,
         }}
@@ -193,20 +205,20 @@ function Simulateur() {
             marginBottom: "16px",
           }}
         >
-          <Sparkles size={11} style={{ color: "#C89B6D", flexShrink: 0 }} />
+          <Sparkles size={11} style={{ color: "#C8847C", flexShrink: 0 }} />
           <span
             style={{
               fontSize: "10px",
               fontFamily: "var(--font-display)",
               letterSpacing: "0.18em",
-              color: "#C89B6D",
+              color: "#C8847C",
               textTransform: "uppercase" as const,
               fontWeight: 600,
             }}
           >
             Remises volume appliquées automatiquement
           </span>
-          <Sparkles size={11} style={{ color: "#C89B6D", flexShrink: 0 }} />
+          <Sparkles size={11} style={{ color: "#C8847C", flexShrink: 0 }} />
         </div>
 
         {/* Pills centrées */}
@@ -233,12 +245,12 @@ function Simulateur() {
           <div
             style={{
               borderRadius: "18px",
-              border: "0.5px solid rgba(212,168,67,0.25)",
+              border: "0.5px solid rgba(230,180,174,0.25)",
               padding: "1.25rem 1.4rem",
               background: "rgba(255,255,255,0.82)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
-              boxShadow: "0 2px 16px rgba(200,155,109,0.05), inset 0 1px 0 rgba(255,255,255,0.9)",
+              boxShadow: "0 2px 16px rgba(200,132,124,0.05), inset 0 1px 0 rgba(255,255,255,0.9)",
             }}
           >
             <div
@@ -280,7 +292,7 @@ function Simulateur() {
                 style={{
                   fontSize: "13px",
                   fontFamily: "var(--font-display)",
-                  color: "#C89B6D",
+                  color: "#C8847C",
                   fontWeight: 700,
                   flexShrink: 0,
                   marginLeft: "12px",
@@ -307,14 +319,14 @@ function Simulateur() {
                   width: "68px",
                   padding: "7px 10px",
                   borderRadius: "12px",
-                  border: "0.5px solid rgba(212,168,67,0.35)",
+                  border: "0.5px solid rgba(230,180,174,0.35)",
                   background: "white",
                   textAlign: "center" as const,
                   fontFamily: "var(--font-display)",
                   fontSize: "14px",
                   color: "#5E5248",
                   outline: "none",
-                  boxShadow: "inset 0 1px 3px rgba(200,155,109,0.06)",
+                  boxShadow: "inset 0 1px 3px rgba(200,132,124,0.06)",
                 }}
               />
             </div>
@@ -324,12 +336,12 @@ function Simulateur() {
           <div
             style={{
               borderRadius: "18px",
-              border: "0.5px solid rgba(212,168,67,0.25)",
+              border: "0.5px solid rgba(230,180,174,0.25)",
               padding: "1.25rem 1.4rem",
               background: "rgba(255,255,255,0.82)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
-              boxShadow: "0 2px 16px rgba(200,155,109,0.05), inset 0 1px 0 rgba(255,255,255,0.9)",
+              boxShadow: "0 2px 16px rgba(200,132,124,0.05), inset 0 1px 0 rgba(255,255,255,0.9)",
             }}
           >
             <div
@@ -371,7 +383,7 @@ function Simulateur() {
                 style={{
                   fontSize: "13px",
                   fontFamily: "var(--font-display)",
-                  color: "#C89B6D",
+                  color: "#C8847C",
                   fontWeight: 700,
                   flexShrink: 0,
                   marginLeft: "12px",
@@ -398,14 +410,14 @@ function Simulateur() {
                   width: "68px",
                   padding: "7px 10px",
                   borderRadius: "12px",
-                  border: "0.5px solid rgba(212,168,67,0.35)",
+                  border: "0.5px solid rgba(230,180,174,0.35)",
                   background: "white",
                   textAlign: "center" as const,
                   fontFamily: "var(--font-display)",
                   fontSize: "14px",
                   color: "#5E5248",
                   outline: "none",
-                  boxShadow: "inset 0 1px 3px rgba(200,155,109,0.06)",
+                  boxShadow: "inset 0 1px 3px rgba(200,132,124,0.06)",
                 }}
               />
             </div>
@@ -419,8 +431,8 @@ function Simulateur() {
               gap: "14px",
               borderRadius: "18px",
               border: pack
-                ? "0.5px solid rgba(212,168,67,0.6)"
-                : "0.5px solid rgba(212,168,67,0.25)",
+                ? "0.5px solid rgba(230,180,174,0.6)"
+                : "0.5px solid rgba(230,180,174,0.25)",
               padding: "1.25rem 1.4rem",
               background: pack ? "rgba(237,216,176,0.14)" : "rgba(255,255,255,0.82)",
               backdropFilter: "blur(10px)",
@@ -428,8 +440,8 @@ function Simulateur() {
               cursor: "pointer",
               transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
               boxShadow: pack
-                ? "0 4px 20px rgba(212,168,67,0.12), inset 0 1px 0 rgba(255,255,255,0.9)"
-                : "0 2px 16px rgba(200,155,109,0.05), inset 0 1px 0 rgba(255,255,255,0.9)",
+                ? "0 4px 20px rgba(230,180,174,0.12), inset 0 1px 0 rgba(255,255,255,0.9)"
+                : "0 2px 16px rgba(200,132,124,0.05), inset 0 1px 0 rgba(255,255,255,0.9)",
             }}
           >
             <input
@@ -461,7 +473,7 @@ function Simulateur() {
                   style={{
                     marginLeft: "10px",
                     fontSize: "13px",
-                    color: "#C89B6D",
+                    color: "#C8847C",
                     fontWeight: 700,
                   }}
                 >
@@ -487,10 +499,10 @@ function Simulateur() {
         <div
           style={{
             borderRadius: "20px",
-            background: "linear-gradient(150deg, #C89B6D 0%, #D4B189 40%, #E6CEB0 100%)",
-            border: "0.5px solid rgba(200,155,109,0.42)",
+            background: "linear-gradient(150deg, #C8847C 0%, #D8A09A 40%, #F0CFC9 100%)",
+            border: "0.5px solid rgba(200,132,124,0.42)",
             boxShadow:
-              "0 12px 48px rgba(200,155,109,0.28), 0 2px 8px rgba(200,155,109,0.16), inset 0 1px 0 rgba(255,255,255,0.45)",
+              "0 12px 48px rgba(200,132,124,0.28), 0 2px 8px rgba(200,132,124,0.16), inset 0 1px 0 rgba(255,255,255,0.45)",
             padding: "1.75rem",
             height: "fit-content",
             position: "sticky" as const,
@@ -502,7 +514,7 @@ function Simulateur() {
           <div
             style={{ display: "flex", alignItems: "center", gap: "9px", marginBottom: "0.5rem" }}
           >
-            <Calculator size={18} style={{ color: "#3A2614" }} />
+            <Calculator size={18} style={{ color: "#4A2820" }} />
             <span
               style={{
                 fontSize: "10px",
@@ -524,7 +536,7 @@ function Simulateur() {
                   fontFamily: "var(--font-display)",
                   fontSize: "clamp(28px,4vw,36px)",
                   fontWeight: 700,
-                  color: "#3A2614",
+                  color: "#4A2820",
                   lineHeight: 1.1,
                 }}
               >
@@ -550,7 +562,7 @@ function Simulateur() {
                   fontFamily: "var(--font-display)",
                   fontSize: "clamp(36px,5vw,52px)",
                   fontWeight: 700,
-                  color: "#3A2614",
+                  color: "#4A2820",
                   lineHeight: 1,
                   transition: "text-shadow 0.42s ease",
                   textShadow: isGlowing
@@ -571,10 +583,10 @@ function Simulateur() {
                     gap: "5px",
                     marginTop: "10px",
                     background:
-                      "linear-gradient(90deg, rgba(200,155,109,0.22), rgba(255,255,255,0.25))",
+                      "linear-gradient(90deg, rgba(200,132,124,0.22), rgba(255,255,255,0.25))",
                     border: "0.5px solid rgba(255,255,255,0.45)",
                     backdropFilter: "blur(6px)",
-                    color: "#3A2614",
+                    color: "#4A2820",
                     fontFamily: "var(--font-display)",
                     fontWeight: 600,
                     fontSize: "11px",
@@ -582,7 +594,7 @@ function Simulateur() {
                     borderRadius: "100px",
                     padding: "4px 13px",
                     animation: "modal-fade-in 0.35s cubic-bezier(0.22,1,0.36,1) both",
-                    boxShadow: "0 2px 10px rgba(200,155,109,0.12)",
+                    boxShadow: "0 2px 10px rgba(200,132,124,0.12)",
                   }}
                 >
                   <Check size={10} style={{ flexShrink: 0 }} />
@@ -677,23 +689,23 @@ function Simulateur() {
               letterSpacing: "0.12em",
               fontWeight: 700,
               textTransform: "uppercase",
-              border: "1px solid #DCC6B0",
+              border: "1px solid #E8C2BC",
               transition: "all 0.5s cubic-bezier(0.22,1,0.36,1)",
               boxShadow: "0 8px 25px rgba(230,180,174,0.10)",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLElement;
-              el.style.background = "linear-gradient(135deg, #E6B4AE, #B0875A)";
+              el.style.background = "linear-gradient(135deg, #E6B4AE, #A86660)";
               el.style.color = "#FFFFFF";
-              el.style.borderColor = "#B0875A";
+              el.style.borderColor = "#A86660";
               el.style.transform = "translateY(-1px)";
-              el.style.boxShadow = "0 12px 35px rgba(176,135,90,0.22)";
+              el.style.boxShadow = "0 12px 35px rgba(168,102,96,0.22)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLElement;
               el.style.background = "rgba(246,240,236,0.75)";
               el.style.color = "#5E5248";
-              el.style.borderColor = "#DCC6B0";
+              el.style.borderColor = "#E8C2BC";
               el.style.transform = "translateY(0)";
               el.style.boxShadow = "0 8px 25px rgba(230,180,174,0.10)";
             }}

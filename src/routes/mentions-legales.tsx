@@ -69,7 +69,7 @@ function H3({ children }: { children: React.ReactNode }) {
         fontWeight: 600,
         letterSpacing: "0.06em",
         textTransform: "uppercase",
-        color: "#C89B6D",
+        color: "#C8847C",
         marginTop: "1.6rem",
         marginBottom: "0.5rem",
       }}
@@ -137,7 +137,7 @@ function CookieTable({
     <div style={{ overflowX: "auto", marginTop: "1rem" }}>
       <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "13.5px" }}>
         <thead>
-          <tr style={{ borderBottom: "1px solid rgba(200,160,82,0.22)" }}>
+          <tr style={{ borderBottom: "1px solid rgba(200,132,124,0.22)" }}>
             {["Cookie", "Catégorie", "Finalité", "Durée"].map((h) => (
               <th
                 key={h}
@@ -149,7 +149,7 @@ function CookieTable({
                   fontWeight: 700,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "#C89B6D",
+                  color: "#C8847C",
                 }}
               >
                 {h}
@@ -162,7 +162,7 @@ function CookieTable({
             <tr
               key={r.name}
               style={{
-                borderBottom: "1px solid rgba(200,160,82,0.10)",
+                borderBottom: "1px solid rgba(200,132,124,0.10)",
                 background: i % 2 === 0 ? "rgba(94,82,72,0.02)" : "transparent",
               }}
             >
@@ -182,7 +182,7 @@ function CookieTable({
                   padding: "9px 12px 9px 0",
                   fontFamily: "var(--font-display)",
                   fontSize: "11px",
-                  color: "#C89B6D",
+                  color: "#C8847C",
                   letterSpacing: "0.06em",
                   whiteSpace: "nowrap",
                 }}
@@ -240,13 +240,13 @@ function LegalPage() {
             gap: "6px",
             padding: "4px 14px",
             borderRadius: "100px",
-            background: "rgba(200,155,109,0.12)",
-            border: "0.5px solid rgba(200,160,82,0.35)",
+            background: "rgba(200,132,124,0.12)",
+            border: "0.5px solid rgba(200,132,124,0.35)",
             fontFamily: "var(--font-display)",
             fontSize: "10px",
             letterSpacing: "0.16em",
             textTransform: "uppercase" as const,
-            color: "#C89B6D",
+            color: "#C8847C",
             marginBottom: "1.2rem",
           }}
         >
@@ -301,7 +301,7 @@ function LegalPage() {
               style={{
                 padding: "7px 16px",
                 borderRadius: "100px",
-                border: "0.5px solid rgba(200,160,82,0.30)",
+                border: "0.5px solid rgba(200,132,124,0.30)",
                 fontFamily: "var(--font-display)",
                 fontSize: "10.5px",
                 letterSpacing: "0.10em",
@@ -313,8 +313,8 @@ function LegalPage() {
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(200,155,109,0.12)";
-                (e.currentTarget as HTMLElement).style.color = "#C89B6D";
+                (e.currentTarget as HTMLElement).style.background = "rgba(200,132,124,0.12)";
+                (e.currentTarget as HTMLElement).style.color = "#C8847C";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.55)";
@@ -344,7 +344,7 @@ function LegalPage() {
           <div
             style={{
               background: "rgba(94,82,72,0.03)",
-              border: "1px solid rgba(200,160,82,0.18)",
+              border: "1px solid rgba(200,132,124,0.18)",
               borderRadius: "14px",
               padding: "1.4rem 1.6rem",
             }}
@@ -364,7 +364,7 @@ function LegalPage() {
                   ],
                   ["Hébergeur", "Cloudflare Inc. 101 Townsend St, San Francisco, CA 94107, USA"],
                 ].map(([label, value]) => (
-                  <tr key={label} style={{ borderBottom: "1px solid rgba(200,160,82,0.10)" }}>
+                  <tr key={label} style={{ borderBottom: "1px solid rgba(200,132,124,0.10)" }}>
                     <td
                       style={{
                         padding: "9px 12px 9px 0",
@@ -466,7 +466,7 @@ function LegalPage() {
             Pour exercer ces droits :{" "}
             <a
               href="mailto:contact@meliya.fr"
-              style={{ color: "#C89B6D", textDecoration: "underline" }}
+              style={{ color: "#C8847C", textDecoration: "underline" }}
             >
               contact@meliya.fr
             </a>
@@ -475,7 +475,7 @@ function LegalPage() {
               href="https://www.cnil.fr"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "#C89B6D", textDecoration: "underline" }}
+              style={{ color: "#C8847C", textDecoration: "underline" }}
             >
               CNIL www.cnil.fr
             </a>
@@ -637,9 +637,9 @@ function LegalPage() {
               style={{
                 padding: "10px 22px",
                 borderRadius: "100px",
-                border: "1px solid rgba(200,160,82,0.40)",
-                background: "rgba(200,155,109,0.08)",
-                color: "#C89B6D",
+                border: "1px solid rgba(200,132,124,0.40)",
+                background: "rgba(200,132,124,0.08)",
+                color: "#C8847C",
                 fontFamily: "var(--font-display)",
                 fontSize: "11px",
                 fontWeight: 700,
@@ -649,10 +649,10 @@ function LegalPage() {
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(200,155,109,0.16)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(200,132,124,0.16)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(200,155,109,0.08)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(200,132,124,0.08)";
               }}
             >
               🍪 Gérer mes préférences cookies
@@ -670,7 +670,7 @@ function LegalPage() {
                 href="https://support.google.com/chrome/answer/95647"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#C89B6D", textDecoration: "underline" }}
+                style={{ color: "#C8847C", textDecoration: "underline" }}
               >
                 Google Chrome
               </a>
@@ -680,7 +680,7 @@ function LegalPage() {
                 href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#C89B6D", textDecoration: "underline" }}
+                style={{ color: "#C8847C", textDecoration: "underline" }}
               >
                 Mozilla Firefox
               </a>
@@ -690,7 +690,7 @@ function LegalPage() {
                 href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#C89B6D", textDecoration: "underline" }}
+                style={{ color: "#C8847C", textDecoration: "underline" }}
               >
                 Safari
               </a>
@@ -706,7 +706,7 @@ function LegalPage() {
             Pour toute question relative à la gestion de vos données ou cookies :{" "}
             <a
               href="mailto:contact@meliya.fr"
-              style={{ color: "#C89B6D", textDecoration: "underline" }}
+              style={{ color: "#C8847C", textDecoration: "underline" }}
             >
               contact@meliya.fr
             </a>
@@ -717,8 +717,8 @@ function LegalPage() {
               marginTop: "1.6rem",
               padding: "12px 16px",
               borderRadius: "10px",
-              background: "rgba(200,155,109,0.06)",
-              border: "0.5px solid rgba(200,160,82,0.22)",
+              background: "rgba(200,132,124,0.06)",
+              border: "0.5px solid rgba(200,132,124,0.22)",
             }}
           >
             <p

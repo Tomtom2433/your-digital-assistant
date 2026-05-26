@@ -532,22 +532,47 @@ export function MeliCat() {
     setTyping(false);
   }
 
-  function sendMessage(text: string) {
-    if (!text.trim()) return;
-    setMessages((prev) => [...prev, { id: Date.now(), from: "user", text: text.trim() }]);
+  async function sendMessage(text: string) {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    const userMsg: Message = { id: Date.now(), from: "user", text: trimmed };
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setTyping(true);
     const currentCtx = convCtx;
-    const delay = 800 + Math.random() * 500;
-    setTimeout(() => {
+
+    const history: Array<{ role: "user" | "assistant"; content: string }> = [
+      ...messages
+        .filter((m) => m.id !== 0)
+        .map((m) => ({
+          role: (m.from === "user" ? "user" : "assistant") as "user" | "assistant",
+          content: m.text,
+        })),
+      { role: "user", content: trimmed },
+    ];
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: history }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      const data = (await res.json()) as { reply?: string; error?: string };
+      const reply = data.reply?.trim();
+      if (!reply) throw new Error("empty reply");
       setTyping(false);
-      const { text: responseText, newCtx, quickReplies } = getResponse(text, currentCtx);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, from: "bot", text: reply }]);
+    } catch (err) {
+      console.warn("[MeliCat] fallback to rule-based:", err);
+      const { text: responseText, newCtx, quickReplies } = getResponse(trimmed, currentCtx);
       setConvCtx(newCtx);
+      setTyping(false);
       setMessages((prev) => [
         ...prev,
         { id: Date.now() + 1, from: "bot", text: responseText, quickReplies },
       ]);
-    }, delay);
+    }
   }
 
   function handleKey(e: React.KeyboardEvent) {
@@ -710,6 +735,7 @@ export function MeliCat() {
           <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
             <button
               onClick={resetConversation}
+              aria-label="Nouvelle conversation"
               title="Nouvelle conversation"
               style={{
                 width: "28px",
@@ -742,6 +768,7 @@ export function MeliCat() {
             </button>
             <button
               onClick={() => setOpen(false)}
+              aria-label="Fermer le chat"
               style={{
                 width: "28px",
                 height: "28px",
@@ -983,6 +1010,7 @@ export function MeliCat() {
             <button
               onClick={() => sendMessage(input)}
               disabled={!input.trim()}
+              aria-label="Envoyer le message"
               style={{
                 width: "30px",
                 height: "30px",
@@ -1129,6 +1157,7 @@ export function MeliCat() {
           setGreetingVisible(false);
           setOpen(!open);
         }}
+        aria-label={open ? "Fermer le chat MELI" : "Ouvrir le chat MELI"}
         style={{
           position: "fixed",
           bottom: "24px",

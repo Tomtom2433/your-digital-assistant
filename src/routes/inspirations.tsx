@@ -4,9 +4,24 @@ import { Sparkles } from "lucide-react";
 export const Route = createFileRoute("/inspirations")({
   head: () => ({
     meta: [
-      { title: "Inspirations MELIYA" },
-      { name: "description", content: "Découvrez les inspirations et réalisations de MELIYA." },
+      { title: "Inspirations & Réalisations MELIYA" },
+      {
+        name: "description",
+        content:
+          "Découvrez les inspirations et réalisations de MELIYA — exemples de slides, documents et chartes graphiques créés pour des clients.",
+      },
+      {
+        name: "keywords",
+        content: "portfolio MELIYA, exemples slides, réalisations documents, inspirations",
+      },
+      { property: "og:title", content: "Inspirations & Réalisations MELIYA" },
+      {
+        property: "og:description",
+        content: "Exemples de créations MELIYA — slides, documents, identité visuelle.",
+      },
+      { property: "og:url", content: "https://meliya.fr/inspirations" },
     ],
+    links: [{ rel: "canonical", href: "https://meliya.fr/inspirations" }],
   }),
   component: Inspirations,
 });

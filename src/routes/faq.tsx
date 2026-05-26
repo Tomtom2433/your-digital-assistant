@@ -1,16 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, HelpCircle } from "lucide-react";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ MELIYA" },
+      { title: "FAQ MELIYA — Questions fréquentes sur nos prestations" },
       {
         name: "description",
-        content: "Réponses aux questions fréquentes sur les prestations MELIYA.",
+        content:
+          "Délais, formats livrés, processus de travail, confidentialité. Toutes les réponses aux questions fréquentes sur les prestations MELIYA.",
       },
+      {
+        name: "keywords",
+        content:
+          "FAQ MELIYA, questions assistante digitale, délais livraison, formats documents, devis gratuit",
+      },
+      { property: "og:title", content: "FAQ MELIYA — Questions fréquentes" },
+      {
+        property: "og:description",
+        content: "Délais, formats, processus : toutes vos questions sur MELIYA.",
+      },
+      { property: "og:url", content: "https://meliya.fr/faq" },
+      { name: "twitter:title", content: "FAQ MELIYA — Questions fréquentes" },
+      { name: "twitter:description", content: "Délais, formats livrés, confidentialité et plus." },
     ],
+    links: [{ rel: "canonical", href: "https://meliya.fr/faq" }],
   }),
   component: FAQ,
 });
@@ -72,7 +87,13 @@ function FAQ() {
               onClick={() => setOpen(open === i ? null : i)}
               className="w-full flex items-center justify-between gap-4 p-6 text-left"
             >
-              <span className="display text-base md:text-lg text-[#5E5248]">{f.q}</span>
+              <span className="flex items-start gap-2.5 text-left">
+                <HelpCircle
+                  size={16}
+                  style={{ color: "rgba(200,132,124,0.55)", flexShrink: 0, marginTop: "3px" }}
+                />
+                <span className="display text-base md:text-lg text-[#5E5248]">{f.q}</span>
+              </span>
               {open === i ? (
                 <Minus className="h-5 w-5 shrink-0" style={{ color: "#D4B896" }} />
               ) : (

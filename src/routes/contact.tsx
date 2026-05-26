@@ -1,16 +1,32 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { Mail, Video, MapPin, Check, ChevronDown } from "lucide-react";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact MELIYA" },
+      { title: "Contact MELIYA — Parlons de votre projet" },
       {
         name: "description",
-        content: "Parlons de votre projet. Estimation personnalisée sous 24h.",
+        content:
+          "Contactez Mélody Roche pour votre projet de document professionnel. Estimation personnalisée sous 24h, échange visio ou téléphone.",
       },
+      {
+        name: "keywords",
+        content:
+          "contact assistante digitale, devis document professionnel, MELIYA contact, Mélody Roche",
+      },
+      { property: "og:title", content: "Contact MELIYA — Parlons de votre projet" },
+      {
+        property: "og:description",
+        content: "Estimation personnalisée sous 24h. 100% à distance.",
+      },
+      { property: "og:url", content: "https://meliya.fr/contact" },
+      { name: "twitter:title", content: "Contact MELIYA" },
+      { name: "twitter:description", content: "Estimation sous 24h. Échange visio ou téléphone." },
     ],
+    links: [{ rel: "canonical", href: "https://meliya.fr/contact" }],
   }),
   component: Contact,
 });
@@ -76,8 +92,8 @@ function InfoCard({
           borderRadius: "12px",
           flexShrink: 0,
           background: hovered
-            ? "linear-gradient(135deg, #F6E6B8, #E6CEB0)"
-            : "linear-gradient(135deg, #F7F2EE, #F4ECE4)",
+            ? "linear-gradient(135deg, #FBDDD7, #F0CFC9)"
+            : "linear-gradient(135deg, #F7F2EE, #FBEEEA)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -85,7 +101,7 @@ function InfoCard({
           boxShadow: "0 2px 8px rgba(230,180,174,0.12)",
         }}
       >
-        <Icon size={18} style={{ color: "#C89B6D" }} />
+        <Icon size={18} style={{ color: "#C8847C" }} />
       </div>
 
       {/* Text */}
@@ -604,7 +620,7 @@ function Contact() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  boxShadow: "0 8px 24px rgba(176,135,90,0.22)",
+                  boxShadow: "0 8px 24px rgba(168,102,96,0.22)",
                 }}
               >
                 <Check size={24} style={{ color: "#F9F4F0" }} />
@@ -636,7 +652,14 @@ function Contact() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                if (!nom.trim() || !email.trim()) {
+                  toast.error("Merci de renseigner votre nom et votre email.");
+                  return;
+                }
                 setSent(true);
+                toast.success("Votre demande a bien été envoyée — réponse sous 24h.", {
+                  description: `Un accusé de réception vous sera envoyé à ${email}.`,
+                });
               }}
               style={{ display: "flex", flexDirection: "column", gap: "1.4rem" }}
             >
@@ -725,8 +748,8 @@ function Contact() {
                   cursor: "pointer",
                   padding: "14px 16px",
                   borderRadius: "12px",
-                  background: rgpdAccepted ? "rgba(200,160,82,0.07)" : "rgba(245,240,250,0.55)",
-                  border: `1px solid ${rgpdAccepted ? "rgba(200,160,82,0.35)" : "rgba(212,184,150,0.22)"}`,
+                  background: rgpdAccepted ? "rgba(200,132,124,0.07)" : "rgba(245,240,250,0.55)",
+                  border: `1px solid ${rgpdAccepted ? "rgba(200,132,124,0.35)" : "rgba(240,207,201,0.22)"}`,
                   transition: "all 0.3s ease",
                 }}
               >
@@ -787,9 +810,9 @@ function Contact() {
                   background: !rgpdAccepted
                     ? "rgba(246,240,236,0.55)"
                     : btnHovered
-                      ? "linear-gradient(135deg, #E6B4AE, #B0875A)"
-                      : "linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%)",
-                  color: !rgpdAccepted ? "#5E5248" : btnHovered ? "#FFFFFF" : "#3A2614",
+                      ? "linear-gradient(135deg, #E6B4AE, #A86660)"
+                      : "linear-gradient(135deg, #FBDDD7 0%, #C8847C 100%)",
+                  color: !rgpdAccepted ? "#5E5248" : btnHovered ? "#FFFFFF" : "#4A2820",
                   fontFamily: "var(--font-display)",
                   fontSize: "13px",
                   fontWeight: 700,
@@ -799,7 +822,7 @@ function Contact() {
                   transform: rgpdAccepted && btnHovered ? "translateY(-1px)" : "translateY(0)",
                   boxShadow:
                     rgpdAccepted && btnHovered
-                      ? "0 12px 35px rgba(176,135,90,0.22)"
+                      ? "0 12px 35px rgba(168,102,96,0.22)"
                       : rgpdAccepted
                         ? "0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55)"
                         : "none",

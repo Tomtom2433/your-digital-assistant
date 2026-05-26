@@ -1,6 +1,19 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { X, ArrowRight, ArrowLeft, Sparkles, Minus, Plus, Presentation, FileText, BookOpen, Palette, Check } from "lucide-react";
+import { toast } from "sonner";
+import {
+  X,
+  ArrowRight,
+  ArrowLeft,
+  Sparkles,
+  Minus,
+  Plus,
+  Presentation,
+  FileText,
+  BookOpen,
+  Palette,
+  Check,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 interface SimulateurModalProps {
@@ -19,11 +32,11 @@ const SERVICES = [
     unitPrice: 30,
     Icon: Presentation,
     emoji: "✨",
-    color: "#C89B6D",
-    colorMid: "#B0875A",
-    colorLight: "rgba(200,155,109,0.10)",
-    colorBorder: "rgba(200,155,109,0.45)",
-    bg: "linear-gradient(135deg, rgba(200,155,109,0.10) 0%, rgba(230,180,174,0.08) 100%)",
+    color: "#C8847C",
+    colorMid: "#A86660",
+    colorLight: "rgba(200,132,124,0.10)",
+    colorBorder: "rgba(200,132,124,0.45)",
+    bg: "linear-gradient(135deg, rgba(200,132,124,0.10) 0%, rgba(230,180,174,0.08) 100%)",
     subTypes: [
       "Présentation client",
       "Pitch deck",
@@ -41,11 +54,11 @@ const SERVICES = [
     unitPrice: 25,
     Icon: FileText,
     emoji: "📄",
-    color: "#C89B6D",
-    colorMid: "#B0875A",
-    colorLight: "rgba(200,155,109,0.10)",
-    colorBorder: "rgba(200,155,109,0.45)",
-    bg: "linear-gradient(135deg, rgba(200,155,109,0.10) 0%, rgba(212,177,137,0.08) 100%)",
+    color: "#C8847C",
+    colorMid: "#A86660",
+    colorLight: "rgba(200,132,124,0.10)",
+    colorBorder: "rgba(200,132,124,0.45)",
+    bg: "linear-gradient(135deg, rgba(200,132,124,0.10) 0%, rgba(212,177,137,0.08) 100%)",
     subTypes: [
       "Rapport professionnel",
       "Ebook / Guide",
@@ -64,10 +77,10 @@ const SERVICES = [
     Icon: Palette,
     emoji: "🎨",
     color: "#E6B4AE",
-    colorMid: "#C89B6D",
+    colorMid: "#C8847C",
     colorLight: "rgba(230,180,174,0.10)",
     colorBorder: "rgba(230,180,174,0.45)",
-    bg: "linear-gradient(135deg, rgba(230,180,174,0.12) 0%, rgba(200,155,109,0.10) 100%)",
+    bg: "linear-gradient(135deg, rgba(230,180,174,0.12) 0%, rgba(200,132,124,0.10) 100%)",
     subTypes: null,
   },
 ] as const;
@@ -159,20 +172,20 @@ function StepBar({ step }: { step: number }) {
                 borderRadius: "50%",
                 background:
                   i < step
-                    ? "linear-gradient(135deg, #C89B6D, #D4B189)"
+                    ? "linear-gradient(135deg, #C8847C, #D8A09A)"
                     : i === step
-                      ? "linear-gradient(135deg, #C89B6D, #E6B4AE)"
-                      : "rgba(200,155,109,0.08)",
-                border: i <= step ? "none" : "1px solid rgba(200,155,109,0.20)",
+                      ? "linear-gradient(135deg, #C8847C, #E6B4AE)"
+                      : "rgba(200,132,124,0.08)",
+                border: i <= step ? "none" : "1px solid rgba(200,132,124,0.20)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 transition: "all 0.45s cubic-bezier(0.22,1,0.36,1)",
                 boxShadow:
                   i === step
-                    ? "0 4px 16px rgba(200,155,109,0.32)"
+                    ? "0 4px 16px rgba(200,132,124,0.32)"
                     : i < step
-                      ? "0 3px 10px rgba(200,155,109,0.28)"
+                      ? "0 3px 10px rgba(200,132,124,0.28)"
                       : "none",
               }}
             >
@@ -184,7 +197,7 @@ function StepBar({ step }: { step: number }) {
                     fontFamily: "var(--font-display)",
                     fontSize: "11px",
                     fontWeight: 700,
-                    color: i === step ? "#5E5248" : "rgba(200,155,109,0.40)",
+                    color: i === step ? "#5E5248" : "rgba(200,132,124,0.40)",
                   }}
                 >
                   {i + 1}
@@ -213,7 +226,7 @@ function StepBar({ step }: { step: number }) {
                 margin: "0 6px",
                 marginBottom: "18px",
                 background:
-                  i < step ? "linear-gradient(90deg, #C89B6D, #E6CEB0)" : "rgba(200,155,109,0.14)",
+                  i < step ? "linear-gradient(90deg, #C8847C, #F0CFC9)" : "rgba(200,132,124,0.14)",
                 transition: "background 0.4s ease",
               }}
             />
@@ -234,6 +247,69 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
   const [entering, setEntering] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
   const [pulseKey, setPulseKey] = useState(0);
+  // Pack Up Identité — retouches additionnelles (0 incluses = base 479€, +30€/retouche)
+  const [identiteRetouches, setIdentiteRetouches] = useState(0);
+
+  // Estimation IA
+  const [aiOpen, setAiOpen] = useState(false);
+  const [aiInput, setAiInput] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiResult, setAiResult] = useState<{
+    services?: string[];
+    slidesCount?: number | null;
+    pagesCount?: number | null;
+    identiteRetouches?: number | null;
+    finition?: "essentiel" | "premium" | "excellence";
+    totalEstime?: number;
+    summary?: string;
+    nextStep?: string;
+  } | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
+
+  async function runAIEstimate() {
+    if (aiInput.trim().length < 10) {
+      setAiError("Décris ton projet en quelques mots de plus.");
+      return;
+    }
+    setAiError(null);
+    setAiLoading(true);
+    try {
+      const res = await fetch("/api/estimate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ description: aiInput.trim() }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      const data = await res.json();
+      setAiResult(data);
+      toast.success("Estimation IA prête.");
+    } catch {
+      setAiError("L'estimation IA n'a pas répondu. Réessaye dans un instant.");
+    } finally {
+      setAiLoading(false);
+    }
+  }
+
+  function applyAIEstimate() {
+    if (!aiResult) return;
+    const svc = (aiResult.services ?? []).filter((s): s is ServiceKey =>
+      ["slides", "documents", "identite"].includes(s),
+    );
+    if (svc.length === 0) return;
+    setSelected(svc);
+    const v: Record<string, number> = {};
+    if (aiResult.slidesCount && svc.includes("slides")) v.slides = aiResult.slidesCount;
+    if (aiResult.pagesCount && svc.includes("documents")) v.documents = aiResult.pagesCount;
+    if (svc.includes("identite")) v.identite = 1;
+    setVolumes(v);
+    if (aiResult.identiteRetouches != null)
+      setIdentiteRetouches(Math.max(0, Math.min(5, aiResult.identiteRetouches)));
+    if (aiResult.finition) setFinition(aiResult.finition);
+    setAiOpen(false);
+    setAiResult(null);
+    setAiInput("");
+    setTimeout(() => goTo(2), 150);
+  }
 
   useEffect(() => {
     if (open) {
@@ -242,6 +318,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
       setVolumes({});
       setSubTypes({});
       setFinition("essentiel");
+      setIdentiteRetouches(0);
     }
   }, [open]);
 
@@ -280,7 +357,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
   /* Calcul */
   const breakdown = selected.map((key) => {
     const svc = SERVICES.find((s) => s.key === key)!;
-    if (key === "identite") return { svc, qty: 1, base: 479, discountRate: 0 };
+    if (key === "identite")
+      return { svc, qty: 1, base: 479 + identiteRetouches * 30, discountRate: 0 };
     const qty = getVol(key);
     const { base, discountRate } = calcPrice(qty, svc.unitPrice);
     return { svc, qty, base, discountRate };
@@ -320,11 +398,11 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
           overflowY: "auto",
           borderRadius: "28px",
           background: "linear-gradient(158deg, #FFFAF7 0%, #FDF5F0 48%, #FAF0E8 100%)",
-          border: "1px solid rgba(200,155,109,0.20)",
+          border: "1px solid rgba(200,132,124,0.20)",
           boxShadow: [
             "0 2px 6px rgba(0,0,0,0.04)",
             "0 30px 90px rgba(94,82,72,0.24)",
-            "0 0 0 0.5px rgba(200,155,109,0.10)",
+            "0 0 0 0.5px rgba(200,132,124,0.10)",
             "inset 0 1.5px 0 rgba(255,255,255,0.96)",
           ].join(", "),
           padding: "clamp(1.5rem,3.5vw,2.4rem)",
@@ -343,8 +421,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
             width: "30px",
             height: "30px",
             borderRadius: "50%",
-            background: "rgba(200,155,109,0.08)",
-            border: "0.5px solid rgba(200,155,109,0.22)",
+            background: "rgba(200,132,124,0.08)",
+            border: "0.5px solid rgba(200,132,124,0.22)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -353,10 +431,10 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
             transition: "all 0.2s ease",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "rgba(200,155,109,0.18)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(200,132,124,0.18)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "rgba(200,155,109,0.08)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(200,132,124,0.08)";
           }}
         >
           <X size={13} />
@@ -372,7 +450,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
               fontSize: "8.5px",
               letterSpacing: "0.26em",
               textTransform: "uppercase",
-              color: "#C89B6D",
+              color: "#C8847C",
               fontFamily: "var(--font-display)",
               fontWeight: 700,
               marginBottom: "0.45rem",
@@ -400,7 +478,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
               height: "1px",
               maxWidth: "70px",
               margin: "0 auto",
-              background: "linear-gradient(90deg, transparent, #C89B6D, transparent)",
+              background: "linear-gradient(90deg, transparent, #C8847C, transparent)",
             }}
           />
         </div>
@@ -410,6 +488,207 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
         {/* ══════════ STEP 0 Choix du service ══════════ */}
         {step === 0 && (
           <div>
+            {/* ── Bandeau IA ── */}
+            <div
+              style={{
+                marginBottom: "18px",
+                padding: aiOpen ? "16px 18px" : "12px 16px",
+                borderRadius: "16px",
+                background:
+                  "linear-gradient(135deg, rgba(230,180,174,0.10) 0%, rgba(240,207,201,0.18) 100%)",
+                border: "1px solid rgba(200,132,124,0.28)",
+                transition: "all 0.3s ease",
+              }}
+            >
+              {!aiOpen ? (
+                <button
+                  type="button"
+                  onClick={() => setAiOpen(true)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    width: "100%",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "13px",
+                    color: "#5E5248",
+                    textAlign: "left",
+                  }}
+                >
+                  <Sparkles size={16} style={{ color: "#C8847C", flexShrink: 0 }} />
+                  <span>
+                    <strong style={{ color: "#C8847C", fontWeight: 600 }}>
+                      Décrivez votre projet en quelques mots
+                    </strong>{" "}
+                    — l'IA propose une estimation chiffrée.
+                  </span>
+                </button>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                  <label
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "10px",
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: "#C8847C",
+                      fontWeight: 700,
+                    }}
+                  >
+                    <Sparkles
+                      size={12}
+                      style={{ display: "inline", marginRight: 6, verticalAlign: "-2px" }}
+                    />
+                    Estimation IA
+                  </label>
+                  <textarea
+                    value={aiInput}
+                    onChange={(e) => setAiInput(e.target.value)}
+                    placeholder="Ex : J'ai besoin d'un pitch deck de 12 slides pour une levée seed, et d'une charte logo."
+                    rows={3}
+                    style={{
+                      width: "100%",
+                      padding: "10px 12px",
+                      borderRadius: "10px",
+                      border: "1px solid rgba(200,132,124,0.30)",
+                      background: "rgba(255,255,255,0.85)",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "13px",
+                      color: "#5E5248",
+                      resize: "vertical",
+                      outline: "none",
+                    }}
+                  />
+                  {aiError && <div style={{ fontSize: "12px", color: "#A86660" }}>{aiError}</div>}
+                  {aiResult && (
+                    <div
+                      style={{
+                        padding: "12px 14px",
+                        borderRadius: "10px",
+                        background: "rgba(255,255,255,0.92)",
+                        border: "1px solid rgba(200,132,124,0.25)",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "8px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "13px",
+                          color: "#5E5248",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {aiResult.summary}
+                      </div>
+                      {(aiResult.totalEstime ?? 0) > 0 && (
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "baseline",
+                            gap: "6px",
+                            fontFamily: "var(--font-display)",
+                          }}
+                        >
+                          <span style={{ fontSize: "11px", color: "rgba(94,82,72,0.55)" }}>
+                            Estimation
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "22px",
+                              fontWeight: 700,
+                              color: "#C8847C",
+                              letterSpacing: "0.02em",
+                            }}
+                          >
+                            {aiResult.totalEstime} €
+                          </span>
+                          <span style={{ fontSize: "10px", color: "rgba(94,82,72,0.55)" }}>HT</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end" }}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAiOpen(false);
+                        setAiResult(null);
+                        setAiInput("");
+                        setAiError(null);
+                      }}
+                      style={{
+                        padding: "8px 14px",
+                        borderRadius: "100px",
+                        background: "transparent",
+                        border: "1px solid rgba(200,132,124,0.30)",
+                        color: "rgba(94,82,72,0.65)",
+                        fontFamily: "var(--font-display)",
+                        fontSize: "10px",
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Annuler
+                    </button>
+                    {aiResult && (aiResult.services?.length ?? 0) > 0 ? (
+                      <button
+                        type="button"
+                        onClick={applyAIEstimate}
+                        style={{
+                          padding: "8px 18px",
+                          borderRadius: "100px",
+                          background: "linear-gradient(135deg, #C8847C 0%, #D8A09A 100%)",
+                          border: "1px solid rgba(200,132,124,0.55)",
+                          color: "#FFFFFF",
+                          fontFamily: "var(--font-display)",
+                          fontSize: "10px",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          boxShadow: "0 6px 18px rgba(200,132,124,0.28)",
+                        }}
+                      >
+                        Appliquer & voir détails
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={runAIEstimate}
+                        disabled={aiLoading}
+                        style={{
+                          padding: "8px 18px",
+                          borderRadius: "100px",
+                          background: aiLoading
+                            ? "rgba(200,132,124,0.30)"
+                            : "linear-gradient(135deg, #C8847C 0%, #D8A09A 100%)",
+                          border: "1px solid rgba(200,132,124,0.55)",
+                          color: "#FFFFFF",
+                          fontFamily: "var(--font-display)",
+                          fontSize: "10px",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          fontWeight: 700,
+                          cursor: aiLoading ? "wait" : "pointer",
+                          boxShadow: aiLoading ? "none" : "0 6px 18px rgba(200,132,124,0.28)",
+                          opacity: aiLoading ? 0.7 : 1,
+                        }}
+                      >
+                        {aiLoading ? "Estimation…" : "Estimer avec l'IA"}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
               {SERVICES.map((svc) => {
                 const isSel = selected.includes(svc.key);
@@ -430,7 +709,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                         ? `2px solid ${svc.color}`
                         : isHov
                           ? `1.5px solid ${svc.colorBorder}`
-                          : "1.5px solid rgba(200,155,109,0.12)",
+                          : "1.5px solid rgba(200,132,124,0.12)",
                       background: isSel || isHov ? svc.bg : "rgba(255,255,255,0.68)",
                       boxShadow: isSel
                         ? `0 6px 26px ${svc.color}25, inset 0 1px 0 rgba(255,255,255,0.88)`
@@ -494,7 +773,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                         justifyContent: "center",
                         marginBottom: "0.85rem",
                         transition: "all 0.40s cubic-bezier(0.34,1.56,0.64,1)",
-                        transform: isHov || isSel ? "rotate(-4deg) scale(1.05)" : "rotate(0) scale(1)",
+                        transform:
+                          isHov || isSel ? "rotate(-4deg) scale(1.05)" : "rotate(0) scale(1)",
                         position: "relative",
                       }}
                     >
@@ -509,7 +789,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                             right: "-10px",
                             fontSize: "16px",
                             animation: "pop-in 0.42s cubic-bezier(0.34,1.56,0.64,1) both",
-                            filter: "drop-shadow(0 2px 4px rgba(200,155,109,0.3))",
+                            filter: "drop-shadow(0 2px 4px rgba(200,132,124,0.3))",
                           }}
                         >
                           {svc.emoji}
@@ -600,8 +880,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   style={{
                     padding: "9px 16px",
                     borderRadius: "12px",
-                    background: "rgba(200,155,109,0.06)",
-                    border: "1px solid rgba(200,155,109,0.14)",
+                    background: "rgba(200,132,124,0.06)",
+                    border: "1px solid rgba(200,132,124,0.14)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -649,12 +929,12 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   borderRadius: "100px",
                   background:
                     selected.length > 0
-                      ? "linear-gradient(135deg, #C89B6D 0%, #C4A0E8 55%, #EEE0FF 100%)"
-                      : "rgba(200,155,109,0.07)",
+                      ? "linear-gradient(135deg, #C8847C 0%, #C4A0E8 55%, #EEE0FF 100%)"
+                      : "rgba(200,132,124,0.07)",
                   border:
                     selected.length > 0
-                      ? "1px solid rgba(200,155,109,0.50)"
-                      : "1px solid rgba(200,155,109,0.13)",
+                      ? "1px solid rgba(200,132,124,0.50)"
+                      : "1px solid rgba(200,132,124,0.13)",
                   color: selected.length > 0 ? "#5E5248" : "rgba(94,82,72,0.28)",
                   fontFamily: "var(--font-display)",
                   fontSize: "10px",
@@ -664,7 +944,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   cursor: selected.length > 0 ? "pointer" : "not-allowed",
                   boxShadow:
                     selected.length > 0
-                      ? "0 6px 22px rgba(200,155,109,0.28), inset 0 1px 0 rgba(255,255,255,0.72)"
+                      ? "0 6px 22px rgba(200,132,124,0.28), inset 0 1px 0 rgba(255,255,255,0.72)"
                       : "none",
                   transition: "all 0.28s cubic-bezier(0.22,1,0.36,1)",
                 }}
@@ -769,29 +1049,95 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   </div>
 
                   {isFixed ? (
-                    /* Pack Up Identité forfait */
-                    <div style={{ textAlign: "center", padding: "0.5rem 0 0.8rem" }}>
-                      <div
-                        style={{
-                          fontFamily: "var(--font-serif)",
-                          fontSize: "56px",
-                          fontWeight: 800,
-                          color: svc.colorMid,
-                          lineHeight: 1,
-                        }}
-                      >
-                        479 €
+                    /* Pack Up Identité — prix animé + slider retouches */
+                    <div>
+                      {/* Prix hero animé */}
+                      <div style={{ textAlign: "center", padding: "0.5rem 0 0.4rem" }}>
+                        <div
+                          style={{
+                            fontFamily: "var(--font-serif)",
+                            fontSize: "56px",
+                            fontWeight: 800,
+                            color: svc.colorMid,
+                            lineHeight: 1,
+                          }}
+                        >
+                          <AnimatedPrice target={479 + identiteRetouches * 30} /> €
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: "var(--font-serif)",
+                            fontStyle: "italic",
+                            fontSize: "10.5px",
+                            color: "rgba(94,82,72,0.42)",
+                            marginTop: "5px",
+                          }}
+                        >
+                          {identiteRetouches > 0
+                            ? `Forfait de base · +${identiteRetouches} retouche${identiteRetouches > 1 ? "s" : ""} (+${identiteRetouches * 30}€)`
+                            : "Forfait tout compris · 2 retouches incluses"}
+                        </div>
                       </div>
-                      <div
-                        style={{
-                          fontFamily: "var(--font-serif)",
-                          fontStyle: "italic",
-                          fontSize: "10.5px",
-                          color: "rgba(94,82,72,0.42)",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Forfait tout compris
+                      {/* Slider retouches additionnelles */}
+                      <div style={{ padding: "1rem 0 0.5rem" }}>
+                        <label
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            fontFamily: "var(--font-display)",
+                            fontSize: "9px",
+                            letterSpacing: "0.18em",
+                            textTransform: "uppercase",
+                            color: "rgba(94,82,72,0.55)",
+                            marginBottom: "10px",
+                            fontWeight: 600,
+                          }}
+                        >
+                          <span>Retouches additionnelles</span>
+                          <span style={{ color: svc.colorMid }}>
+                            {identiteRetouches > 0
+                              ? `${identiteRetouches} (+${identiteRetouches * 30}€)`
+                              : "Aucune"}
+                          </span>
+                        </label>
+                        <input
+                          type="range"
+                          min={0}
+                          max={5}
+                          step={1}
+                          value={identiteRetouches}
+                          onChange={(e) => {
+                            setIdentiteRetouches(parseInt(e.target.value, 10));
+                            setPulseKey((k) => k + 1);
+                          }}
+                          className="meliya-slider"
+                          style={
+                            {
+                              width: "100%",
+                              "--slider-fill": `${(identiteRetouches / 5) * 100}%`,
+                              "--slider-color": svc.color,
+                              "--slider-color-mid": svc.colorMid,
+                            } as React.CSSProperties
+                          }
+                          aria-label="Retouches additionnelles"
+                        />
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            marginTop: "5px",
+                            fontFamily: "var(--font-display)",
+                            fontSize: "9px",
+                            color: "rgba(94,82,72,0.35)",
+                          }}
+                        >
+                          <span>0</span>
+                          <span>1</span>
+                          <span>2</span>
+                          <span>3</span>
+                          <span>4</span>
+                          <span>5</span>
+                        </div>
                       </div>
                     </div>
                   ) : (
@@ -874,8 +1220,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                             width: "46px",
                             height: "46px",
                             borderRadius: "50%",
-                            background: vol <= 1 ? "rgba(200,155,109,0.05)" : `${svc.color}18`,
-                            border: `1.5px solid ${vol <= 1 ? "rgba(200,155,109,0.10)" : svc.colorBorder}`,
+                            background: vol <= 1 ? "rgba(200,132,124,0.05)" : `${svc.color}18`,
+                            border: `1.5px solid ${vol <= 1 ? "rgba(200,132,124,0.10)" : svc.colorBorder}`,
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -892,7 +1238,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                           }}
                           onMouseLeave={(e) => {
                             (e.currentTarget as HTMLElement).style.background =
-                              vol <= 1 ? "rgba(200,155,109,0.05)" : `${svc.color}18`;
+                              vol <= 1 ? "rgba(200,132,124,0.05)" : `${svc.color}18`;
                             (e.currentTarget as HTMLElement).style.transform = "scale(1)";
                           }}
                         >
@@ -1020,7 +1366,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                                 borderRadius: "100px",
                                 border: isChip
                                   ? `1.5px solid ${svc.color}`
-                                  : "1px solid rgba(200,155,109,0.16)",
+                                  : "1px solid rgba(200,132,124,0.16)",
                                 background: isChip ? `${svc.color}20` : "rgba(255,255,255,0.50)",
                                 color: isChip ? "#5E5248" : "rgba(94,82,72,0.42)",
                                 fontFamily: "var(--font-display)",
@@ -1044,7 +1390,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                             border:
                               vol > 30
                                 ? `1.5px solid ${svc.color}`
-                                : "1px solid rgba(200,155,109,0.16)",
+                                : "1px solid rgba(200,132,124,0.16)",
                             background: vol > 30 ? `${svc.color}20` : "rgba(255,255,255,0.50)",
                             color: vol > 30 ? "#5E5248" : "rgba(94,82,72,0.42)",
                             fontFamily: "var(--font-display)",
@@ -1066,7 +1412,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                           justifyContent: "center",
                           gap: "8px",
                           paddingTop: "0.75rem",
-                          borderTop: "1px solid rgba(200,155,109,0.10)",
+                          borderTop: "1px solid rgba(200,132,124,0.10)",
                         }}
                       >
                         <span
@@ -1104,7 +1450,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                             style={{
                               padding: "2px 9px",
                               borderRadius: "100px",
-                              background: "linear-gradient(135deg, #C89B6D, #D4B189)",
+                              background: "linear-gradient(135deg, #C8847C, #D8A09A)",
                               color: "#3A2010",
                               fontSize: "8px",
                               fontWeight: 700,
@@ -1126,7 +1472,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
             <div
               style={{
                 borderRadius: "18px",
-                border: "1px solid rgba(200,155,109,0.16)",
+                border: "1px solid rgba(200,132,124,0.16)",
                 background: "rgba(255,255,255,0.52)",
                 padding: "1.2rem 1.3rem",
                 marginBottom: "0.9rem",
@@ -1139,7 +1485,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   fontWeight: 700,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "#C89B6D",
+                  color: "#C8847C",
                   marginBottom: "0.9rem",
                 }}
               >
@@ -1158,12 +1504,12 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                         textAlign: "center",
                         cursor: "pointer",
                         border: isAct
-                          ? "1.5px solid rgba(200,155,109,0.55)"
-                          : "1px solid rgba(200,155,109,0.12)",
+                          ? "1.5px solid rgba(200,132,124,0.55)"
+                          : "1px solid rgba(200,132,124,0.12)",
                         background: isAct
-                          ? "linear-gradient(135deg, rgba(200,155,109,0.14) 0%, rgba(239,219,195,0.12) 100%)"
+                          ? "linear-gradient(135deg, rgba(200,132,124,0.14) 0%, rgba(239,219,195,0.12) 100%)"
                           : "transparent",
-                        boxShadow: isAct ? "0 4px 18px rgba(200,155,109,0.18)" : "none",
+                        boxShadow: isAct ? "0 4px 18px rgba(200,132,124,0.18)" : "none",
                         transform: isAct ? "translateY(-2px)" : "translateY(0)",
                         transition: "all 0.26s cubic-bezier(0.22,1,0.36,1)",
                       }}
@@ -1187,8 +1533,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                             padding: "1.5px 8px",
                             borderRadius: "100px",
                             background: isAct
-                              ? "linear-gradient(135deg, #C89B6D, #D4B189)"
-                              : "rgba(200,155,109,0.10)",
+                              ? "linear-gradient(135deg, #C8847C, #D8A09A)"
+                              : "rgba(200,132,124,0.10)",
                             color: isAct ? "#3A2010" : "rgba(94,82,72,0.38)",
                             fontSize: "8px",
                             fontWeight: 700,
@@ -1225,8 +1571,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   borderRadius: "14px",
                   padding: "11px 18px",
                   background:
-                    "linear-gradient(135deg, rgba(200,155,109,0.10) 0%, rgba(200,155,109,0.07) 100%)",
-                  border: "1px solid rgba(200,155,109,0.18)",
+                    "linear-gradient(135deg, rgba(200,132,124,0.10) 0%, rgba(200,132,124,0.07) 100%)",
+                  border: "1px solid rgba(200,132,124,0.18)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -1280,7 +1626,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   padding: "10px 18px",
                   borderRadius: "100px",
                   background: "transparent",
-                  border: "1px solid rgba(200,155,109,0.18)",
+                  border: "1px solid rgba(200,132,124,0.18)",
                   color: "rgba(94,82,72,0.45)",
                   fontFamily: "var(--font-display)",
                   fontSize: "9.5px",
@@ -1291,26 +1637,31 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   transition: "all 0.22s ease",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,155,109,0.38)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,132,124,0.38)";
                   (e.currentTarget as HTMLElement).style.color = "#5E5248";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,155,109,0.18)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,132,124,0.18)";
                   (e.currentTarget as HTMLElement).style.color = "rgba(94,82,72,0.45)";
                 }}
               >
                 <ArrowLeft size={11} /> Retour
               </button>
               <button
-                onClick={() => goTo(2)}
+                onClick={() => {
+                  goTo(2);
+                  toast.success("Votre estimation est prête.", {
+                    description: "Vous pouvez la finaliser en demandant votre devis personnalisé.",
+                  });
+                }}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "8px",
                   padding: "12px 26px",
                   borderRadius: "100px",
-                  background: "linear-gradient(135deg, #C89B6D 0%, #D4B189 50%, #E6B4AE 100%)",
-                  border: "1px solid rgba(200,155,109,0.55)",
+                  background: "linear-gradient(135deg, #C8847C 0%, #D8A09A 50%, #E6B4AE 100%)",
+                  border: "1px solid rgba(200,132,124,0.55)",
                   color: "#FFFFFF",
                   fontFamily: "var(--font-display)",
                   fontSize: "10px",
@@ -1319,7 +1670,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   textTransform: "uppercase",
                   cursor: "pointer",
                   boxShadow:
-                    "0 6px 22px rgba(200,155,109,0.28), inset 0 1px 0 rgba(255,255,255,0.72)",
+                    "0 6px 22px rgba(200,132,124,0.28), inset 0 1px 0 rgba(255,255,255,0.72)",
                   transition: "all 0.28s cubic-bezier(0.22,1,0.36,1)",
                 }}
                 onMouseEnter={(e) => {
@@ -1343,7 +1694,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
               style={{
                 borderRadius: "18px",
                 overflow: "hidden",
-                border: "1px solid rgba(200,155,109,0.14)",
+                border: "1px solid rgba(200,132,124,0.14)",
                 marginBottom: "1.1rem",
               }}
             >
@@ -1353,7 +1704,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   style={{
                     padding: "0.95rem 1.3rem",
                     borderBottom:
-                      i < breakdown.length - 1 ? "1px solid rgba(200,155,109,0.10)" : "none",
+                      i < breakdown.length - 1 ? "1px solid rgba(200,132,124,0.10)" : "none",
                     background: i % 2 === 0 ? "rgba(255,255,255,0.72)" : "rgba(250,246,255,0.55)",
                     display: "flex",
                     alignItems: "center",
@@ -1393,7 +1744,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                           style={{
                             padding: "1px 7px",
                             borderRadius: "100px",
-                            background: "linear-gradient(135deg, #C89B6D, #D4B189)",
+                            background: "linear-gradient(135deg, #C8847C, #D8A09A)",
                             color: "#3A2010",
                             fontSize: "7.5px",
                             fontWeight: 700,
@@ -1434,8 +1785,8 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                 <div
                   style={{
                     padding: "0.7rem 1.3rem",
-                    background: "rgba(200,155,109,0.04)",
-                    borderTop: "1px solid rgba(200,155,109,0.10)",
+                    background: "rgba(200,132,124,0.04)",
+                    borderTop: "1px solid rgba(200,132,124,0.10)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -1448,7 +1799,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                       fontWeight: 600,
                       letterSpacing: "0.13em",
                       textTransform: "uppercase",
-                      color: "#C89B6D",
+                      color: "#C8847C",
                     }}
                   >
                     Finition {FINITIONS.find((f) => f.key === finition)?.label} × {finMult}
@@ -1457,7 +1808,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "9px",
-                      color: "#C89B6D",
+                      color: "#C8847C",
                       fontWeight: 700,
                     }}
                   >
@@ -1473,10 +1824,10 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                 borderRadius: "20px",
                 padding: "1.6rem 1.8rem",
                 background:
-                  "linear-gradient(135deg, rgba(200,155,109,0.18) 0%, rgba(200,155,109,0.13) 50%, rgba(228,200,120,0.18) 100%)",
-                border: "1px solid rgba(200,155,109,0.22)",
+                  "linear-gradient(135deg, rgba(200,132,124,0.18) 0%, rgba(200,132,124,0.13) 50%, rgba(228,200,120,0.18) 100%)",
+                border: "1px solid rgba(200,132,124,0.22)",
                 boxShadow:
-                  "0 10px 36px rgba(200,155,109,0.10), inset 0 1.5px 0 rgba(255,255,255,0.85)",
+                  "0 10px 36px rgba(200,132,124,0.10), inset 0 1.5px 0 rgba(255,255,255,0.85)",
                 marginBottom: "1.1rem",
                 display: "flex",
                 alignItems: "center",
@@ -1547,15 +1898,15 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   padding: "13px 20px",
                   borderRadius: "100px",
                   flexShrink: 0,
-                  background: "linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%)",
-                  color: "#3A2614",
+                  background: "linear-gradient(135deg, #FBDDD7 0%, #C8847C 100%)",
+                  color: "#4A2820",
                   fontFamily: "var(--font-display)",
                   fontSize: "9.5px",
                   letterSpacing: "0.14em",
                   fontWeight: 700,
                   textTransform: "uppercase",
                   textDecoration: "none",
-                  border: "1px solid #C89B6D",
+                  border: "1px solid #C8847C",
                   boxShadow:
                     "0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55)",
                   transition: "all 0.28s cubic-bezier(0.22,1,0.36,1)",
@@ -1563,17 +1914,17 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(-1px) scale(1.02)";
-                  el.style.background = "linear-gradient(135deg, #E6B4AE, #B0875A)";
+                  el.style.background = "linear-gradient(135deg, #E6B4AE, #A86660)";
                   el.style.color = "#FFFFFF";
-                  el.style.borderColor = "#B0875A";
-                  el.style.boxShadow = "0 12px 35px rgba(176,135,90,0.22)";
+                  el.style.borderColor = "#A86660";
+                  el.style.boxShadow = "0 12px 35px rgba(168,102,96,0.22)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(0) scale(1)";
-                  el.style.background = "linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%)";
-                  el.style.color = "#3A2614";
-                  el.style.borderColor = "#C89B6D";
+                  el.style.background = "linear-gradient(135deg, #FBDDD7 0%, #C8847C 100%)";
+                  el.style.color = "#4A2820";
+                  el.style.borderColor = "#C8847C";
                   el.style.boxShadow =
                     "0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55)";
                 }}
@@ -1593,7 +1944,7 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   padding: "10px 18px",
                   borderRadius: "100px",
                   background: "transparent",
-                  border: "1px solid rgba(200,155,109,0.18)",
+                  border: "1px solid rgba(200,132,124,0.18)",
                   color: "rgba(94,82,72,0.45)",
                   fontFamily: "var(--font-display)",
                   fontSize: "9.5px",
@@ -1604,11 +1955,11 @@ export function SimulateurModal({ open, onClose }: SimulateurModalProps) {
                   transition: "all 0.22s ease",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,155,109,0.38)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,132,124,0.38)";
                   (e.currentTarget as HTMLElement).style.color = "#5E5248";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,155,109,0.18)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,132,124,0.18)";
                   (e.currentTarget as HTMLElement).style.color = "rgba(94,82,72,0.45)";
                 }}
               >

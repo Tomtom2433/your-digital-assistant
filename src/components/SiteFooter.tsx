@@ -21,8 +21,8 @@ export function SiteFooter() {
     <footer
       style={{
         position: "relative",
-        background: "linear-gradient(160deg, #F1E4D3 0%, #E6CEB0 40%, #F1E4D3 70%, #E9DDD4 100%)",
-        color: "#D4B189",
+        background: "linear-gradient(160deg, #FBE6E0 0%, #F0CFC9 40%, #FBE6E0 70%, #F2E0DA 100%)",
+        color: "#D8A09A",
         overflow: "hidden",
         WebkitFontSmoothing: "antialiased",
       }}
@@ -50,7 +50,7 @@ export function SiteFooter() {
           width: "38%",
           height: "65%",
           background:
-            "radial-gradient(ellipse at 25% 75%, rgba(200,155,109,0.12) 0%, transparent 68%)",
+            "radial-gradient(ellipse at 25% 75%, rgba(200,132,124,0.12) 0%, transparent 68%)",
           filter: "blur(55px)",
           pointerEvents: "none",
           zIndex: 0,
@@ -78,7 +78,7 @@ export function SiteFooter() {
         style={{
           height: "1px",
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(200,155,109,0.35) 20%, rgba(200,155,109,0.55) 50%, rgba(200,155,109,0.35) 80%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, rgba(200,132,124,0.35) 20%, rgba(94,82,72,0.75) 50%, rgba(200,132,124,0.35) 80%, transparent 100%)",
         }}
       />
 
@@ -99,7 +99,7 @@ export function SiteFooter() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "clamp(20px,2.2vw,26px)",
-                  color: "#C89B6D",
+                  color: "#C8847C",
                   letterSpacing: "0.1em",
                   lineHeight: 1,
                   marginBottom: "1.1rem",
@@ -113,7 +113,7 @@ export function SiteFooter() {
                   fontFamily: "var(--font-serif)",
                   fontStyle: "italic",
                   fontSize: "clamp(13px,1.3vw,15px)",
-                  color: "rgba(200,155,109,0.65)",
+                  color: "#5E5248",
                   lineHeight: 1.68,
                   letterSpacing: "0.01em",
                   marginBottom: "1.6rem",
@@ -125,7 +125,7 @@ export function SiteFooter() {
                 style={{
                   height: "1px",
                   width: "42px",
-                  background: "linear-gradient(90deg, rgba(200,155,109,0.65), transparent)",
+                  background: "linear-gradient(90deg, #5E5248, transparent)",
                 }}
               />
             </div>
@@ -138,7 +138,7 @@ export function SiteFooter() {
                   fontSize: "9px",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase" as const,
-                  color: "rgba(200,155,109,0.70)",
+                  color: "rgba(94,82,72,0.85)",
                   marginBottom: "1.6rem",
                   fontWeight: 500,
                 }}
@@ -161,7 +161,7 @@ export function SiteFooter() {
                       to={l.to}
                       style={{
                         fontSize: "13px",
-                        color: "rgba(200,155,109,0.65)",
+                        color: "#5E5248",
                         textDecoration: "none",
                         fontFamily: "var(--font-sans)",
                         fontWeight: 400,
@@ -171,12 +171,12 @@ export function SiteFooter() {
                       }}
                       onMouseEnter={(e) => {
                         const el = e.currentTarget as HTMLElement;
-                        el.style.color = "#C89B6D";
+                        el.style.color = "#C8847C";
                         el.style.transform = "translateX(5px)";
                       }}
                       onMouseLeave={(e) => {
                         const el = e.currentTarget as HTMLElement;
-                        el.style.color = "rgba(200,155,109,0.65)";
+                        el.style.color = "#5E5248";
                         el.style.transform = "translateX(0)";
                       }}
                     >
@@ -196,7 +196,7 @@ export function SiteFooter() {
                     fontSize: "9px",
                     letterSpacing: "0.3em",
                     textTransform: "uppercase" as const,
-                    color: "rgba(200,155,109,0.70)",
+                    color: "rgba(94,82,72,0.85)",
                     marginBottom: "1.6rem",
                     fontWeight: 500,
                   }}
@@ -207,7 +207,7 @@ export function SiteFooter() {
                   <p
                     style={{
                       fontSize: "13px",
-                      color: "#C89B6D",
+                      color: "#C8847C",
                       fontFamily: "var(--font-sans)",
                       fontWeight: 500,
                       lineHeight: 1.5,
@@ -218,7 +218,7 @@ export function SiteFooter() {
                   <p
                     style={{
                       fontSize: "12.5px",
-                      color: "rgba(200,155,109,0.55)",
+                      color: "rgba(94,82,72,0.75)",
                       fontFamily: "var(--font-sans)",
                       fontStyle: "italic",
                       lineHeight: 1.65,
@@ -241,7 +241,7 @@ export function SiteFooter() {
                   gap: "8px",
                   padding: "11px 20px",
                   borderRadius: "100px",
-                  background: "linear-gradient(135deg, #C89B6D 0%, #D4B189 55%, #E6CEB0 100%)",
+                  background: "linear-gradient(135deg, #C8847C 0%, #D8A09A 55%, #F0CFC9 100%)",
                   color: "#F7F2EE",
                   fontFamily: "var(--font-display)",
                   fontSize: "10px",
@@ -252,8 +252,8 @@ export function SiteFooter() {
                   border: "none",
                   boxShadow: [
                     "0 1px 3px rgba(0,0,0,0.04)",
-                    "0 4px 16px rgba(200,155,109,0.28)",
-                    "0 12px 32px rgba(200,155,109,0.16)",
+                    "0 4px 16px rgba(200,132,124,0.28)",
+                    "0 12px 32px rgba(200,132,124,0.16)",
                     "inset 0 1px 0 rgba(255,255,255,0.45)",
                   ].join(", "),
                   transition: "all 0.7s cubic-bezier(0.22,1,0.36,1)",
@@ -265,24 +265,24 @@ export function SiteFooter() {
                   el.style.transform = "translateY(-2px) scale(1.02)";
                   el.style.boxShadow = [
                     "0 2px 6px rgba(0,0,0,0.06)",
-                    "0 8px 28px rgba(200,155,109,0.38)",
-                    "0 20px 44px rgba(200,155,109,0.20)",
+                    "0 8px 28px rgba(200,132,124,0.38)",
+                    "0 20px 44px rgba(200,132,124,0.20)",
                     "inset 0 1px 0 rgba(255,255,255,0.45)",
                   ].join(", ");
                   el.style.background =
-                    "linear-gradient(135deg, #D4B189 0%, #C89B6D 55%, #D4B189 100%)";
+                    "linear-gradient(135deg, #D8A09A 0%, #C8847C 55%, #D8A09A 100%)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = "translateY(0) scale(1)";
                   el.style.boxShadow = [
                     "0 1px 3px rgba(0,0,0,0.04)",
-                    "0 4px 16px rgba(200,155,109,0.28)",
-                    "0 12px 32px rgba(200,155,109,0.16)",
+                    "0 4px 16px rgba(200,132,124,0.28)",
+                    "0 12px 32px rgba(200,132,124,0.16)",
                     "inset 0 1px 0 rgba(255,255,255,0.45)",
                   ].join(", ");
                   el.style.background =
-                    "linear-gradient(135deg, #C89B6D 0%, #D4B189 55%, #E6CEB0 100%)";
+                    "linear-gradient(135deg, #C8847C 0%, #D8A09A 55%, #F0CFC9 100%)";
                 }}
               >
                 Démarrer un projet <ArrowRight size={11} />
@@ -298,7 +298,7 @@ export function SiteFooter() {
           style={{
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(200,155,109,0.30) 20%, rgba(200,155,109,0.45) 50%, rgba(200,155,109,0.30) 80%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(200,132,124,0.30) 20%, rgba(200,132,124,0.45) 50%, rgba(200,132,124,0.30) 80%, transparent 100%)",
           }}
         />
       </div>
@@ -309,7 +309,7 @@ export function SiteFooter() {
           <p
             style={{
               fontSize: "10.5px",
-              color: "rgba(200,155,109,0.45)",
+              color: "rgba(200,132,124,0.45)",
               fontFamily: "var(--font-sans)",
               letterSpacing: "0.025em",
             }}
@@ -332,24 +332,24 @@ export function SiteFooter() {
                 hash={l.hash}
                 style={{
                   fontSize: "10.5px",
-                  color: "rgba(200,155,109,0.45)",
+                  color: "rgba(200,132,124,0.45)",
                   textDecoration: "none",
                   fontFamily: "var(--font-sans)",
                   letterSpacing: "0.025em",
                   transition: "color 0.4s cubic-bezier(0.22,1,0.36,1)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = "rgba(200,155,109,0.85)";
+                  (e.currentTarget as HTMLElement).style.color = "rgba(200,132,124,0.85)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = "rgba(200,155,109,0.45)";
+                  (e.currentTarget as HTMLElement).style.color = "rgba(200,132,124,0.45)";
                 }}
               >
                 {l.label}
               </Link>
             ))}
 
-            <span style={{ color: "rgba(200,155,109,0.25)", fontSize: "10px" }}>|</span>
+            <span style={{ color: "rgba(200,132,124,0.25)", fontSize: "10px" }}>|</span>
 
             <button
               type="button"
@@ -360,16 +360,16 @@ export function SiteFooter() {
                 cursor: "pointer",
                 padding: 0,
                 fontSize: "10.5px",
-                color: "rgba(200,155,109,0.45)",
+                color: "rgba(200,132,124,0.45)",
                 fontFamily: "var(--font-sans)",
                 letterSpacing: "0.025em",
                 transition: "color 0.4s cubic-bezier(0.22,1,0.36,1)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "rgba(200,155,109,0.85)";
+                (e.currentTarget as HTMLElement).style.color = "rgba(200,132,124,0.85)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "rgba(200,155,109,0.45)";
+                (e.currentTarget as HTMLElement).style.color = "rgba(200,132,124,0.45)";
               }}
             >
               🍪 Gérer mes cookies
