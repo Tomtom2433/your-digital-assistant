@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SimulateurRouteImport } from './routes/simulateur'
 import { Route as PrestationsRouteImport } from './routes/prestations'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as InspirationsRouteImport } from './routes/inspirations'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AProposRouteImport } from './routes/a-propos'
@@ -36,6 +37,11 @@ const PrestationsRoute = PrestationsRouteImport.update({
 const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
   id: '/mentions-legales',
   path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InspirationsRoute = InspirationsRouteImport.update({
+  id: '/inspirations',
+  path: '/inspirations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/inspirations': typeof InspirationsRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/inspirations': typeof InspirationsRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/inspirations': typeof InspirationsRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/prestations': typeof PrestationsRoute
   '/simulateur': typeof SimulateurRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/contact'
     | '/faq'
+    | '/inspirations'
     | '/mentions-legales'
     | '/prestations'
     | '/simulateur'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/contact'
     | '/faq'
+    | '/inspirations'
     | '/mentions-legales'
     | '/prestations'
     | '/simulateur'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/contact'
     | '/faq'
+    | '/inspirations'
     | '/mentions-legales'
     | '/prestations'
     | '/simulateur'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  InspirationsRoute: typeof InspirationsRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   PrestationsRoute: typeof PrestationsRoute
   SimulateurRoute: typeof SimulateurRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/mentions-legales'
       fullPath: '/mentions-legales'
       preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inspirations': {
+      id: '/inspirations'
+      path: '/inspirations'
+      fullPath: '/inspirations'
+      preLoaderRoute: typeof InspirationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  InspirationsRoute: InspirationsRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   PrestationsRoute: PrestationsRoute,
   SimulateurRoute: SimulateurRoute,
@@ -208,3 +229,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
