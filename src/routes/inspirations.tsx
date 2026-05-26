@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 export const Route = createFileRoute("/inspirations")({
   head: () => ({
     meta: [
-      { title: "Inspirations — MELIYA" },
+      { title: "Inspirations MELIYA" },
       { name: "description", content: "Découvrez les inspirations et réalisations de MELIYA." },
     ],
   }),
@@ -29,7 +29,8 @@ function Inspirations() {
           className="serif italic mt-6"
           style={{ fontSize: "18px", color: "#6B4A7E", opacity: 0.7 }}
         >
-          Cette page est en cours de création.<br />
+          Cette page est en cours de création.
+          <br />
           Revenez bientôt pour découvrir les réalisations.
         </p>
       </div>

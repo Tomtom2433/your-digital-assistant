@@ -1,45 +1,47 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Sparkles, Menu, X } from "lucide-react";
+import { MoreVertical, X, ArrowRight } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { SimulateurModal } from "@/components/SimulateurModal";
 import { useState, useEffect } from "react";
 
+/* ─── Charte MELIYA ────────────────────────────────────────────
+ Champagne Gold #C89B6D CTA / contours premium
+ Rose Gold #E6B4AE Accueil actif + accents
+ Taupe Luxe #5E5248 Textes nav
+ Ivoire Premium #F7F2EE Fond
+─────────────────────────────────────────────────────────────── */
 
 const navItems = [
+  { to: "/a-propos", label: "Qui est Méliya" },
   { to: "/prestations", label: "Mes prestations" },
-  { to: "/a-propos",    label: "Qui est Meliya ?" },
-  { to: "/contact",     label: "Contact" },
-  { to: "/faq",         label: "FAQ" },
+  { to: "/faq", label: "FAQ" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [simulOpen,  setSimulOpen]  = useState(false);
-  const [scrolled,   setScrolled]   = useState(false);
-  const [hidden,     setHidden]     = useState(false);
-  const [isDark,     setIsDark]     = useState(false);
-  const [btnHovered,  setBtnHovered]  = useState(false);
+  const [simulOpen, setSimulOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const [ctaHovered, setCtaHovered] = useState(false);
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
+  const isHome = currentPath === "/";
 
   useEffect(() => {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 40);
-      /* Cache vers le bas, réapparaît vers le haut */
-      if (y > lastY && y > 80) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
+      if (y > lastY && y > 80) setHidden(true);
+      else setHidden(false);
       lastY = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* Sync dark mode — lecture immédiate + MutationObserver */
   useEffect(() => {
     const html = document.documentElement;
     setIsDark(html.classList.contains("dark"));
@@ -48,34 +50,28 @@ export function SiteHeader() {
     return () => obs.disconnect();
   }, []);
 
-  /* ── Navbar : quasi-transparente à tout moment ──────────────────────
-     On n'affiche JAMAIS un fond opaque blanc/crème.
-     Au scroll, on ajoute seulement un très léger flou backdrop + une
-     micro-bordure champagne pour signaler le "niveau" visuellement.
-  ─────────────────────────────────────────────────────────────────── */
   const navBg = scrolled
     ? isDark
       ? "rgba(26, 22, 16, 0.82)"
-      : "rgba(246, 240, 236, 0.88)"
+      : "rgba(247, 242, 238, 0.88)"
     : "transparent";
-
-  const navBackdrop   = scrolled ? "blur(24px) saturate(1.1)" : "none";
-  const navBorderBot  = scrolled
-    ? isDark
-      ? "0.5px solid rgba(197,163,116,0.18)"
-      : "0.5px solid rgba(197,163,116,0.22)"
-    : "none";
-  const navShadow     = scrolled
+  const navBackdrop = scrolled ? "blur(24px) saturate(1.05)" : "none";
+  const navBorderBot = scrolled ? "0.5px solid rgba(200,155,109,0.18)" : "none";
+  const navShadow = scrolled
     ? isDark
       ? "0 2px 32px rgba(0,0,0,0.45)"
-      : "0 2px 24px rgba(197,163,116,0.10)"
+      : "0 2px 24px rgba(200,155,109,0.08)"
     : "none";
 
-  /* ── Simulateur — signature gold ── */
-  const simBg        = "linear-gradient(135deg, #C5A374 0%, #D9BF9A 50%, #EFDBC3 100%)";
-  const simBgHover   = "linear-gradient(135deg, #D9BF9A 0%, #C5A374 55%, #D9BF9A 100%)";
-  const simShadow    = "0 8px 28px rgba(197,163,116,0.28), 0 2px 8px rgba(197,163,116,0.14), inset 0 0.5px 0 rgba(255,255,255,0.50)";
-  const simShadowHov = "0 14px 38px rgba(197,163,116,0.38), 0 4px 12px rgba(197,163,116,0.18), inset 0 0.5px 0 rgba(255,255,255,0.45)";
+  /* ── CTA : pill contour fin Champagne Gold → fond Rose Gold/Champagne au hover ── */
+  const ctaBorder = ctaHovered ? "1px solid #E6B4AE" : "1px solid #C89B6D";
+  const ctaBg = ctaHovered
+    ? "linear-gradient(135deg, rgba(230,180,174,0.14), rgba(200,155,109,0.10))"
+    : "transparent";
+  const ctaColor = ctaHovered ? "#E6B4AE" : "#C89B6D";
+  const ctaShadow = ctaHovered
+    ? "0 10px 28px rgba(230,180,174,0.25), 0 3px 10px rgba(200,155,109,0.14)"
+    : "0 4px 14px rgba(200,155,109,0.10)";
 
   return (
     <header
@@ -103,22 +99,64 @@ export function SiteHeader() {
       }}
     >
       <div
-        className="max-w-7xl mx-auto px-8 sm:px-12"
+        className="max-w-[1480px] mx-auto px-6 sm:px-10"
         style={{
-          height: "72px",
+          minHeight: "84px",
           display: "flex",
           alignItems: "center",
           gap: "0",
           overflow: "visible",
         }}
       >
+        {/* ─── GAUCHE : ACCUEIL (Rose Gold + ornement ✦ actif) ─── */}
+        <Link
+          to="/"
+          style={{
+            position: "relative",
+            display: "inline-flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "7px",
+            padding: "10px 6px 8px",
+            color: isHome ? "#E6B4AE" : "#5E5248",
+            fontFamily: "var(--font-display)",
+            fontSize: "14px",
+            letterSpacing: "0.26em",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            textDecoration: "none",
+            whiteSpace: "nowrap",
+            transition: "color 0.50s cubic-bezier(0.22,1,0.36,1)",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.color = "#E6B4AE";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.color = isHome ? "#E6B4AE" : "#5E5248";
+          }}
+        >
+          Accueil
+          {/* Ornement ✦ visible uniquement sur la home (actif) */}
+          {isHome && (
+            <span
+              aria-hidden
+              style={{
+                fontSize: "11px",
+                color: "#E6B4AE",
+                letterSpacing: "0",
+                lineHeight: 1,
+                transform: "translateY(-2px)",
+              }}
+            >
+              ✦
+            </span>
+          )}
+        </Link>
 
-        {/* Logo supprimé — le nom MELIYA est dans le hero */}
-
-        {/* ── Nav desktop ── */}
+        {/* ─── CENTRE : nav desktop ─── */}
         <nav
           className="hidden md:flex items-center flex-1 justify-center"
-          style={{ gap: "18px" }}
+          style={{ gap: "clamp(24px, 3.5vw, 64px)" }}
         >
           {navItems.map((item) => {
             const isActive = currentPath === item.to || currentPath.startsWith(item.to + "/");
@@ -130,13 +168,14 @@ export function SiteHeader() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  padding: "0.65rem 1.0rem",
-                  fontSize: "10.5px",
+                  padding: "10px 4px",
+                  fontSize: "11.5px",
                   fontFamily: "var(--font-display)",
-                  fontWeight: 600,
-                  letterSpacing: "0.13em",
+                  fontWeight: 500,
+                  letterSpacing: "0.24em",
                   textTransform: "uppercase",
                   whiteSpace: "nowrap",
+                  color: "#5E5248",
                 }}
               >
                 {item.label}
@@ -145,82 +184,92 @@ export function SiteHeader() {
           })}
         </nav>
 
-        {/* ── Droite : ThemeToggle + Simulateur ── */}
-        <div className="hidden md:flex items-center gap-4 shrink-0">
-          <ThemeToggle />
-
-          {/* Bouton Simulateur — sauge → champagne premium */}
+        {/* ─── DROITE : CTA + ThemeToggle vertical ─── */}
+        <div className="hidden md:flex items-center gap-5 shrink-0">
           <button
             type="button"
             onClick={() => setSimulOpen(true)}
+            onMouseEnter={() => setCtaHovered(true)}
+            onMouseLeave={() => setCtaHovered(false)}
             className="btn-simulateur"
             style={{
               position: "relative",
               display: "inline-flex",
               alignItems: "center",
-              gap: "7px",
-              padding: "10px 24px",
+              gap: "10px",
+              padding: "13px 28px",
               borderRadius: "100px",
-              background: btnHovered ? simBgHover : simBg,
-              color: "#F6F0EC",
-              fontSize: "10.5px",
+              background: ctaBg,
+              color: ctaColor,
+              fontSize: "11px",
               fontFamily: "var(--font-display)",
-              letterSpacing: "0.15em",
-              fontWeight: 700,
+              letterSpacing: "0.22em",
+              fontWeight: 600,
               textTransform: "uppercase",
-              border: "none",
+              border: ctaBorder,
               outline: "none",
               cursor: "pointer",
-              boxShadow: btnHovered ? simShadowHov : simShadow,
-              transform: btnHovered ? "translateY(-2px) scale(1.025)" : "translateY(0) scale(1)",
+              boxShadow: ctaShadow,
+              transform: ctaHovered ? "translateY(-2px)" : "translateY(0)",
               transition: [
-                "transform 0.40s cubic-bezier(0.16,1,0.3,1)",
-                "background 0.40s ease",
-                "box-shadow 0.40s ease",
-                "border-color 0.40s ease",
+                "transform 0.45s cubic-bezier(0.16,1,0.3,1)",
+                "background 0.50s ease",
+                "color 0.50s ease",
+                "border-color 0.50s ease",
+                "box-shadow 0.50s ease",
               ].join(", "),
             }}
-            onMouseEnter={() => setBtnHovered(true)}
-            onMouseLeave={() => setBtnHovered(false)}
           >
-            <Sparkles size={12} strokeWidth={2.1} />
-            Simulateur
+            Estimer mon projet
+            <ArrowRight size={14} strokeWidth={1.6} style={{ marginTop: "-1px" }} />
           </button>
+
+          <ThemeToggle orientation="vertical" />
         </div>
 
         <SimulateurModal open={simulOpen} onClose={() => setSimulOpen(false)} />
 
-        {/* ── Mobile burger ── */}
+        {/* ─── Mobile burger : 3 points verticaux ─── */}
         <button
-          className="md:hidden ml-auto p-2 rounded-xl"
+          className="md:hidden ml-auto p-2.5 rounded-full"
           style={{
-            color: isDark ? "#D9BF9A" : "#C5A374",
-            background: isDark ? "rgba(35,30,22,0.55)" : "rgba(224,207,183,0.30)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
+            color: isDark ? "#D4B189" : "#C89B6D",
+            background: "transparent",
             border: isDark
-              ? "0.5px solid rgba(197,163,116,0.25)"
-              : "0.5px solid #E0CFB7",
+              ? "0.5px solid rgba(200,155,109,0.25)"
+              : "0.5px solid rgba(200,155,109,0.30)",
             transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
           }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
+          onMouseEnter={(e) => {
+            const el = e.currentTarget as HTMLElement;
+            el.style.borderColor = "#E6B4AE";
+            el.style.color = "#E6B4AE";
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget as HTMLElement;
+            el.style.borderColor = isDark ? "rgba(200,155,109,0.25)" : "rgba(200,155,109,0.30)";
+            el.style.color = isDark ? "#D4B189" : "#C89B6D";
+          }}
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? (
+            <X size={18} strokeWidth={1.6} />
+          ) : (
+            <MoreVertical size={18} strokeWidth={1.8} />
+          )}
         </button>
       </div>
 
-      {/* ── Mobile menu ── */}
+      {/* ─── Mobile menu ─── */}
       {mobileOpen && (
         <div
           className="md:hidden px-6 pb-6 flex flex-col gap-2"
           style={{
             borderTop: isDark
-              ? "0.5px solid rgba(197,163,116,0.16)"
-              : "0.5px solid #E0CFB7",
-            background: isDark
-              ? "rgba(26, 22, 16, 0.97)"
-              : "rgba(246, 240, 236, 0.97)",
+              ? "0.5px solid rgba(200,155,109,0.16)"
+              : "0.5px solid rgba(200,155,109,0.20)",
+            background: isDark ? "rgba(26, 22, 16, 0.97)" : "rgba(247, 242, 238, 0.97)",
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
           }}
@@ -240,28 +289,13 @@ export function SiteHeader() {
                   borderRadius: "100px",
                   fontSize: "11px",
                   fontFamily: "var(--font-display)",
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
+                  fontWeight: 500,
+                  letterSpacing: "0.22em",
                   textTransform: "uppercase",
-                  background: isDark
-                    ? isActive ? "rgba(197,163,116,0.14)" : "rgba(35,30,22,0.55)"
-                    : isActive ? "rgba(197,163,116,0.12)" : "rgba(224,207,183,0.20)",
-                  color: isDark
-                    ? isActive ? "#EFDBC3" : "rgba(217,191,154,0.80)"
-                    : isActive ? "#D9BF9A" : "#C5A374",
+                  background: isActive ? "rgba(94,82,72,0.06)" : "transparent",
+                  color: "#5E5248",
                   textDecoration: "none",
-                  border: isDark
-                    ? isActive
-                      ? "0.5px solid rgba(197,163,116,0.45)"
-                      : "0.5px solid rgba(197,163,116,0.22)"
-                    : isActive
-                      ? "0.5px solid #D9BF9A"
-                      : "0.5px solid #E0CFB7",
-                  boxShadow: isActive
-                    ? isDark
-                      ? "0 2px 14px rgba(197,163,116,0.14)"
-                      : "0 2px 14px rgba(197,163,116,0.12)"
-                    : "none",
+                  border: isActive ? "0.5px solid #C89B6D" : "0.5px solid rgba(200,155,109,0.20)",
                   transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
                 }}
               >
@@ -270,30 +304,33 @@ export function SiteHeader() {
             );
           })}
 
-          {/* Simulateur mobile */}
           <button
             type="button"
-            onClick={() => { setMobileOpen(false); setSimulOpen(true); }}
+            onClick={() => {
+              setMobileOpen(false);
+              setSimulOpen(true);
+            }}
             style={{
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "7px",
-              padding: "12px 24px",
+              gap: "10px",
+              padding: "13px 26px",
               borderRadius: "100px",
-              background: simBg,
-              color: "#F6F0EC",
+              background: "transparent",
+              color: "#C89B6D",
               fontSize: "11px",
               fontFamily: "var(--font-display)",
-              letterSpacing: "0.13em",
-              fontWeight: 700,
+              letterSpacing: "0.22em",
+              fontWeight: 600,
               textTransform: "uppercase",
-              border: "none",
+              border: "1px solid #C89B6D",
               cursor: "pointer",
-              boxShadow: simShadow,
+              marginTop: "10px",
             }}
           >
-            <Sparkles size={12} strokeWidth={2.1} /> Simulateur
+            Estimer mon projet
+            <ArrowRight size={14} strokeWidth={1.6} />
           </button>
         </div>
       )}

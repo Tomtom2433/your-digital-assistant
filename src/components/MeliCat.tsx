@@ -16,8 +16,8 @@ interface Message {
 }
 
 /* ─────────────────────────────────────────────
-   MOTEUR CONVERSATIONNEL PREMIUM
-   Mémoire de contexte + détection d'intention
+ MOTEUR CONVERSATIONNEL PREMIUM
+ Mémoire de contexte + détection d'intention
 ───────────────────────────────────────────── */
 
 type ServiceType = "slides" | "documents" | "pack" | "surmesure";
@@ -32,13 +32,29 @@ function norm(s: string): string {
 }
 
 function detectService(t: string): ServiceType | null {
-  if (t.match(/\bslide|presentat|pitch\b|powerpoint|pptx|\bppt\b|canva|support.*client|deck|formation.*support|support.*form/))
+  if (
+    t.match(
+      /\bslide|presentat|pitch\b|powerpoint|pptx|\bppt\b|canva|support.*client|deck|formation.*support|support.*form/,
+    )
+  )
     return "slides";
-  if (t.match(/\bdocument|rapport|ebook|e.book|livre.*digit|guide\b|dossier|fiche|bilan|livret|brochure/))
+  if (
+    t.match(
+      /\bdocument|rapport|ebook|e.book|livre.*digit|guide\b|dossier|fiche|bilan|livret|brochure/,
+    )
+  )
     return "documents";
-  if (t.match(/\bpack\b|pack.up|logo\b|charte|identit|carte.*visite|branding|palette.*coul|graphi.*visuel/))
+  if (
+    t.match(
+      /\bpack\b|pack.up|logo\b|charte|identit|carte.*visite|branding|palette.*coul|graphi.*visuel/,
+    )
+  )
     return "pack";
-  if (t.match(/sur.mesure|sur mesure|horaire|accompagn|personnalis|specifique|coaching|formation.*perso/))
+  if (
+    t.match(
+      /sur.mesure|sur mesure|horaire|accompagn|personnalis|specifique|coaching|formation.*perso/,
+    )
+  )
     return "surmesure";
   return null;
 }
@@ -57,7 +73,7 @@ const QUICK_REPLY_RESPONSES: Record<string, BotResponse> = {
       { label: "Refonte" },
     ],
   },
-  "Prestations": {
+  Prestations: {
     text: "MELIYA propose plusieurs types de créations :\n\n**Slides sur mesure**\nPrésentations professionnelles, commerciales ou supports de formation.\n\n**Pages sur mesure**\nRapports, ebooks, dossiers, livrets ou documents premium.\n\n**Pack identité visuelle**\nLogo, palette couleurs, mini charte, modèles et supports.\n\n**Refonte d'un document existant**\nTransformation visuelle d'un support déjà existant.",
     newCtx: { service: null, lastTopic: "prestations" },
     quickReplies: [
@@ -68,7 +84,7 @@ const QUICK_REPLY_RESPONSES: Record<string, BotResponse> = {
     ],
   },
   "Délais & accompagnement": {
-    text: "**Délais moyens :**\n\n**Slides sur mesure**\n• 1 à 5 slides — 2 à 4 jours ouvrés\n• 10 à 19 slides — 5 à 8 jours ouvrés\n• 20 slides et + — planning personnalisé\n\n**Documents sur mesure**\n• 1 à 10 pages — 3 à 5 jours ouvrés\n• 10 à 20 pages — 5 à 8 jours ouvrés\n• 20 pages et + — planning personnalisé\n\n**Pack identité visuelle**\n• 7 à 14 jours ouvrés\n\nLes délais varient selon la complexité du projet et les retours.",
+    text: "**Délais moyens :**\n\n**Slides sur mesure**\n• 1 à 5 slides 2 à 4 jours ouvrés\n• 10 à 19 slides 5 à 8 jours ouvrés\n• 20 slides et + planning personnalisé\n\n**Documents sur mesure**\n• 1 à 10 pages 3 à 5 jours ouvrés\n• 10 à 20 pages 5 à 8 jours ouvrés\n• 20 pages et + planning personnalisé\n\n**Pack identité visuelle**\n• 7 à 14 jours ouvrés\n\nLes délais varient selon la complexité du projet et les retours.",
     newCtx: { service: null, lastTopic: "tarifs" },
     quickReplies: [
       { label: "Demander un devis", type: "link", to: "/contact" },
@@ -76,7 +92,7 @@ const QUICK_REPLY_RESPONSES: Record<string, BotResponse> = {
     ],
   },
   "Tarifs & délais": {
-    text: "**Slides sur mesure**\n• 30€ / slide\n• 10 à 19 slides — remise -10%\n• 20 à 29 slides — remise -15%\n\n**Pages sur mesure**\n• 25€ / page\n• 10 à 19 pages — remise -10%\n• 20 à 29 pages — remise -15%\n\n**Délais moyens :**\n\nSlides — 2 à 8 jours ouvrés selon le volume\nDocuments — 3 à 8 jours ouvrés selon le volume\nPack identité — 7 à 14 jours ouvrés",
+    text: "**Slides sur mesure**\n• 30€ / slide\n• 10 à 19 slides remise -10%\n• 20 à 29 slides remise -15%\n\n**Pages sur mesure**\n• 25€ / page\n• 10 à 19 pages remise -10%\n• 20 à 29 pages remise -15%\n\n**Délais moyens :**\n\nSlides 2 à 8 jours ouvrés selon le volume\nDocuments 3 à 8 jours ouvrés selon le volume\nPack identité 7 à 14 jours ouvrés",
     newCtx: { service: null, lastTopic: "tarifs" },
     quickReplies: [
       { label: "Simulateur tarifaire", type: "link", to: "/simulateur" },
@@ -86,12 +102,9 @@ const QUICK_REPLY_RESPONSES: Record<string, BotResponse> = {
   "Organisation & supports": {
     text: "Voici comment se déroule un projet :\n\n1. Échange sur votre besoin\n2. Validation du style et du contenu\n3. Création du support\n4. Ajustements et retouches\n5. Livraison finale\n\n**3 retouches incluses**\nLivraison en formats adaptés\nValidation avant finalisation",
     newCtx: { service: null, lastTopic: "fonctionnement" },
-    quickReplies: [
-      { label: "Quels formats ?" },
-      { label: "Quels délais ?" },
-    ],
+    quickReplies: [{ label: "Quels formats ?" }, { label: "Quels délais ?" }],
   },
-  "Fonctionnement": {
+  Fonctionnement: {
     text: "Voici comment se déroule un projet :\n\n1. Échange sur votre besoin\n2. Validation du style et du contenu\n3. Création du support\n4. Ajustements et retouches\n5. Livraison finale\n\n**3 retouches incluses**\nLivraison en formats adaptés\nValidation avant finalisation",
     newCtx: { service: null, lastTopic: "fonctionnement" },
     quickReplies: [
@@ -109,56 +122,41 @@ const QUICK_REPLY_RESPONSES: Record<string, BotResponse> = {
       { label: "Décrire mon projet" },
     ],
   },
-  "Slides": {
-    text: "**Slides sur mesure** — la spécialité de Meliya.\n\nPrésentations qui captent l'attention dès la première slide :\n• Structure narrative soignée\n• Design épuré et impactant\n• Canva ou PowerPoint\n• Livraison PDF + fichier source\n\n**30€ / slide** — remises dès 10 slides\n2 à 8 jours ouvrés selon le volume",
+  Slides: {
+    text: "**Slides sur mesure** la spécialité de Meliya.\n\nPrésentations qui captent l'attention dès la première slide :\n• Structure narrative soignée\n• Design épuré et impactant\n• Canva ou PowerPoint\n• Livraison PDF + fichier source\n\n**30€ / slide** remises dès 10 slides\n2 à 8 jours ouvrés selon le volume",
     newCtx: { service: "slides", lastTopic: "slides" },
-    quickReplies: [
-      { label: "Tarifs & délais" },
-      { label: "Demander un devis" },
-    ],
+    quickReplies: [{ label: "Tarifs & délais" }, { label: "Demander un devis" }],
   },
-  "Documents": {
-    text: "**Documents sur mesure** — structure, soin et lisibilité.\n\n• Rapports et bilans professionnels\n• Ebooks et guides\n• Dossiers de présentation\n• PDF corporate\n\n**25€ / page** — remises dès 10 pages\n3 à 8 jours ouvrés selon le volume",
+  Documents: {
+    text: "**Documents sur mesure** structure, soin et lisibilité.\n\n• Rapports et bilans professionnels\n• Ebooks et guides\n• Dossiers de présentation\n• PDF corporate\n\n**25€ / page** remises dès 10 pages\n3 à 8 jours ouvrés selon le volume",
     newCtx: { service: "documents", lastTopic: "documents" },
-    quickReplies: [
-      { label: "Tarifs & délais" },
-      { label: "Demander un devis" },
-    ],
+    quickReplies: [{ label: "Tarifs & délais" }, { label: "Demander un devis" }],
   },
   "Identité visuelle": {
-    text: "**Pack identité visuelle** — une image pro complète et cohérente.\n\n• Logo sur mesure\n• Palette de couleurs personnalisée\n• Mini charte graphique\n• Modèles et supports de base\n\nTarif sur devis selon les éléments demandés\n7 à 14 jours ouvrés",
+    text: "**Pack identité visuelle** une image pro complète et cohérente.\n\n• Logo sur mesure\n• Palette de couleurs personnalisée\n• Mini charte graphique\n• Modèles et supports de base\n\nTarif sur devis selon les éléments demandés\n7 à 14 jours ouvrés",
     newCtx: { service: "pack", lastTopic: "pack" },
     quickReplies: [
       { label: "Demander un devis" },
       { label: "Contacter Meliya", type: "link", to: "/contact" },
     ],
   },
-  "Refonte": {
-    text: "**Refonte de document existant** — transformer un support déjà écrit en quelque chose de visuellement professionnel.\n\nVous avez le contenu — Meliya s'occupe de la forme.\n\n• Mise en page repensée\n• Cohérence visuelle\n• Format livrable adapté",
+  Refonte: {
+    text: "**Refonte de document existant** transformer un support déjà écrit en quelque chose de visuellement professionnel.\n\nVous avez le contenu Meliya s'occupe de la forme.\n\n• Mise en page repensée\n• Cohérence visuelle\n• Format livrable adapté",
     newCtx: { service: null, lastTopic: "refonte" },
-    quickReplies: [
-      { label: "Tarifs & délais" },
-      { label: "Demander un devis" },
-    ],
+    quickReplies: [{ label: "Tarifs & délais" }, { label: "Demander un devis" }],
   },
   "Combien de retouches ?": {
     text: "**3 séries de retouches** sont incluses dans chaque prestation.\n\nCela couvre les ajustements sur la mise en page, les couleurs, les textes et la structure.\n\nAu-delà, des retouches complémentaires sont possibles au tarif horaire.",
     newCtx: { service: null, lastTopic: "retouches" },
-    quickReplies: [
-      { label: "Quels formats ?" },
-      { label: "Quels délais ?" },
-    ],
+    quickReplies: [{ label: "Quels formats ?" }, { label: "Quels délais ?" }],
   },
   "Quels formats ?": {
-    text: "Les fichiers sont livrés en formats directement utilisables :\n\n• **Slides** — PDF + PPTX ou Canva\n• **Documents** — PDF + DOCX sur demande\n• **Pack identité** — tous fichiers sources (AI, PNG, PDF)\n\nVous précisez vos préférences dans le brief, Meliya s'adapte.",
+    text: "Les fichiers sont livrés en formats directement utilisables :\n\n• **Slides** PDF + PPTX ou Canva\n• **Documents** PDF + DOCX sur demande\n• **Pack identité** tous fichiers sources (AI, PNG, PDF)\n\nVous précisez vos préférences dans le brief, Meliya s'adapte.",
     newCtx: { service: null, lastTopic: "formats" },
-    quickReplies: [
-      { label: "Quels délais ?" },
-      { label: "Demander un devis" },
-    ],
+    quickReplies: [{ label: "Quels délais ?" }, { label: "Demander un devis" }],
   },
   "Quels délais ?": {
-    text: "**Délais moyens :**\n\nSlides sur mesure\n• 1 à 5 slides — 2 à 4 jours ouvrés\n• 10 à 19 slides — 5 à 8 jours ouvrés\n• 20 slides et + — planning personnalisé\n\nDocuments sur mesure\n• 1 à 10 pages — 3 à 5 jours ouvrés\n• 10 à 20 pages — 5 à 8 jours ouvrés\n\nPack identité visuelle\n• 7 à 14 jours ouvrés",
+    text: "**Délais moyens :**\n\nSlides sur mesure\n• 1 à 5 slides 2 à 4 jours ouvrés\n• 10 à 19 slides 5 à 8 jours ouvrés\n• 20 slides et + planning personnalisé\n\nDocuments sur mesure\n• 1 à 10 pages 3 à 5 jours ouvrés\n• 10 à 20 pages 5 à 8 jours ouvrés\n\nPack identité visuelle\n• 7 à 14 jours ouvrés",
     newCtx: { service: null, lastTopic: "delais" },
     quickReplies: [
       { label: "Demander un devis" },
@@ -170,18 +168,14 @@ const QUICK_REPLY_RESPONSES: Record<string, BotResponse> = {
     newCtx: { service: null, lastTopic: "projet" },
   },
   "Simulateur tarifaire": {
-    text: "Le simulateur vous donne une estimation instantanée selon le type de support et le volume.\n\nRendez-vous sur la page Simulateur — accessible depuis le menu de navigation.",
+    text: "Le simulateur vous donne une estimation instantanée selon le type de support et le volume.\n\nRendez-vous sur la page Simulateur accessible depuis le menu de navigation.",
     newCtx: { service: null, lastTopic: "simulateur" },
-    quickReplies: [
-      { label: "Simulateur", type: "link", to: "/simulateur" },
-    ],
+    quickReplies: [{ label: "Simulateur", type: "link", to: "/simulateur" }],
   },
   "Contacter Meliya": {
     text: "Vous pouvez contacter Meliya directement via la page Contact.\n\nElle répond sous **24h** et vous envoie un devis personnalisé gratuitement.",
     newCtx: { service: null, lastTopic: "contact" },
-    quickReplies: [
-      { label: "Page Contact", type: "link", to: "/contact" },
-    ],
+    quickReplies: [{ label: "Page Contact", type: "link", to: "/contact" }],
   },
 };
 
@@ -194,24 +188,32 @@ function getResponse(input: string, ctx: ConvCtx): BotResponse {
   const activeService: ServiceType | null = detectedService ?? ctx.service;
   const newCtx: ConvCtx = { service: activeService, lastTopic: ctx.lastTopic };
 
-  const wantsDelai    = /delai|livr|temps|rapide|vite|quand|combien.*temps|en combien|urgent|express/.test(t);
-  const wantsTarif    = /prix|tarif|cout|combien|budget|\beuro|\€|cher|gratuit|simulat/.test(t);
+  const wantsDelai =
+    /delai|livr|temps|rapide|vite|quand|combien.*temps|en combien|urgent|express/.test(t);
+  const wantsTarif = /prix|tarif|cout|combien|budget|\beuro|\€|cher|gratuit|simulat/.test(t);
   const wantsRetouche = /retouche|modif|correction|ajust|revision|reprend|chang/.test(t);
-  const wantsFormat   = /format|fichier|modifiable|editable|editer|source|pptx|docx|livr.*quoi|ce.*que.*tu.*livr/.test(t);
-  const wantsCanva    = /canva|powerpoint|google.*slide|keynote|outil|logiciel/.test(t);
-  const wantsUrgence  = /urgent|urgence|rapidement|vite\b|asap|express|demain|aujourd/.test(t);
-  const wantsContact  = /contact|joindre|mail|email|appel|telephone|message|repondr|devis|commande|rdv/.test(t);
-  const wantsAbout    = /qui.*meliya|c'est qui|qui est|a propos|qui.*toi|presentat.*toi|experience/.test(t);
-  const wantsRemote   = /distance|remote|enligne|en ligne|france|lieu|ou.*est|localisation|deplacement/.test(t);
-  const wantsConfid   = /confidential|secret|nda|discret|priv/.test(t);
-  const wantsSurMes   = /sur.mesure|personnalis|specifique|besoin.*particulier|accompagn/.test(t);
-  const wantsEbook    = /ebook|e.book|livre.*digit|livre.*num|guide.*telecharg/.test(t);
-  const wantsPitch    = /pitch|investor|investisseur|levee.*fond|startup|fundrais/.test(t);
-  const wantsIndep    = /independant|freelance|auto.entrepreneur|solopreneur|consultant|coach/.test(t);
-  const wantsPremium  = /premium|haut.*gamme|luxe|qualite.*pro|impression/.test(t);
-  const isGreeting    = /^(bonjour|salut|hello|coucou|hey|bonsoir|hi\b|slt|bjr)/.test(t.trim());
-  const isThanks      = /merci|super|parfait|genial|top\b|cool|nickel|bravo|excellent|impec/.test(t);
-  const wantsAll      = /toutes.*prestat|toutes.*offres|tout.*ce.*que|ce.*que.*vous.*faites|liste.*prestat/.test(t);
+  const wantsFormat =
+    /format|fichier|modifiable|editable|editer|source|pptx|docx|livr.*quoi|ce.*que.*tu.*livr/.test(
+      t,
+    );
+  const wantsCanva = /canva|powerpoint|google.*slide|keynote|outil|logiciel/.test(t);
+  const wantsUrgence = /urgent|urgence|rapidement|vite\b|asap|express|demain|aujourd/.test(t);
+  const wantsContact =
+    /contact|joindre|mail|email|appel|telephone|message|repondr|devis|commande|rdv/.test(t);
+  const wantsAbout =
+    /qui.*meliya|c'est qui|qui est|a propos|qui.*toi|presentat.*toi|experience/.test(t);
+  const wantsRemote =
+    /distance|remote|enligne|en ligne|france|lieu|ou.*est|localisation|deplacement/.test(t);
+  const wantsConfid = /confidential|secret|nda|discret|priv/.test(t);
+  const wantsSurMes = /sur.mesure|personnalis|specifique|besoin.*particulier|accompagn/.test(t);
+  const wantsEbook = /ebook|e.book|livre.*digit|livre.*num|guide.*telecharg/.test(t);
+  const wantsPitch = /pitch|investor|investisseur|levee.*fond|startup|fundrais/.test(t);
+  const wantsIndep = /independant|freelance|auto.entrepreneur|solopreneur|consultant|coach/.test(t);
+  const wantsPremium = /premium|haut.*gamme|luxe|qualite.*pro|impression/.test(t);
+  const isGreeting = /^(bonjour|salut|hello|coucou|hey|bonsoir|hi\b|slt|bjr)/.test(t.trim());
+  const isThanks = /merci|super|parfait|genial|top\b|cool|nickel|bravo|excellent|impec/.test(t);
+  const wantsAll =
+    /toutes.*prestat|toutes.*offres|tout.*ce.*que|ce.*que.*vous.*faites|liste.*prestat/.test(t);
 
   if (isGreeting && !detectedService && !wantsTarif && !wantsDelai)
     return {
@@ -238,25 +240,25 @@ function getResponse(input: string, ctx: ConvCtx): BotResponse {
 
   if (wantsRemote)
     return {
-      text: "Meliya travaille **100% à distance**.\n\nElle est basée en France et collabore avec ses clients entièrement en ligne — brief, échanges, livraison numérique.\n\nTout se passe de façon fluide et professionnelle, sans déplacement.",
+      text: "Meliya travaille **100% à distance**.\n\nElle est basée en France et collabore avec ses clients entièrement en ligne brief, échanges, livraison numérique.\n\nTout se passe de façon fluide et professionnelle, sans déplacement.",
       newCtx,
     };
 
   if (wantsConfid)
     return {
-      text: "La confidentialité est une priorité pour Meliya.\n\nVos contenus, données et projets restent strictement confidentiels. Elle travaille avec discrétion et professionnalisme — aucun projet n'est partagé ni utilisé sans accord explicite.\n\nUn NDA peut être établi sur demande.",
+      text: "La confidentialité est une priorité pour Meliya.\n\nVos contenus, données et projets restent strictement confidentiels. Elle travaille avec discrétion et professionnalisme aucun projet n'est partagé ni utilisé sans accord explicite.\n\nUn NDA peut être établi sur demande.",
       newCtx,
     };
 
   if (wantsIndep && !detectedService)
     return {
-      text: "Meliya travaille régulièrement avec des **indépendants, freelances et consultants**.\n\nSes créations sont particulièrement adaptées pour :\n• valoriser votre offre et votre expertise\n• impressionner vos clients dès la première slide\n• soigner votre image de professionnel\n\nQue vous ayez besoin d'une présentation client, d'un ebook ou d'une identité visuelle — elle s'adapte à votre budget et votre rythme.",
+      text: "Meliya travaille régulièrement avec des **indépendants, freelances et consultants**.\n\nSes créations sont particulièrement adaptées pour :\n• valoriser votre offre et votre expertise\n• impressionner vos clients dès la première slide\n• soigner votre image de professionnel\n\nQue vous ayez besoin d'une présentation client, d'un ebook ou d'une identité visuelle elle s'adapte à votre budget et votre rythme.",
       newCtx: { ...newCtx, lastTopic: "general" },
     };
 
   if (wantsPremium && !detectedService)
     return {
-      text: "C'est exactement la philosophie de Meliya — créer des supports qui **inspirent confiance** dès le premier regard.\n\nChaque création est pensée pour être :\n• esthétiquement soignée\n• professionnellement structurée\n• à votre image et cohérente\n\nLe niveau premium est la norme, pas l'exception.",
+      text: "C'est exactement la philosophie de Meliya créer des supports qui **inspirent confiance** dès le premier regard.\n\nChaque création est pensée pour être :\n• esthétiquement soignée\n• professionnellement structurée\n• à votre image et cohérente\n\nLe niveau premium est la norme, pas l'exception.",
       newCtx,
     };
 
@@ -268,7 +270,7 @@ function getResponse(input: string, ctx: ConvCtx): BotResponse {
 
   if (wantsEbook)
     return {
-      text: "Un ebook professionnel est tout à fait dans le domaine de Meliya.\n\nElle peut créer un ebook :\n• élégant, lisible et bien structuré\n• mis en page avec soin\n• livré en **PDF** prêt à diffuser\n\n**25€ / page** — packs dégressifs disponibles\nLivraison en 2 à 5 jours selon le volume",
+      text: "Un ebook professionnel est tout à fait dans le domaine de Meliya.\n\nElle peut créer un ebook :\n• élégant, lisible et bien structuré\n• mis en page avec soin\n• livré en **PDF** prêt à diffuser\n\n**25€ / page** packs dégressifs disponibles\nLivraison en 2 à 5 jours selon le volume",
       newCtx: { service: "documents", lastTopic: "documents" },
     };
 
@@ -280,7 +282,7 @@ function getResponse(input: string, ctx: ConvCtx): BotResponse {
 
   if (wantsUrgence && !detectedService)
     return {
-      text: "Pour les demandes urgentes, Meliya fait de son mieux selon ses disponibilités.\n\nEn général :\n• les projets simples peuvent être livrés en **48h**\n• les délais express sont possibles selon le planning\n\nLe mieux est de la contacter directement via la page Contact pour confirmer la faisabilité — elle répond sous 24h.",
+      text: "Pour les demandes urgentes, Meliya fait de son mieux selon ses disponibilités.\n\nEn général :\n• les projets simples peuvent être livrés en **48h**\n• les délais express sont possibles selon le planning\n\nLe mieux est de la contacter directement via la page Contact pour confirmer la faisabilité elle répond sous 24h.",
       newCtx: { ...newCtx, lastTopic: "urgence" },
     };
 
@@ -293,108 +295,150 @@ function getResponse(input: string, ctx: ConvCtx): BotResponse {
   if (wantsFormat) {
     let text = "";
     if (activeService === "slides")
-      text = "Pour les **slides**, les fichiers sont livrés en :\n• **PDF** — version finale de présentation\n• **PPTX** ou **Canva** — pour modification autonome\n\nVous précisez votre outil préféré dans le brief, Meliya s'adapte.";
+      text =
+        "Pour les **slides**, les fichiers sont livrés en :\n• **PDF** version finale de présentation\n• **PPTX** ou **Canva** pour modification autonome\n\nVous précisez votre outil préféré dans le brief, Meliya s'adapte.";
     else if (activeService === "documents")
-      text = "Pour les **documents**, les fichiers sont livrés en :\n• **PDF** — version finale prête à partager\n• **DOCX** sur demande — pour modifier le contenu vous-même";
+      text =
+        "Pour les **documents**, les fichiers sont livrés en :\n• **PDF** version finale prête à partager\n• **DOCX** sur demande pour modifier le contenu vous-même";
     else if (activeService === "pack")
-      text = "Pour le **Pack identité**, tous les fichiers sources sont livrés :\n• Logo en **AI**, **PNG** et **PDF**\n• Charte graphique en **PDF**\n• Carte de visite en fichier imprimable\n• Templates en format éditable";
+      text =
+        "Pour le **Pack identité**, tous les fichiers sources sont livrés :\n• Logo en **AI**, **PNG** et **PDF**\n• Charte graphique en **PDF**\n• Carte de visite en fichier imprimable\n• Templates en format éditable";
     else
-      text = "Les fichiers livrés par Meliya sont conçus pour être **directement utilisables**.\n\n• **Slides** — PDF + PPTX ou Canva\n• **Documents** — PDF + DOCX sur demande\n• **Pack identité** — tous fichiers sources (AI, PNG, PDF)";
+      text =
+        "Les fichiers livrés par Meliya sont conçus pour être **directement utilisables**.\n\n• **Slides** PDF + PPTX ou Canva\n• **Documents** PDF + DOCX sur demande\n• **Pack identité** tous fichiers sources (AI, PNG, PDF)";
     return { text, newCtx: { service: activeService, lastTopic: "formats" } };
   }
 
   if (wantsCanva)
     return {
-      text: "Meliya travaille sur **Canva et PowerPoint** selon votre préférence.\n\n• **Canva** — idéal pour modifier facilement vous-même\n• **PowerPoint (PPTX)** — parfait pour les environnements corporate\n\nVous indiquez votre outil de prédilection dans le brief.",
+      text: "Meliya travaille sur **Canva et PowerPoint** selon votre préférence.\n\n• **Canva** idéal pour modifier facilement vous-même\n• **PowerPoint (PPTX)** parfait pour les environnements corporate\n\nVous indiquez votre outil de prédilection dans le brief.",
       newCtx: { service: "slides", lastTopic: "canva" },
     };
 
   if (wantsDelai && !detectedService && activeService) {
     let text = "";
     if (activeService === "slides")
-      text = "Pour les **slides**, les délais sont :\n\n• Présentation simple (5-10 slides) — 2 à 3 jours\n• Présentation complète (10-20 slides) — 3 à 5 jours\n• Express selon disponibilités\n\nLe délai exact est précisé dans votre devis.";
+      text =
+        "Pour les **slides**, les délais sont :\n\n• Présentation simple (5-10 slides) 2 à 3 jours\n• Présentation complète (10-20 slides) 3 à 5 jours\n• Express selon disponibilités\n\nLe délai exact est précisé dans votre devis.";
     else if (activeService === "documents")
-      text = "Pour les **documents**, les délais dépendent du volume :\n\n• Document court (1-5 pages) — 48h à 3 jours\n• Document long (10+ pages) — 3 à 7 jours\n• Express selon disponibilités";
+      text =
+        "Pour les **documents**, les délais dépendent du volume :\n\n• Document court (1-5 pages) 48h à 3 jours\n• Document long (10+ pages) 3 à 7 jours\n• Express selon disponibilités";
     else if (activeService === "pack")
-      text = "Le **Pack identité** est un projet complet — comptez environ **10 jours ouvrés**.\n\nCe délai comprend le brief, la création, les ajustements et la livraison des fichiers sources.";
+      text =
+        "Le **Pack identité** est un projet complet comptez environ **10 jours ouvrés**.\n\nCe délai comprend le brief, la création, les ajustements et la livraison des fichiers sources.";
     else if (activeService === "surmesure")
-      text = "Pour les prestations **sur-mesure**, les délais sont définis ensemble selon votre projet.\n\nMeliya commence toujours par un échange pour comprendre vos besoins.";
+      text =
+        "Pour les prestations **sur-mesure**, les délais sont définis ensemble selon votre projet.\n\nMeliya commence toujours par un échange pour comprendre vos besoins.";
     return { text, newCtx: { service: activeService, lastTopic: "delais" } };
   }
 
   if (wantsTarif && !detectedService && activeService) {
     let text = "";
     if (activeService === "slides")
-      text = "Pour les **slides premium** :\n\n• **30€ / slide**\n• Remise -10% dès 15 slides\n• Remise -20% dès 30 slides\n\nLe tarif inclut structure, design, typographie et mise en page.";
+      text =
+        "Pour les **slides premium** :\n\n• **30€ / slide**\n• Remise -10% dès 15 slides\n• Remise -20% dès 30 slides\n\nLe tarif inclut structure, design, typographie et mise en page.";
     else if (activeService === "documents")
-      text = "Pour les **documents premium** :\n\n• **25€ / page**\n• Remise -10% dès 15 pages\n• Remise -20% dès 30 pages\n\nLe tarif inclut mise en page, hiérarchie visuelle et éléments graphiques.";
+      text =
+        "Pour les **documents premium** :\n\n• **25€ / page**\n• Remise -10% dès 15 pages\n• Remise -20% dès 30 pages\n\nLe tarif inclut mise en page, hiérarchie visuelle et éléments graphiques.";
     else if (activeService === "pack")
-      text = "Le **Pack identité** est à **579€**.\n\nTarif tout compris pour : logo, palette, mini charte, carte de visite et templates.";
+      text =
+        "Le **Pack identité** est à **579€**.\n\nTarif tout compris pour : logo, palette, mini charte, carte de visite et templates.";
     else if (activeService === "surmesure")
-      text = "Les prestations **sur-mesure** sont facturées **60€/h**.\n\nMeliya commence par un échange, puis propose un devis horaire estimatif.";
+      text =
+        "Les prestations **sur-mesure** sont facturées **60€/h**.\n\nMeliya commence par un échange, puis propose un devis horaire estimatif.";
     return { text, newCtx: { service: activeService, lastTopic: "tarifs" } };
   }
 
   if (activeService === "slides") {
     let text = "";
     if (wantsTarif)
-      text = "Pour les **slides premium** :\n\n• **30€ / slide**\n• Remise -10% dès 15 slides\n• Remise -20% dès 30 slides\n\nLivraison PDF + fichier source (Canva ou PPTX).";
+      text =
+        "Pour les **slides premium** :\n\n• **30€ / slide**\n• Remise -10% dès 15 slides\n• Remise -20% dès 30 slides\n\nLivraison PDF + fichier source (Canva ou PPTX).";
     else if (wantsDelai)
-      text = "Pour les **slides**, les délais sont :\n\n• Présentation simple (5-10 slides) — 2 à 3 jours\n• Présentation complète (10-20+ slides) — 3 à 5 jours\n• Express selon disponibilités";
+      text =
+        "Pour les **slides**, les délais sont :\n\n• Présentation simple (5-10 slides) 2 à 3 jours\n• Présentation complète (10-20+ slides) 3 à 5 jours\n• Express selon disponibilités";
     else
-      text = "Les **slides premium** de Meliya sont idéaux pour :\n• présentations clients percutantes\n• pitch decks structurés\n• formations et supports pédagogiques\n\nMeliya prend en charge structure, lisibilité et esthétique.\n\n**30€ / slide** — packs dégressifs disponibles\nLivraison en 2 à 5 jours";
-    return { text, newCtx: { service: "slides", lastTopic: wantsTarif ? "tarifs" : wantsDelai ? "delais" : "slides" } };
+      text =
+        "Les **slides premium** de Meliya sont idéaux pour :\n• présentations clients percutantes\n• pitch decks structurés\n• formations et supports pédagogiques\n\nMeliya prend en charge structure, lisibilité et esthétique.\n\n**30€ / slide** packs dégressifs disponibles\nLivraison en 2 à 5 jours";
+    return {
+      text,
+      newCtx: {
+        service: "slides",
+        lastTopic: wantsTarif ? "tarifs" : wantsDelai ? "delais" : "slides",
+      },
+    };
   }
 
   if (activeService === "documents") {
     let text = "";
     if (wantsTarif)
-      text = "Pour les **documents premium** :\n\n• **25€ / page**\n• Remise -10% dès 15 pages\n• Remise -20% dès 30 pages\n\nLivraison PDF + DOCX sur demande.";
+      text =
+        "Pour les **documents premium** :\n\n• **25€ / page**\n• Remise -10% dès 15 pages\n• Remise -20% dès 30 pages\n\nLivraison PDF + DOCX sur demande.";
     else if (wantsDelai)
-      text = "Pour les **documents**, le délai dépend du volume :\n\n• 1 à 5 pages — 48h à 3 jours\n• 10+ pages — 3 à 7 jours\n• Express selon disponibilités";
+      text =
+        "Pour les **documents**, le délai dépend du volume :\n\n• 1 à 5 pages 48h à 3 jours\n• 10+ pages 3 à 7 jours\n• Express selon disponibilités";
     else
-      text = "Les **documents premium** couvrent tout ce qui nécessite structure, soin et lisibilité :\n• rapports et bilans professionnels\n• ebooks et guides\n• dossiers de présentation\n• PDF corporate\n\n**25€ / page** — packs dégressifs disponibles\nLivraison en 2 à 5 jours";
-    return { text, newCtx: { service: "documents", lastTopic: wantsTarif ? "tarifs" : wantsDelai ? "delais" : "documents" } };
+      text =
+        "Les **documents premium** couvrent tout ce qui nécessite structure, soin et lisibilité :\n• rapports et bilans professionnels\n• ebooks et guides\n• dossiers de présentation\n• PDF corporate\n\n**25€ / page** packs dégressifs disponibles\nLivraison en 2 à 5 jours";
+    return {
+      text,
+      newCtx: {
+        service: "documents",
+        lastTopic: wantsTarif ? "tarifs" : wantsDelai ? "delais" : "documents",
+      },
+    };
   }
 
   if (activeService === "pack") {
     let text = "";
     if (wantsTarif)
-      text = "Le **Pack identité** est à **579€** — tout compris.\n\n• Logo sur mesure\n• Palette de couleurs personnalisée\n• Mini charte graphique\n• Carte de visite\n• Templates de base";
+      text =
+        "Le **Pack identité** est à **579€** tout compris.\n\n• Logo sur mesure\n• Palette de couleurs personnalisée\n• Mini charte graphique\n• Carte de visite\n• Templates de base";
     else if (wantsDelai)
-      text = "Le **Pack identité** est un projet complet — comptez environ **10 jours ouvrés**.\n\nCe délai comprend brief, création, ajustements et livraison des fichiers sources.";
+      text =
+        "Le **Pack identité** est un projet complet comptez environ **10 jours ouvrés**.\n\nCe délai comprend brief, création, ajustements et livraison des fichiers sources.";
     else
-      text = "Le **Pack identité** est une offre complète pour construire une image pro cohérente :\n\n• Logo sur mesure\n• Palette de couleurs personnalisée\n• Mini charte graphique\n• Carte de visite\n• Templates de base\n\n**579€** — tout compris\nLivraison en ~10 jours ouvrés";
-    return { text, newCtx: { service: "pack", lastTopic: wantsTarif ? "tarifs" : wantsDelai ? "delais" : "pack" } };
+      text =
+        "Le **Pack identité** est une offre complète pour construire une image pro cohérente :\n\n• Logo sur mesure\n• Palette de couleurs personnalisée\n• Mini charte graphique\n• Carte de visite\n• Templates de base\n\n**579€** tout compris\nLivraison en ~10 jours ouvrés";
+    return {
+      text,
+      newCtx: {
+        service: "pack",
+        lastTopic: wantsTarif ? "tarifs" : wantsDelai ? "delais" : "pack",
+      },
+    };
   }
 
   if (activeService === "surmesure" || wantsSurMes) {
     let text = "";
     if (wantsTarif)
-      text = "Les prestations **sur-mesure** sont facturées **60€/h**.\n\nMeliya commence par un échange pour comprendre votre projet, puis propose un devis horaire estimatif.";
+      text =
+        "Les prestations **sur-mesure** sont facturées **60€/h**.\n\nMeliya commence par un échange pour comprendre votre projet, puis propose un devis horaire estimatif.";
     else
-      text = "Les prestations **sur-mesure** sont pour les projets qui nécessitent un accompagnement personnalisé :\n\n• Projets complexes ou atypiques\n• Accompagnement de A à Z\n• Formation ou coaching\n• Projets multi-supports\n\n**60€/h** — devis estimatif gratuit";
-    return { text, newCtx: { service: "surmesure", lastTopic: wantsTarif ? "tarifs" : "surmesure" } };
+      text =
+        "Les prestations **sur-mesure** sont pour les projets qui nécessitent un accompagnement personnalisé :\n\n• Projets complexes ou atypiques\n• Accompagnement de A à Z\n• Formation ou coaching\n• Projets multi-supports\n\n**60€/h** devis estimatif gratuit";
+    return {
+      text,
+      newCtx: { service: "surmesure", lastTopic: wantsTarif ? "tarifs" : "surmesure" },
+    };
   }
 
   if (wantsTarif)
     return {
-      text: "Aperçu des tarifs :\n\n• **Slides** — 30€ / slide\n• **Documents** — 25€ / page\n• **Pack identité** — 579€\n• **Sur-mesure** — 60€/h\n\nRemises dégressives sur slides et documents :\n→ -10% dès 15 unités\n→ -20% dès 30 unités\n\nLe Simulateur vous donne une estimation en quelques secondes.",
+      text: "Aperçu des tarifs :\n\n• **Slides** 30€ / slide\n• **Documents** 25€ / page\n• **Pack identité** 579€\n• **Sur-mesure** 60€/h\n\nRemises dégressives sur slides et documents :\n→ -10% dès 15 unités\n→ -20% dès 30 unités\n\nLe Simulateur vous donne une estimation en quelques secondes.",
       newCtx: { ...newCtx, lastTopic: "tarifs" },
-      quickReplies: [
-        { label: "Simulateur tarifaire", type: "link", to: "/simulateur" },
-      ],
+      quickReplies: [{ label: "Simulateur tarifaire", type: "link", to: "/simulateur" }],
     };
 
   if (wantsDelai)
     return {
-      text: "Les délais varient selon la prestation :\n\n• **Slides** — 2 à 5 jours\n• **Documents** — 48h à 7 jours\n• **Pack identité** — ~10 jours ouvrés\n• **Sur-mesure** — délai défini ensemble\n\nPour les projets urgents, Meliya fait de son mieux selon ses disponibilités.",
+      text: "Les délais varient selon la prestation :\n\n• **Slides** 2 à 5 jours\n• **Documents** 48h à 7 jours\n• **Pack identité** ~10 jours ouvrés\n• **Sur-mesure** délai défini ensemble\n\nPour les projets urgents, Meliya fait de son mieux selon ses disponibilités.",
       newCtx: { ...newCtx, lastTopic: "delais" },
     };
 
   if (wantsContact)
     return {
-      text: "Pour contacter Meliya directement :\n\nRendez-vous sur la page **Contact** — elle répond sous **24h** et vous envoie un devis personnalisé gratuitement.\n\nVous pouvez aussi utiliser le **Simulateur** pour une estimation instantanée.",
+      text: "Pour contacter Meliya directement :\n\nRendez-vous sur la page **Contact** elle répond sous **24h** et vous envoie un devis personnalisé gratuitement.\n\nVous pouvez aussi utiliser le **Simulateur** pour une estimation instantanée.",
       newCtx: { ...newCtx, lastTopic: "contact" },
       quickReplies: [
         { label: "Contacter Meliya", type: "link", to: "/contact" },
@@ -499,12 +543,18 @@ export function MeliCat() {
       setTyping(false);
       const { text: responseText, newCtx, quickReplies } = getResponse(text, currentCtx);
       setConvCtx(newCtx);
-      setMessages((prev) => [...prev, { id: Date.now() + 1, from: "bot", text: responseText, quickReplies }]);
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now() + 1, from: "bot", text: responseText, quickReplies },
+      ]);
     }, delay);
   }
 
   function handleKey(e: React.KeyboardEvent) {
-    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(input); }
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(input);
+    }
   }
 
   function formatText(text: string) {
@@ -512,9 +562,15 @@ export function MeliCat() {
       const parts = line.split(/\*\*(.+?)\*\*/g);
       return (
         <span key={i}>
-          {parts.map((p, j) => j % 2 === 1
-            ? <strong key={j} style={{ fontWeight: 500, letterSpacing: "0.01em" }}>{p}</strong>
-            : p)}
+          {parts.map((p, j) =>
+            j % 2 === 1 ? (
+              <strong key={j} style={{ fontWeight: 500, letterSpacing: "0.01em" }}>
+                {p}
+              </strong>
+            ) : (
+              p
+            ),
+          )}
           {i < arr.length - 1 && <br />}
         </span>
       );
@@ -525,7 +581,9 @@ export function MeliCat() {
 
   /* Quick reply item shared style */
   const qrBaseStyle: React.CSSProperties = {
-    display: "flex", alignItems: "center", justifyContent: "space-between",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     padding: "10px 16px",
     background: "transparent",
     border: "0.5px solid rgba(201,169,110,0.28)",
@@ -535,7 +593,7 @@ export function MeliCat() {
     fontWeight: 300,
     letterSpacing: "0.1em",
     textTransform: "uppercase" as const,
-    color: "#8C6A43",
+    color: "#5E5248",
     cursor: "pointer",
     textAlign: "left" as const,
     textDecoration: "none",
@@ -555,78 +613,94 @@ export function MeliCat() {
     el.style.background = "transparent";
     el.style.borderColor = "rgba(201,169,110,0.28)";
     el.style.transform = "translateX(0)";
-    el.style.color = "#8C6A43";
+    el.style.color = "#5E5248";
   }
 
   return (
     <>
       {/* ═══════════════════════════════════════
-          LUXURY CONCIERGE PANEL
-      ═══════════════════════════════════════ */}
-      <div style={{
-        position: "fixed",
-        bottom: "88px", right: "24px",
-        width: "clamp(320px, 90vw, 386px)",
-        maxHeight: "clamp(500px, 82vh, 610px)",
-        zIndex: 999,
-        display: "flex", flexDirection: "column",
-        borderRadius: "16px",
-        background: "rgba(255,252,248,0.98)",
-        backdropFilter: "blur(48px)",
-        WebkitBackdropFilter: "blur(48px)",
-        border: "0.5px solid rgba(201,169,110,0.25)",
-        boxShadow: [
-          "0 0 0 0.5px rgba(201,169,110,0.1)",
-          "0 4px 16px rgba(74,46,96,0.05)",
-          "0 20px 60px rgba(74,46,96,0.11)",
-          "0 60px 120px rgba(74,46,96,0.06)",
-          "inset 0 1px 0 rgba(255,255,255,0.92)",
-        ].join(", "),
-        overflow: "hidden",
-        opacity: open ? 1 : 0,
-        transform: open ? "translateY(0) scale(1)" : "translateY(22px) scale(0.97)",
-        pointerEvents: open ? "all" : "none",
-        transition: "opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)",
-        transformOrigin: "bottom right",
-        WebkitFontSmoothing: "antialiased",
-      }}>
-
+ LUXURY CONCIERGE PANEL
+ ═══════════════════════════════════════ */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: "88px",
+          right: "24px",
+          width: "clamp(320px, 90vw, 386px)",
+          maxHeight: "clamp(500px, 82vh, 610px)",
+          zIndex: 999,
+          display: "flex",
+          flexDirection: "column",
+          borderRadius: "16px",
+          background: "rgba(255,252,248,0.98)",
+          backdropFilter: "blur(48px)",
+          WebkitBackdropFilter: "blur(48px)",
+          border: "0.5px solid rgba(201,169,110,0.25)",
+          boxShadow: [
+            "0 0 0 0.5px rgba(201,169,110,0.1)",
+            "0 4px 16px rgba(74,46,96,0.05)",
+            "0 20px 60px rgba(74,46,96,0.11)",
+            "0 60px 120px rgba(74,46,96,0.06)",
+            "inset 0 1px 0 rgba(255,255,255,0.92)",
+          ].join(", "),
+          overflow: "hidden",
+          opacity: open ? 1 : 0,
+          transform: open ? "translateY(0) scale(1)" : "translateY(22px) scale(0.97)",
+          pointerEvents: open ? "all" : "none",
+          transition:
+            "opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)",
+          transformOrigin: "bottom right",
+          WebkitFontSmoothing: "antialiased",
+        }}
+      >
         {/* ── HEADER ── */}
-        <div style={{
-          padding: "18px 20px 16px",
-          background: "rgba(255,252,248,0.99)",
-          display: "flex", alignItems: "center",
-          borderBottom: "0.5px solid rgba(201,169,110,0.14)",
-          flexShrink: 0,
-        }}>
+        <div
+          style={{
+            padding: "18px 20px 16px",
+            background: "rgba(255,252,248,0.99)",
+            display: "flex",
+            alignItems: "center",
+            borderBottom: "0.5px solid rgba(201,169,110,0.14)",
+            flexShrink: 0,
+          }}
+        >
           {/* Brand identity */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{
-              fontFamily: "var(--font-heading)",
-              fontSize: "16px",
-              fontWeight: 400,
-              color: "#4A2E60",
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              lineHeight: 1,
-              marginBottom: "7px",
-            }}>
+            <div
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: "16px",
+                fontWeight: 400,
+                color: "#4A2E60",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                lineHeight: 1,
+                marginBottom: "7px",
+              }}
+            >
               MELIYA
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
-              <span style={{
-                width: "5px", height: "5px", borderRadius: "50%",
-                background: "rgba(201,169,110,0.7)",
-                display: "inline-block", flexShrink: 0,
-              }} />
-              <span style={{
-                fontFamily: "var(--font-light)",
-                fontWeight: 300,
-                fontSize: "9.5px",
-                color: "rgba(74,46,96,0.4)",
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-              }}>
+              <span
+                style={{
+                  width: "5px",
+                  height: "5px",
+                  borderRadius: "50%",
+                  background: "rgba(201,169,110,0.7)",
+                  display: "inline-block",
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "var(--font-light)",
+                  fontWeight: 300,
+                  fontSize: "9.5px",
+                  color: "rgba(74,46,96,0.4)",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                }}
+              >
                 Assistante disponible
               </span>
             </div>
@@ -638,11 +712,14 @@ export function MeliCat() {
               onClick={resetConversation}
               title="Nouvelle conversation"
               style={{
-                width: "28px", height: "28px",
+                width: "28px",
+                height: "28px",
                 background: "transparent",
                 border: "0.5px solid rgba(201,169,110,0.22)",
                 borderRadius: "50%",
-                display: "flex", alignItems: "center", justifyContent: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: "pointer",
                 color: "rgba(74,46,96,0.35)",
                 fontSize: "14px",
@@ -660,15 +737,20 @@ export function MeliCat() {
                 el.style.color = "rgba(74,46,96,0.35)";
                 el.style.transform = "rotate(0)";
               }}
-            >↺</button>
+            >
+              ↺
+            </button>
             <button
               onClick={() => setOpen(false)}
               style={{
-                width: "28px", height: "28px",
+                width: "28px",
+                height: "28px",
                 background: "transparent",
                 border: "0.5px solid rgba(201,169,110,0.22)",
                 borderRadius: "50%",
-                display: "flex", alignItems: "center", justifyContent: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: "pointer",
                 color: "rgba(74,46,96,0.35)",
                 transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
@@ -693,9 +775,12 @@ export function MeliCat() {
         <div
           ref={messagesContainerRef}
           style={{
-            flex: 1, overflowY: "auto",
+            flex: 1,
+            overflowY: "auto",
             padding: "20px 18px 12px",
-            display: "flex", flexDirection: "column", gap: "14px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "14px",
             scrollbarWidth: "none",
             overscrollBehavior: "contain",
             WebkitOverflowScrolling: "touch",
@@ -704,106 +789,135 @@ export function MeliCat() {
         >
           {messages.map((msg, msgIdx) => (
             <div key={msg.id} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-
               {/* Message bubble */}
-              <div style={{
-                display: "flex",
-                flexDirection: msg.from === "user" ? "row-reverse" : "row",
-                animation: "melicat-msg-in 0.5s cubic-bezier(0.22,1,0.36,1) both",
-              }}>
-                <div style={{
-                  maxWidth: "84%",
-                  padding: "14px 18px",
-                  borderRadius: msg.from === "bot"
-                    ? "4px 14px 14px 14px"
-                    : "14px 4px 14px 14px",
-                  background: msg.from === "bot"
-                    ? "rgba(255,252,248,0.97)"
-                    : "linear-gradient(135deg, #5C3872 0%, #7B4C90 100%)",
-                  border: msg.from === "bot"
-                    ? "0.5px solid rgba(201,169,110,0.14)"
-                    : "none",
-                  boxShadow: msg.from === "bot"
-                    ? "0 2px 14px rgba(74,46,96,0.05), 0 8px 28px rgba(74,46,96,0.04), inset 0 1px 0 rgba(255,255,255,0.92)"
-                    : "0 4px 20px rgba(92,56,114,0.22), 0 12px 40px rgba(92,56,114,0.12)",
-                  fontSize: "12.5px",
-                  lineHeight: 1.75,
-                  color: msg.from === "bot" ? "#4A2E60" : "#FAF8F5",
-                  fontFamily: "var(--font-light)",
-                  fontWeight: 300,
-                  letterSpacing: "0.02em",
-                }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: msg.from === "user" ? "row-reverse" : "row",
+                  animation: "melicat-msg-in 0.5s cubic-bezier(0.22,1,0.36,1) both",
+                }}
+              >
+                <div
+                  style={{
+                    maxWidth: "84%",
+                    padding: "14px 18px",
+                    borderRadius: msg.from === "bot" ? "4px 14px 14px 14px" : "14px 4px 14px 14px",
+                    background:
+                      msg.from === "bot"
+                        ? "rgba(255,252,248,0.97)"
+                        : "linear-gradient(135deg, #5C3872 0%, #7B4C90 100%)",
+                    border: msg.from === "bot" ? "0.5px solid rgba(201,169,110,0.14)" : "none",
+                    boxShadow:
+                      msg.from === "bot"
+                        ? "0 2px 14px rgba(74,46,96,0.05), 0 8px 28px rgba(74,46,96,0.04), inset 0 1px 0 rgba(255,255,255,0.92)"
+                        : "0 4px 20px rgba(92,56,114,0.22), 0 12px 40px rgba(92,56,114,0.12)",
+                    fontSize: "12.5px",
+                    lineHeight: 1.75,
+                    color: msg.from === "bot" ? "#4A2E60" : "#FAF8F5",
+                    fontFamily: "var(--font-light)",
+                    fontWeight: 300,
+                    letterSpacing: "0.02em",
+                  }}
+                >
                   {formatText(msg.text)}
-                  <div style={{
-                    fontSize: "9px", marginTop: "6px",
-                    opacity: 0.28, textAlign: "right",
-                    fontFamily: "var(--font-light)", fontWeight: 300,
-                    letterSpacing: "0.05em",
-                  }}>
+                  <div
+                    style={{
+                      fontSize: "9px",
+                      marginTop: "6px",
+                      opacity: 0.28,
+                      textAlign: "right",
+                      fontFamily: "var(--font-light)",
+                      fontWeight: 300,
+                      letterSpacing: "0.05em",
+                    }}
+                  >
                     {now}
                   </div>
                 </div>
               </div>
 
-              {/* Quick replies — only on last bot message */}
-              {msg.from === "bot" && msg.quickReplies && msg.quickReplies.length > 0 && msgIdx === messages.length - 1 && !typing && (
-                <div style={{
-                  display: "flex", flexDirection: "column", gap: "5px",
-                  animation: "melicat-msg-in 0.55s cubic-bezier(0.22,1,0.36,1) both",
-                  animationDelay: "0.2s",
-                }}>
-                  {msg.quickReplies.map((qr) =>
-                    qr.type === "link" ? (
-                      <Link
-                        key={qr.label}
-                        to={qr.to as string}
-                        style={qrBaseStyle}
-                        onMouseEnter={onQrEnter}
-                        onMouseLeave={onQrLeave}
-                      >
-                        <span>{qr.label}</span>
-                        <span style={{ opacity: 0.35, fontSize: "10px", fontWeight: 300 }}>→</span>
-                      </Link>
-                    ) : (
-                      <button
-                        key={qr.label}
-                        onClick={() => sendMessage(qr.label)}
-                        style={qrBaseStyle}
-                        onMouseEnter={onQrEnter}
-                        onMouseLeave={onQrLeave}
-                      >
-                        <span>{qr.label}</span>
-                        <span style={{ opacity: 0.35, fontSize: "10px", fontWeight: 300 }}>→</span>
-                      </button>
-                    )
-                  )}
-                </div>
-              )}
+              {/* Quick replies only on last bot message */}
+              {msg.from === "bot" &&
+                msg.quickReplies &&
+                msg.quickReplies.length > 0 &&
+                msgIdx === messages.length - 1 &&
+                !typing && (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "5px",
+                      animation: "melicat-msg-in 0.55s cubic-bezier(0.22,1,0.36,1) both",
+                      animationDelay: "0.2s",
+                    }}
+                  >
+                    {msg.quickReplies.map((qr) =>
+                      qr.type === "link" ? (
+                        <Link
+                          key={qr.label}
+                          to={qr.to as string}
+                          style={qrBaseStyle}
+                          onMouseEnter={onQrEnter}
+                          onMouseLeave={onQrLeave}
+                        >
+                          <span>{qr.label}</span>
+                          <span style={{ opacity: 0.35, fontSize: "10px", fontWeight: 300 }}>
+                            →
+                          </span>
+                        </Link>
+                      ) : (
+                        <button
+                          key={qr.label}
+                          onClick={() => sendMessage(qr.label)}
+                          style={qrBaseStyle}
+                          onMouseEnter={onQrEnter}
+                          onMouseLeave={onQrLeave}
+                        >
+                          <span>{qr.label}</span>
+                          <span style={{ opacity: 0.35, fontSize: "10px", fontWeight: 300 }}>
+                            →
+                          </span>
+                        </button>
+                      ),
+                    )}
+                  </div>
+                )}
             </div>
           ))}
 
           {/* Typing indicator */}
           {typing && (
-            <div style={{
-              display: "flex",
-              animation: "melicat-msg-in 0.4s cubic-bezier(0.22,1,0.36,1) both",
-            }}>
-              <div style={{
-                padding: "14px 18px",
-                background: "rgba(255,252,248,0.97)",
-                border: "0.5px solid rgba(201,169,110,0.14)",
-                borderRadius: "4px 14px 14px 14px",
-                boxShadow: "0 2px 14px rgba(74,46,96,0.05)",
-                display: "flex", alignItems: "center", gap: "5px",
-              }}>
+            <div
+              style={{
+                display: "flex",
+                animation: "melicat-msg-in 0.4s cubic-bezier(0.22,1,0.36,1) both",
+              }}
+            >
+              <div
+                style={{
+                  padding: "14px 18px",
+                  background: "rgba(255,252,248,0.97)",
+                  border: "0.5px solid rgba(201,169,110,0.14)",
+                  borderRadius: "4px 14px 14px 14px",
+                  boxShadow: "0 2px 14px rgba(74,46,96,0.05)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+              >
                 {[0, 1, 2].map((i) => (
-                  <span key={i} style={{
-                    width: "4px", height: "4px", borderRadius: "50%",
-                    background: "rgba(74,46,96,0.28)",
-                    display: "inline-block",
-                    animation: `melicat-dot 1.3s ease-in-out ${i * 0.18}s infinite`,
-                    flexShrink: 0,
-                  }} />
+                  <span
+                    key={i}
+                    style={{
+                      width: "4px",
+                      height: "4px",
+                      borderRadius: "50%",
+                      background: "rgba(74,46,96,0.28)",
+                      display: "inline-block",
+                      animation: `melicat-dot 1.3s ease-in-out ${i * 0.18}s infinite`,
+                      flexShrink: 0,
+                    }}
+                  />
                 ))}
               </div>
             </div>
@@ -813,20 +927,26 @@ export function MeliCat() {
         </div>
 
         {/* ── INPUT ── */}
-        <div style={{
-          padding: "12px 16px 16px",
-          borderTop: "0.5px solid rgba(201,169,110,0.12)",
-          background: "rgba(255,252,248,0.99)",
-          flexShrink: 0,
-        }}>
-          <div style={{
-            display: "flex", alignItems: "center", gap: "10px",
-            padding: "10px 14px 10px 16px",
-            background: "rgba(250,247,243,0.7)",
-            border: "0.5px solid rgba(201,169,110,0.2)",
-            borderRadius: "10px",
-            transition: "border-color 0.35s ease, box-shadow 0.35s ease",
-          }}>
+        <div
+          style={{
+            padding: "12px 16px 16px",
+            borderTop: "0.5px solid rgba(201,169,110,0.12)",
+            background: "rgba(255,252,248,0.99)",
+            flexShrink: 0,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              padding: "10px 14px 10px 16px",
+              background: "rgba(250,247,243,0.7)",
+              border: "0.5px solid rgba(201,169,110,0.2)",
+              borderRadius: "10px",
+              transition: "border-color 0.35s ease, box-shadow 0.35s ease",
+            }}
+          >
             <input
               ref={inputRef}
               value={input}
@@ -836,7 +956,8 @@ export function MeliCat() {
               style={{
                 flex: 1,
                 background: "transparent",
-                border: "none", outline: "none",
+                border: "none",
+                outline: "none",
                 fontSize: "12.5px",
                 fontFamily: "var(--font-light)",
                 fontWeight: 300,
@@ -863,11 +984,15 @@ export function MeliCat() {
               onClick={() => sendMessage(input)}
               disabled={!input.trim()}
               style={{
-                width: "30px", height: "30px", flexShrink: 0,
+                width: "30px",
+                height: "30px",
+                flexShrink: 0,
                 background: input.trim() ? "rgba(74,46,96,0.88)" : "transparent",
                 border: `0.5px solid ${input.trim() ? "transparent" : "rgba(201,169,110,0.25)"}`,
                 borderRadius: "50%",
-                display: "flex", alignItems: "center", justifyContent: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: input.trim() ? "pointer" : "default",
                 color: input.trim() ? "#FAF8F5" : "rgba(74,46,96,0.28)",
                 fontSize: "15px",
@@ -886,35 +1011,48 @@ export function MeliCat() {
                 el.style.transform = "scale(1)";
                 el.style.boxShadow = input.trim() ? "0 2px 12px rgba(74,46,96,0.22)" : "none";
               }}
-            >→</button>
+            >
+              →
+            </button>
           </div>
-          <div style={{
-            textAlign: "center", marginTop: "9px",
-            fontSize: "8.5px",
-            fontFamily: "var(--font-light)", fontWeight: 300,
-            letterSpacing: "0.15em",
-            color: "rgba(74,46,96,0.18)",
-            textTransform: "uppercase",
-          }}>
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "9px",
+              fontSize: "8.5px",
+              fontFamily: "var(--font-light)",
+              fontWeight: 300,
+              letterSpacing: "0.15em",
+              color: "rgba(74,46,96,0.18)",
+              textTransform: "uppercase",
+            }}
+          >
             MELIYA · Assistante digitale
           </div>
         </div>
       </div>
 
       {/* ═══════════════════════════════════════
-          GREETING CARD
-      ═══════════════════════════════════════ */}
-      <div style={{
-        position: "fixed",
-        bottom: "90px", right: "24px",
-        zIndex: 998,
-        opacity: greetingVisible && !open ? 1 : 0,
-        transform: greetingVisible && !open ? "translateY(0) scale(1)" : "translateY(10px) scale(0.97)",
-        transition: "all 0.6s cubic-bezier(0.22,1,0.36,1)",
-        pointerEvents: greetingVisible && !open ? "auto" : "none",
-      }}>
+ GREETING CARD
+ ═══════════════════════════════════════ */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: "90px",
+          right: "24px",
+          zIndex: 998,
+          opacity: greetingVisible && !open ? 1 : 0,
+          transform:
+            greetingVisible && !open ? "translateY(0) scale(1)" : "translateY(10px) scale(0.97)",
+          transition: "all 0.6s cubic-bezier(0.22,1,0.36,1)",
+          pointerEvents: greetingVisible && !open ? "auto" : "none",
+        }}
+      >
         <div
-          onClick={() => { setGreetingVisible(false); setOpen(true); }}
+          onClick={() => {
+            setGreetingVisible(false);
+            setOpen(true);
+          }}
           style={{
             background: "rgba(255,252,248,0.98)",
             backdropFilter: "blur(24px)",
@@ -934,55 +1072,71 @@ export function MeliCat() {
           onMouseEnter={(e) => {
             const el = e.currentTarget as HTMLElement;
             el.style.transform = "translateY(-2px)";
-            el.style.boxShadow = "0 8px 32px rgba(74,46,96,0.13), 0 24px 64px rgba(74,46,96,0.09), inset 0 1px 0 rgba(255,255,255,0.92)";
+            el.style.boxShadow =
+              "0 8px 32px rgba(74,46,96,0.13), 0 24px 64px rgba(74,46,96,0.09), inset 0 1px 0 rgba(255,255,255,0.92)";
             el.style.borderColor = "rgba(201,169,110,0.42)";
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget as HTMLElement;
             el.style.transform = "translateY(0)";
-            el.style.boxShadow = "0 4px 20px rgba(74,46,96,0.09), 0 16px 48px rgba(74,46,96,0.07), inset 0 1px 0 rgba(255,255,255,0.92)";
+            el.style.boxShadow =
+              "0 4px 20px rgba(74,46,96,0.09), 0 16px 48px rgba(74,46,96,0.07), inset 0 1px 0 rgba(255,255,255,0.92)";
             el.style.borderColor = "rgba(201,169,110,0.25)";
           }}
         >
           {/* Gold accent line */}
-          <div style={{
-            width: "24px", height: "0.5px",
-            background: "linear-gradient(90deg, rgba(201,169,110,0.6), transparent)",
-            marginBottom: "10px",
-          }} />
-          <div style={{
-            fontFamily: "var(--font-heading)",
-            fontStyle: "italic",
-            fontSize: "13px",
-            color: "#4A2E60",
-            letterSpacing: "0.02em",
-            lineHeight: 1.55,
-            marginBottom: "8px",
-          }}>
-            Bonjour — puis-je vous accompagner ?
+          <div
+            style={{
+              width: "24px",
+              height: "0.5px",
+              background: "linear-gradient(90deg, rgba(201,169,110,0.6), transparent)",
+              marginBottom: "10px",
+            }}
+          />
+          <div
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontStyle: "italic",
+              fontSize: "13px",
+              color: "#4A2E60",
+              letterSpacing: "0.02em",
+              lineHeight: 1.55,
+              marginBottom: "8px",
+            }}
+          >
+            Bonjour puis-je vous accompagner ?
           </div>
-          <div style={{
-            fontSize: "9px",
-            fontFamily: "var(--font-light)", fontWeight: 300,
-            letterSpacing: "0.14em",
-            color: "rgba(74,46,96,0.32)",
-            textTransform: "uppercase",
-          }}>
+          <div
+            style={{
+              fontSize: "9px",
+              fontFamily: "var(--font-light)",
+              fontWeight: 300,
+              letterSpacing: "0.14em",
+              color: "rgba(74,46,96,0.32)",
+              textTransform: "uppercase",
+            }}
+          >
             Assistante MELIYA
           </div>
         </div>
       </div>
 
       {/* ═══════════════════════════════════════
-          LUXURY TRIGGER BUTTON
-      ═══════════════════════════════════════ */}
+ LUXURY TRIGGER BUTTON
+ ═══════════════════════════════════════ */}
       <button
-        onClick={() => { setGreetingVisible(false); setOpen(!open); }}
+        onClick={() => {
+          setGreetingVisible(false);
+          setOpen(!open);
+        }}
         style={{
           position: "fixed",
-          bottom: "24px", right: "24px",
+          bottom: "24px",
+          right: "24px",
           zIndex: 1000,
-          display: "flex", alignItems: "center", gap: "11px",
+          display: "flex",
+          alignItems: "center",
+          gap: "11px",
           padding: "11px 20px 11px 14px",
           background: "rgba(255,252,248,0.97)",
           backdropFilter: "blur(24px)",
@@ -1000,40 +1154,52 @@ export function MeliCat() {
         onMouseEnter={(e) => {
           const el = e.currentTarget as HTMLElement;
           el.style.transform = "translateY(-2px)";
-          el.style.boxShadow = "0 4px 16px rgba(74,46,96,0.10), 0 18px 52px rgba(74,46,96,0.14), inset 0 1px 0 rgba(255,255,255,0.96)";
+          el.style.boxShadow =
+            "0 4px 16px rgba(74,46,96,0.10), 0 18px 52px rgba(74,46,96,0.14), inset 0 1px 0 rgba(255,255,255,0.96)";
           el.style.borderColor = "rgba(201,169,110,0.52)";
         }}
         onMouseLeave={(e) => {
           const el = e.currentTarget as HTMLElement;
           el.style.transform = "translateY(0)";
-          el.style.boxShadow = "0 2px 8px rgba(74,46,96,0.07), 0 10px 36px rgba(74,46,96,0.11), inset 0 1px 0 rgba(255,255,255,0.96)";
+          el.style.boxShadow =
+            "0 2px 8px rgba(74,46,96,0.07), 0 10px 36px rgba(74,46,96,0.11), inset 0 1px 0 rgba(255,255,255,0.96)";
           el.style.borderColor = "rgba(201,169,110,0.32)";
         }}
       >
         {/* M monogram */}
-        <span style={{
-          width: "30px", height: "30px",
-          background: "linear-gradient(135deg, rgba(201,169,110,0.12) 0%, rgba(201,169,110,0.06) 100%)",
-          border: "0.5px solid rgba(201,169,110,0.38)",
-          borderRadius: "50%",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontFamily: "var(--font-heading)",
-          fontSize: "14px",
-          fontWeight: 400,
-          color: "#C9A96E",
-          flexShrink: 0,
-          letterSpacing: "0.05em",
-        }}>M</span>
+        <span
+          style={{
+            width: "30px",
+            height: "30px",
+            background:
+              "linear-gradient(135deg, rgba(201,169,110,0.12) 0%, rgba(201,169,110,0.06) 100%)",
+            border: "0.5px solid rgba(201,169,110,0.38)",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: "var(--font-heading)",
+            fontSize: "14px",
+            fontWeight: 400,
+            color: "#C9A96E",
+            flexShrink: 0,
+            letterSpacing: "0.05em",
+          }}
+        >
+          M
+        </span>
         {/* Label */}
-        <span style={{
-          fontFamily: "var(--font-light)",
-          fontWeight: 300,
-          fontSize: "10.5px",
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: "#8C6A43",
-          whiteSpace: "nowrap",
-        }}>
+        <span
+          style={{
+            fontFamily: "var(--font-light)",
+            fontWeight: 300,
+            fontSize: "10.5px",
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: "#5E5248",
+            whiteSpace: "nowrap",
+          }}
+        >
           {open ? "Fermer" : "Bonjour"}
         </span>
       </button>

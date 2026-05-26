@@ -1,0 +1,48 @@
+# Claude Code PR Review
+#
+# Setup (1 fois) :
+#   1. Settings → Secrets and variables → Actions
+#   2. Ajouter `ANTHROPIC_API_KEY` (depuis console.anthropic.com)
+#   3. Push → review automatique au prochain PR.
+#
+# Skip ponctuel : ajouter le label `skip-claude-review` à la PR.
+
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  review:
+    if: "!contains(github.event.pull_request.labels.*.name, 'skip-claude-review')"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: claude-opus-4-7
+          system_prompt: |
+            Tu es un reviewer senior. Lis le fichier `CLAUDE.md` à la racine du repo pour le contexte projet.
+
+            Vérifie en priorité :
+            1. **Sécurité** : aucun secret hardcodé, validation Zod sur entrées utilisateur, pas de service_role/admin key côté client.
+            2. **TypeScript strict** : pas de `any` injustifié, pas de `// @ts-ignore` sans commentaire.
+            3. **Conventions du projet** : respect des règles documentées dans CLAUDE.md.
+            4. **Performance** : N+1 queries, useEffect mal cleanupé, bundles client qui explosent.
+            5. **Tests** : si la PR change du code critique (auth, paiement, RLS), des tests sont attendus.
+
+            Format : commentaires précis ligne par ligne. Si la PR est OK, dire "LGTM" et lister 2-3 améliorations possibles.
+          mode: review
+          max_turns: 5

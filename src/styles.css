@@ -1,8 +1,9 @@
+/* Google Fonts — MUST be first (PostCSS rule: @import before all other statements) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -32,50 +33,55 @@
   --color-ring: var(--ring);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
-  --font-display: "Bodoni Moda", serif;
+  --font-display: "Cinzel", "Bodoni Moda", serif;
   --font-serif: "Cormorant Garamond", serif;
-  --font-heading: "Bodoni Moda", serif;
-  --font-sans: "Bodoni Moda", serif;
+  --font-heading: "Cinzel", "Bodoni Moda", serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
   --font-light: "Cormorant Garamond", serif;
+  --font-body: "Montserrat", system-ui, sans-serif;
 }
 
 /* ================================================================
-   MELIYA — Palette exclusive Haute Couture
+   MELIYA — Charte graphique officielle (PDF 2026-05)
    ─────────────────────────────────────────────────────────────
-   --ivory:         #F6F0EC   fond principal
-   --cream:         #F5EEE6   fonds cartes
-   --pearl-beige:   #F4E9DD   cartes élevées
-   --champagne:     #F1E4D3   sections
-   --gold-nude:     #EFDBC3   fills accent
-   --sand-luxury:   #E0CFB7   bordures
-   --powder-gold:   #D9BF9A   texte corps, hover
-   --signature-gold:#C5A374   texte titres, accent principal
+   Ivoire Premium     #F7F2EE   fond principal
+   Beige Nude         #E9DDD4   sections secondaires
+   Champagne Gold     #C89B6D   titres, boutons, premium
+   Rose Gold Signature#E6B4AE   accents, hover, animations
+   Taupe Luxe         #5E5248   textes
    ================================================================ */
 
 :root {
   --radius: 0.5rem;
 
-  /* ── Palette officielle ── */
-  --ivory:          #F6F0EC;
-  --cream:          #F5EEE6;
-  --pearl-beige:    #F4E9DD;
-  --champagne:      #F1E4D3;
-  --gold-nude:      #EFDBC3;
-  --sand-luxury:    #E0CFB7;
-  --powder-gold:    #D9BF9A;
-  --signature-gold: #C5A374;
+  /* ── Charte officielle MELIYA ── */
+  --champagne-gold: #C89B6D;   /* titres, CTA, éléments premium */
+  --rose-gold:      #E6B4AE;   /* accents, hover, animations */
+  --taupe-luxe:     #5E5248;   /* textes */
+  --ivory-premium:  #F7F2EE;   /* fond principal */
+  --beige-nude:     #E9DDD4;   /* sections secondaires */
+
+  /* ── Alias palette historique (re-mappés sur la nouvelle charte) ── */
+  --ivory:          #F7F2EE;
+  --cream:          #F4ECE4;
+  --pearl-beige:    #E9DDD4;
+  --champagne:      #E9DDD4;
+  --gold-nude:      #E6CEB0;
+  --sand-luxury:    #DCC6B0;
+  --powder-gold:    #D4B189;
+  --signature-gold: #C89B6D;
 
   /* ── Couleurs texte & UI ── */
-  --warm-brown:   #8C6A43;   /* texte principal */
-  --hover-gold:   #B8915E;   /* hover boutons */
-  --blush:        #D8B4A6;   /* blush subtil */
+  --warm-brown:   #5E5248;   /* texte principal — Taupe Luxe */
+  --hover-gold:   #B0875A;   /* hover boutons — Champagne Gold foncé */
+  --blush:        #E6B4AE;   /* Rose Gold Signature */
 
   /* ── Tokens UI ── */
   --background:           var(--ivory);
   --page-bg:              var(--ivory);
   --foreground:           var(--warm-brown);
   --ink:                  var(--warm-brown);
-  --ink-muted:            rgba(140,106,67,0.60);
+  --ink-muted:            rgba(94,82,72,0.60);
   --gold:                 var(--signature-gold);
   --gold-soft:            var(--hover-gold);
   --gold-light:           var(--gold-nude);
@@ -100,13 +106,13 @@
   --ring:                 var(--signature-gold);
 
   /* ── Dégradés signature ── */
-  --gradient-page:   linear-gradient(160deg, #F6F0EC 0%, #F5EEE6 35%, #F4E9DD 65%, #F6F0EC 100%);
-  --gradient-hero:   linear-gradient(145deg, #F6F0EC 0%, #F5EEE6 40%, #F4E9DD 75%, #F6F0EC 100%);
-  --gradient-gold:   linear-gradient(135deg, #C5A374 0%, #D9BF9A 50%, #EFDBC3 100%);
+  --gradient-page:   linear-gradient(160deg, #F7F2EE 0%, #F4ECE4 35%, #E9DDD4 65%, #F7F2EE 100%);
+  --gradient-hero:   linear-gradient(145deg, #F7F2EE 0%, #F4ECE4 40%, #E9DDD4 75%, #F7F2EE 100%);
+  --gradient-gold:   linear-gradient(135deg, #C89B6D 0%, #D4B189 50%, #E6CEB0 100%);
 
   /* ── Ombres ── */
-  --shadow-elegant: 0 24px 64px -20px rgba(197,163,116,0.22);
-  --shadow-gold:    0 0 0 1px rgba(197,163,116,0.22), 0 12px 30px -12px rgba(197,163,116,0.28);
+  --shadow-elegant: 0 24px 64px -20px rgba(200,155,109,0.22);
+  --shadow-gold:    0 0 0 1px rgba(200,155,109,0.22), 0 12px 30px -12px rgba(200,155,109,0.28);
 }
 
 /* ============ BASE ============ */
@@ -115,13 +121,18 @@
 
   html {
     min-height: 100%;
-    background: #F6F0EC;
+    /* Fond ivoire + halos rose gold très diffus partout — touche subtile */
+    background:
+      radial-gradient(ellipse at 12% 18%, rgba(230,180,174,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 92% 38%, rgba(230,180,174,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 88%, rgba(230,180,174,0.04) 0%, transparent 60%),
+      #F7F2EE;
     background-attachment: fixed;
   }
 
   body {
     background: transparent;
-    color: #8C6A43;
+    color: #5E5248;
     font-family: var(--font-serif);
     font-weight: 400;
     font-size: 16px;
@@ -143,7 +154,7 @@
     font-size: clamp(40px, 5vw, 54px);
     letter-spacing: 0.02em;
     line-height: 1.1;
-    color: #C5A374;
+    color: #C89B6D;
   }
   h2 {
     font-family: var(--font-heading);
@@ -151,38 +162,39 @@
     font-size: clamp(26px, 3vw, 32px);
     letter-spacing: 0.02em;
     line-height: 1.15;
-    color: #C5A374;
+    color: #C89B6D;
   }
   h3 {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 500;
     font-size: clamp(18px, 2vw, 22px);
-    line-height: 1.3;
-    color: #C5A374;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    color: #C89B6D;
   }
   p {
-    font-family: var(--font-serif);
+    font-family: var(--font-body);
     font-weight: 400;
-    font-size: clamp(15px, 1.4vw, 17px);
-    line-height: 1.8;
-    color: #8C6A43;
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.75;
+    color: #5E5248;
+    letter-spacing: 0.005em;
   }
   .caption {
     font-family: var(--font-sans);
     font-weight: 300;
     font-size: 11px;
     line-height: 1.4;
-    color: rgba(140,106,67,0.55);
+    color: rgba(94,82,72,0.55);
   }
   .serif { font-family: var(--font-serif); }
 
   a {
-    color: #C5A374;
+    color: #C89B6D;
     text-decoration: none;
     transition: color 0.2s ease;
   }
-  a:hover { color: #D9BF9A; }
+  a:hover { color: #D4B189; }
 }
 
 /* ============ MELIYA COMPONENTS ============ */
@@ -196,8 +208,8 @@
     padding: 0.55rem 1.1rem;
     border-radius: 0.55rem;
     background: rgba(246,240,236,0.75);
-    color: #8C6A43;
-    border: 1px solid #E0CFB7;
+    color: #5E5248;
+    border: 1px solid #DCC6B0;
     font-family: var(--font-display);
     font-size: 0.78rem;
     letter-spacing: 0.14em;
@@ -205,20 +217,20 @@
     transition: all .25s ease;
     white-space: nowrap;
     height: 42px;
-    box-shadow: 0 8px 25px rgba(216,180,166,0.10);
+    box-shadow: 0 8px 25px rgba(230,180,174,0.10);
   }
   .nav-pill:hover {
-    background: linear-gradient(135deg, #D8B4A6, #B8915E);
+    background: linear-gradient(135deg, #E6B4AE, #B0875A);
     color: #FFFFFF;
-    border-color: #B8915E;
-    box-shadow: 0 12px 35px rgba(184,145,94,0.22);
+    border-color: #B0875A;
+    box-shadow: 0 12px 35px rgba(176,135,90,0.22);
     transform: translateY(-1px);
   }
   .nav-pill[data-active="true"] {
-    background: linear-gradient(135deg, #C5A374 0%, #D9BF9A 100%);
-    color: #F6F0EC;
-    border-color: #C5A374;
-    box-shadow: 0 4px 16px rgba(197,163,116,0.22);
+    background: linear-gradient(135deg, #C89B6D 0%, #D4B189 100%);
+    color: #F7F2EE;
+    border-color: #C89B6D;
+    box-shadow: 0 4px 16px rgba(200,155,109,0.22);
   }
 
   /* — Bouton CTA animé ── */
@@ -229,33 +241,33 @@
     gap: 0.5rem;
     padding: 0.7rem 1.2rem;
     border-radius: 100px;
-    background: linear-gradient(135deg, #F6E6B8 0%, #C5A374 100%);
+    background: linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%);
     color: #3A2614;
-    border: 1px solid #C5A374;
+    border: 1px solid #C89B6D;
     font-family: var(--font-display);
     font-size: 0.78rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 700;
     animation: meliya-blink 1.8s ease-in-out infinite;
-    box-shadow: 0 8px 25px rgba(216,180,166,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55);
+    box-shadow: 0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55);
   }
   .btn-blink:hover {
     animation-play-state: paused;
-    background: linear-gradient(135deg, #D8B4A6, #B8915E);
+    background: linear-gradient(135deg, #E6B4AE, #B0875A);
     color: #FFFFFF;
-    border-color: #B8915E;
+    border-color: #B0875A;
     transform: translateY(-1px);
-    box-shadow: 0 12px 35px rgba(184,145,94,0.22);
+    box-shadow: 0 12px 35px rgba(176,135,90,0.22);
   }
 
   @keyframes meliya-blink {
     0%, 100% {
-      box-shadow: 0 6px 24px rgba(197,163,116,0.28), inset 0 0.5px 0 rgba(255,255,255,0.45);
+      box-shadow: 0 6px 24px rgba(200,155,109,0.28), inset 0 0.5px 0 rgba(255,255,255,0.45);
       opacity: 1;
     }
     50% {
-      box-shadow: 0 6px 24px rgba(197,163,116,0.28), 0 0 0 10px rgba(197,163,116,0),
+      box-shadow: 0 6px 24px rgba(200,155,109,0.28), 0 0 0 10px rgba(200,155,109,0),
                   inset 0 0.5px 0 rgba(255,255,255,0.45);
       opacity: 0.93;
     }
@@ -265,20 +277,20 @@
   .btn-primary-meliya {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: 100px;
-    background: linear-gradient(135deg, #F6E6B8 0%, #C5A374 100%);
+    background: linear-gradient(135deg, #F6E6B8 0%, #C89B6D 100%);
     color: #3A2614;
-    border: 1px solid #C5A374;
+    border: 1px solid #C89B6D;
     font-family: var(--font-display); letter-spacing: .14em; font-size: .8rem; text-transform: uppercase;
     font-weight: 700;
     transition: all .35s cubic-bezier(0.16,1,0.3,1);
-    box-shadow: 0 8px 25px rgba(216,180,166,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55);
+    box-shadow: 0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55);
   }
   .btn-primary-meliya:hover {
-    background: linear-gradient(135deg, #D8B4A6, #B8915E);
+    background: linear-gradient(135deg, #E6B4AE, #B0875A);
     color: #FFFFFF;
-    border-color: #B8915E;
+    border-color: #B0875A;
     transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 12px 35px rgba(184,145,94,0.22);
+    box-shadow: 0 12px 35px rgba(176,135,90,0.22);
   }
 
   /* — Bouton secondaire ── */
@@ -286,18 +298,18 @@
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: 100px;
     background: rgba(246,240,236,0.75);
-    color: #8C6A43;
-    border: 1px solid #E0CFB7;
+    color: #5E5248;
+    border: 1px solid #DCC6B0;
     font-family: var(--font-display); letter-spacing: .14em; font-size: .8rem; text-transform: uppercase;
     font-weight: 600;
     transition: all .3s ease;
-    box-shadow: 0 8px 25px rgba(216,180,166,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55);
+    box-shadow: 0 8px 25px rgba(230,180,174,0.10), inset 0 0.5px 0 rgba(255,255,255,0.55);
   }
   .btn-secondary-meliya:hover {
-    background: linear-gradient(135deg, #D8B4A6, #B8915E);
+    background: linear-gradient(135deg, #E6B4AE, #B0875A);
     color: #FFFFFF;
-    border-color: #B8915E;
-    box-shadow: 0 12px 35px rgba(184,145,94,0.22);
+    border-color: #B0875A;
+    box-shadow: 0 12px 35px rgba(176,135,90,0.22);
     transform: translateY(-1px);
   }
 
@@ -306,47 +318,47 @@
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.5rem; border-radius: 100px;
     background: rgba(246,240,236,0.75);
-    color: #8C6A43;
-    border: 1px solid #E0CFB7;
+    color: #5E5248;
+    border: 1px solid #DCC6B0;
     font-family: var(--font-display); letter-spacing: .14em; font-size: .8rem; text-transform: uppercase;
     font-weight: 600;
     transition: all .3s ease;
-    box-shadow: 0 8px 25px rgba(216,180,166,0.10);
+    box-shadow: 0 8px 25px rgba(230,180,174,0.10);
   }
   .btn-ghost-meliya:hover {
-    background: linear-gradient(135deg, #D8B4A6, #B8915E);
+    background: linear-gradient(135deg, #E6B4AE, #B0875A);
     color: #FFFFFF;
-    border-color: #B8915E;
-    box-shadow: 0 12px 35px rgba(184,145,94,0.22);
+    border-color: #B0875A;
+    box-shadow: 0 12px 35px rgba(176,135,90,0.22);
     transform: translateY(-1px);
   }
 
   /* — Cartes ── */
   .card-meliya {
-    background: #F5EEE6;
-    border: 1px solid #E0CFB7;
+    background: #F4ECE4;
+    border: 1px solid #DCC6B0;
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 10px 40px -20px rgba(197,163,116,0.12);
+    box-shadow: 0 10px 40px -20px rgba(200,155,109,0.12);
     transition: all .35s ease;
   }
   .card-meliya:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 50px -20px rgba(197,163,116,0.22);
-    border-color: #D9BF9A;
+    box-shadow: 0 20px 50px -20px rgba(200,155,109,0.22);
+    border-color: #D4B189;
   }
 
   /* — Séparateurs ── */
   .gold-divider {
     height: 1px;
-    background: linear-gradient(to right, transparent, #D9BF9A, #EFDBC3, #D9BF9A, transparent);
+    background: linear-gradient(to right, transparent, #D4B189, #E6CEB0, #D4B189, transparent);
     width: 100%;
   }
 
   /* — Headers ── */
   .header-gold {
-    background: linear-gradient(135deg, #D9BF9A 0%, #EFDBC3 60%, #F4E9DD 100%);
-    color: #C5A374;
+    background: linear-gradient(135deg, #D4B189 0%, #E6CEB0 60%, #E9DDD4 100%);
+    color: #C89B6D;
   }
 }
 
@@ -357,7 +369,7 @@
 }
 
 .gold-shimmer-text {
-  background: linear-gradient(to right, #C5A374, #D9BF9A, #EFDBC3, #D9BF9A, #C5A374);
+  background: linear-gradient(to right, #C89B6D, #D4B189, #E6CEB0, #D4B189, #C89B6D);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -369,34 +381,34 @@
 /* ============ DARK MODE ============ */
 .dark {
   --background: #1A1610;
-  --foreground: #F4E9DD;
-  --ink:        #F4E9DD;
+  --foreground: #E9DDD4;
+  --ink:        #E9DDD4;
   --ink-muted:  rgba(244,233,221,0.72);
   --page-bg:    #1A1610;
 
   --card:               #231E16;
-  --card-foreground:    #F4E9DD;
+  --card-foreground:    #E9DDD4;
   --popover:            #231E16;
-  --popover-foreground: #F4E9DD;
-  --primary:            #C5A374;
-  --primary-foreground: #F6F0EC;
+  --popover-foreground: #E9DDD4;
+  --primary:            #C89B6D;
+  --primary-foreground: #F7F2EE;
   --secondary:          #231E16;
-  --secondary-foreground: #F4E9DD;
+  --secondary-foreground: #E9DDD4;
   --muted:              #2E2618;
-  --muted-foreground:   #D9BF9A;
-  --accent:             #EFDBC3;
+  --muted-foreground:   #D4B189;
+  --accent:             #E6CEB0;
   --accent-foreground:  #1A1610;
-  --border:             rgba(197,163,116,0.28);
-  --input:              #D9BF9A;
-  --ring:               #C5A374;
+  --border:             rgba(200,155,109,0.28);
+  --input:              #D4B189;
+  --ring:               #C89B6D;
 }
 
 .dark .nav-pill {
-  background: #231E16; color: #D9BF9A; border-color: rgba(197,163,116,0.35);
+  background: #231E16; color: #D4B189; border-color: rgba(200,155,109,0.35);
 }
 .dark .nav-pill:hover { background: #2E2618; }
 .dark .nav-pill[data-active="true"] {
-  background: #C5A374; color: #F6F0EC; border-color: #C5A374;
+  background: #C89B6D; color: #F7F2EE; border-color: #C89B6D;
 }
 
 /* Logo fond transparent */
@@ -436,6 +448,18 @@ img[alt="MELIYA"] {
 @keyframes counter-spin {
   from { transform: rotateX(90deg); opacity: 0; }
   to   { transform: rotateX(0deg); opacity: 1; }
+}
+
+/* ── Hero MELIYA — logo flotte doucement ── */
+@keyframes meliya-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* ── Hero MELIYA — indication scroll discrète ── */
+@keyframes meliya-scroll-hint {
+  0%, 100% { opacity: 0.45; transform: translate(-50%, 0); }
+  50%      { opacity: 0.75; transform: translate(-50%, 6px); }
 }
 
 /* ============ SCROLL REVEAL ============ */
@@ -479,13 +503,13 @@ img[alt="MELIYA"] {
   background: rgba(246,240,236,0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(197,163,116,0.25);
+  border: 1px solid rgba(200,155,109,0.25);
 }
 .glass-gold {
   background: rgba(239,219,195,0.45);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(197,163,116,0.35);
+  border: 1px solid rgba(200,155,109,0.35);
 }
 
 /* ============ ORBES FLOTTANTES ============ */
@@ -496,15 +520,15 @@ img[alt="MELIYA"] {
   pointer-events: none;
   animation: orb-float 12s ease-in-out infinite;
 }
-.orb-gold     { background: #EFDBC3; opacity: 0.45; animation-delay: -4s; }
+.orb-gold     { background: #E6CEB0; opacity: 0.45; animation-delay: -4s; }
 .orb-rose     { background: #F1E4D3; opacity: 0.38; }
-.orb-lavender { background: #F4E9DD; opacity: 0.50; animation-delay: -8s; }
-.orb-peach    { background: #EFDBC3; opacity: 0.35; animation-delay: -2s; }
-.orb-mint     { background: #F5EEE6; opacity: 0.40; animation-delay: -6s; }
+.orb-lavender { background: #E9DDD4; opacity: 0.50; animation-delay: -8s; }
+.orb-peach    { background: #E6CEB0; opacity: 0.35; animation-delay: -2s; }
+.orb-mint     { background: #F4ECE4; opacity: 0.40; animation-delay: -6s; }
 
 /* ============ GRADIENT TEXT ============ */
 .gradient-text-gold {
-  background: linear-gradient(135deg, #C5A374 0%, #D9BF9A 50%, #C5A374 100%);
+  background: linear-gradient(135deg, #C89B6D 0%, #D4B189 50%, #C89B6D 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -560,23 +584,23 @@ img[alt="MELIYA"] {
 .bento-card-premium:nth-child(1):hover {
   box-shadow:
     0 2px 4px rgba(0,0,0,0.04),
-    0 12px 40px rgba(197,163,116,0.22),
-    0 32px 80px rgba(197,163,116,0.14),
+    0 12px 40px rgba(200,155,109,0.22),
+    0 32px 80px rgba(200,155,109,0.14),
     inset 0 1px 0 rgba(255,255,255,0.5) !important;
 }
 .bento-card-premium:nth-child(2):hover,
 .bento-card-premium:nth-child(4):hover {
   box-shadow:
     0 2px 4px rgba(0,0,0,0.03),
-    0 12px 40px rgba(197,163,116,0.16),
-    0 32px 80px rgba(197,163,116,0.10),
+    0 12px 40px rgba(200,155,109,0.16),
+    0 32px 80px rgba(200,155,109,0.10),
     inset 0 1px 0 rgba(255,255,255,0.85) !important;
 }
 .bento-card-premium:nth-child(3):hover {
   box-shadow:
     0 2px 4px rgba(0,0,0,0.04),
-    0 12px 40px rgba(197,163,116,0.24),
-    0 32px 80px rgba(197,163,116,0.16),
+    0 12px 40px rgba(200,155,109,0.24),
+    0 32px 80px rgba(200,155,109,0.16),
     inset 0 1px 0 rgba(255,255,255,0.55) !important;
 }
 
@@ -614,19 +638,19 @@ img[alt="MELIYA"] {
   -webkit-backface-visibility: hidden;
   box-shadow:
     0 1px 2px rgba(0,0,0,0.03),
-    0 4px 12px rgba(197,163,116,0.10),
-    0 16px 48px rgba(197,163,116,0.12),
-    0 36px 72px rgba(197,163,116,0.08),
+    0 4px 12px rgba(200,155,109,0.10),
+    0 16px 48px rgba(200,155,109,0.12),
+    0 36px 72px rgba(200,155,109,0.08),
     inset 0 1px 0 rgba(255,255,255,0.55),
     inset 0 -1px 0 rgba(0,0,0,0.03);
-  border: 1px solid rgba(197,163,116,0.22);
+  border: 1px solid rgba(200,155,109,0.22);
 }
 .flip-card-premium:hover .flip-card-premium-face {
   box-shadow:
     0 2px 4px rgba(0,0,0,0.04),
-    0 8px 24px rgba(197,163,116,0.16),
-    0 24px 64px rgba(197,163,116,0.18),
-    0 48px 96px rgba(197,163,116,0.12),
+    0 8px 24px rgba(200,155,109,0.16),
+    0 24px 64px rgba(200,155,109,0.18),
+    0 48px 96px rgba(200,155,109,0.12),
     inset 0 1px 0 rgba(255,255,255,0.60),
     inset 0 -1px 0 rgba(0,0,0,0.04);
 }
@@ -647,20 +671,20 @@ img[alt="MELIYA"] {
   padding: 4px 14px; border-radius: 100px;
   font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   background: rgba(246,240,236,0.75);
-  border: 1px solid #E0CFB7;
-  color: #8C6A43;
+  border: 1px solid #DCC6B0;
+  color: #5E5248;
   font-family: var(--font-sans); font-weight: 600;
-  box-shadow: 0 8px 25px rgba(216,180,166,0.10);
+  box-shadow: 0 8px 25px rgba(230,180,174,0.10);
 }
 .tag-pill-gold {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 14px; border-radius: 100px;
   font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   background: rgba(246,240,236,0.75);
-  border: 1px solid #E0CFB7;
-  color: #8C6A43;
+  border: 1px solid #DCC6B0;
+  color: #5E5248;
   font-family: var(--font-sans); font-weight: 500;
-  box-shadow: 0 8px 25px rgba(216,180,166,0.10);
+  box-shadow: 0 8px 25px rgba(230,180,174,0.10);
 }
 
 /* Marquee */
@@ -676,7 +700,7 @@ img[alt="MELIYA"] {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1;
-  color: #8C6A43;
+  color: #5E5248;
   animation: hero-text-in 0.6s cubic-bezier(.16,1,.3,1) both;
 }
 
@@ -684,26 +708,26 @@ img[alt="MELIYA"] {
 .input-modern {
   width: 100%; padding: 0.9rem 1.1rem;
   border-radius: 0.75rem;
-  border: 1.5px solid #E0CFB7;
+  border: 1.5px solid #DCC6B0;
   background: rgba(246,240,236,0.85);
   backdrop-filter: blur(8px);
-  color: #8C6A43;
+  color: #5E5248;
   font-family: var(--font-sans);
   font-size: 0.9rem;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .input-modern:focus {
-  border-color: #C5A374;
-  box-shadow: 0 0 0 3px rgba(216,180,166,0.18);
+  border-color: #C89B6D;
+  box-shadow: 0 0 0 3px rgba(230,180,174,0.18);
 }
-.input-modern::placeholder { color: rgba(140,106,67,0.40); opacity: 0.8; }
+.input-modern::placeholder { color: rgba(94,82,72,0.40); opacity: 0.8; }
 
 /* Sections */
-.section-light    { background: #F6F0EC; }
-.section-gold     { background: #F4E9DD; }
+.section-light    { background: #F7F2EE; }
+.section-gold     { background: #E9DDD4; }
 .section-gradient {
-  background: linear-gradient(135deg, #F4E9DD 0%, #F5EEE6 50%, #F1E4D3 100%);
+  background: linear-gradient(135deg, #E9DDD4 0%, #F4ECE4 50%, #F1E4D3 100%);
 }
 
 a, button, input, textarea, select,
@@ -729,7 +753,7 @@ html.dark {
 html.dark body { background: transparent !important; }
 
 html.dark h1, html.dark h2, html.dark h3, html.dark .display {
-  color: #F4E9DD !important;
+  color: #E9DDD4 !important;
 }
 html.dark p, html.dark li,
 html.dark span:not([class*="tag"]):not([class*="gradient"]) {
@@ -738,28 +762,28 @@ html.dark span:not([class*="tag"]):not([class*="gradient"]) {
 
 html.dark .tag-pill {
   background: rgba(35,30,22,0.65) !important;
-  border-color: rgba(197,163,116,0.30) !important;
-  color: #D9BF9A !important;
+  border-color: rgba(200,155,109,0.30) !important;
+  color: #D4B189 !important;
   box-shadow: none !important;
 }
 html.dark .tag-pill-gold {
   background: rgba(35,30,22,0.65) !important;
-  border-color: rgba(197,163,116,0.30) !important;
-  color: #EFDBC3 !important;
+  border-color: rgba(200,155,109,0.30) !important;
+  color: #E6CEB0 !important;
   box-shadow: none !important;
 }
 
 html.dark .bento-card {
   background: rgba(35,30,22,0.85) !important;
-  border-color: rgba(197,163,116,0.18) !important;
+  border-color: rgba(200,155,109,0.18) !important;
 }
 html.dark .bento-card:hover {
-  border-color: rgba(197,163,116,0.38) !important;
+  border-color: rgba(200,155,109,0.38) !important;
 }
 
 html.dark .bento-card-premium {
   background: linear-gradient(145deg, rgba(35,30,22,0.92) 0%, rgba(30,25,18,0.88) 50%, rgba(26,22,16,0.90) 100%) !important;
-  border-color: rgba(197,163,116,0.16) !important;
+  border-color: rgba(200,155,109,0.16) !important;
   box-shadow:
     0 2px 4px rgba(0,0,0,0.4),
     0 8px 24px rgba(0,0,0,0.3),
@@ -771,7 +795,7 @@ html.dark .bento-card-premium p  { color: rgba(244,233,221,0.58) !important; }
 
 html.dark .flip-card-premium-face {
   background: linear-gradient(145deg, rgba(35,30,22,0.95) 0%, rgba(30,25,18,0.92) 50%, rgba(26,22,16,0.95) 100%) !important;
-  border-color: rgba(197,163,116,0.18) !important;
+  border-color: rgba(200,155,109,0.18) !important;
 }
 html.dark .flip-card-premium-face h3 { color: rgba(244,233,221,0.95) !important; }
 html.dark .flip-card-premium-face p  { color: rgba(244,233,221,0.55) !important; }
@@ -779,8 +803,8 @@ html.dark .flip-card-premium-back span { color: rgba(244,233,221,0.88) !importan
 
 html.dark .card-meliya {
   background: #231E16;
-  color: #F4E9DD;
-  border-color: rgba(197,163,116,0.28);
+  color: #E9DDD4;
+  border-color: rgba(200,155,109,0.28);
 }
 
 html.dark section:not(.hero-bg-animate) { background: transparent; }
@@ -792,23 +816,23 @@ html.dark .orb-gold     { opacity: 0.12; }
 
 html.dark footer {
   background: linear-gradient(160deg, #161210 0%, #1A1610 100%) !important;
-  border-color: rgba(197,163,116,0.12) !important;
+  border-color: rgba(200,155,109,0.12) !important;
 }
 html.dark footer * { color: rgba(244,233,221,0.55) !important; }
-html.dark footer a  { color: rgba(197,163,116,0.75) !important; }
+html.dark footer a  { color: rgba(200,155,109,0.75) !important; }
 
 html.dark .marquee-strip {
   background: linear-gradient(90deg, #161210 0%, #1E1A12 50%, #161210 100%) !important;
-  border-top-color:    rgba(197,163,116,0.18) !important;
-  border-bottom-color: rgba(197,163,116,0.12) !important;
+  border-top-color:    rgba(200,155,109,0.18) !important;
+  border-bottom-color: rgba(200,155,109,0.12) !important;
 }
 html.dark .marquee-track span { color: rgba(244,233,221,0.55) !important; }
 
 html.dark .cta-block {
   background: linear-gradient(150deg, #231E16 0%, #2E2618 20%, #352E1C 45%, #2A2314 70%, #1E1A12 100%) !important;
-  border: 1px solid rgba(197,163,116,0.20) !important;
+  border: 1px solid rgba(200,155,109,0.20) !important;
 }
-html.dark .cta-block h2, html.dark .cta-block .display { color: #F4E9DD !important; }
+html.dark .cta-block h2, html.dark .cta-block .display { color: #E9DDD4 !important; }
 html.dark .cta-block p, html.dark .cta-block span:not(.tag-pill) {
   color: rgba(244,233,221,0.75) !important;
 }
@@ -816,12 +840,12 @@ html.dark .cta-block p, html.dark .cta-block span:not(.tag-pill) {
 html.dark hr,
 html.dark [style*="borderTop"],
 html.dark [style*="border-top"] {
-  border-color: rgba(197,163,116,0.12) !important;
+  border-color: rgba(200,155,109,0.12) !important;
 }
 
 html.dark [aria-label="Choix du thème"] {
   background: rgba(26,22,16,0.6) !important;
-  border-color: rgba(197,163,116,0.28) !important;
+  border-color: rgba(200,155,109,0.28) !important;
 }
 
 /* ============ SHIMMER REFLET BOUTONS ============ */
@@ -832,13 +856,12 @@ html.dark [aria-label="Choix du thème"] {
   100% { left: 140%; opacity: 0; }
 }
 
-.nav-link-premium,
+/* Nav links — pas de shimmer ni d'overlay (fond strictement transparent) */
 .btn-primary-meliya,
 .btn-blink {
   overflow: hidden;
 }
 
-.nav-link-premium::after,
 .btn-primary-meliya::after,
 .btn-blink::after {
   content: "";
@@ -860,75 +883,85 @@ html.dark [aria-label="Choix du thème"] {
   animation: none;
 }
 
-.nav-link-premium:hover::after,
 .btn-primary-meliya:hover::after,
 .btn-blink:hover::after {
   animation: btn-shimmer 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* ── Nav premium — pill ivoire bordure fine ── */
+/* ── Nav premium — texte Taupe Luxe verrouillé, fond strict transparent ── */
 .nav-link-premium {
   position: relative;
-  color: #8C6A43;
-  background: rgba(246,240,236,0.75);
-  border: 1px solid #E0CFB7;
-  border-radius: 100px;
+  color: #5E5248 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none;
+  border-radius: 0;
   text-decoration: none;
-  box-shadow: 0 8px 25px rgba(216,180,166,0.10);
+  box-shadow: none;
   transition:
-    color        0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    background   0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow   0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    transform    0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    color 0.40s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.40s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Filet décoratif fin sous le lien (apparaît au hover et en actif) */
+.nav-link-premium::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 0.5px;
+  background: linear-gradient(90deg, transparent, #5E5248 50%, transparent);
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), left 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 .nav-link-premium:hover {
-  color: #FFFFFF;
-  background: linear-gradient(135deg, #D8B4A6, #B8915E);
-  border-color: #B8915E;
-  box-shadow: 0 12px 35px rgba(184,145,94,0.22);
+  color: #5E5248 !important;
   transform: translateY(-1px);
 }
+.nav-link-premium:hover::before {
+  width: 70%;
+  left: 15%;
+}
 .nav-link-premium.nav-active {
-  color: #F6F0EC;
-  background: linear-gradient(135deg, #C5A374 0%, #D9BF9A 100%);
-  border-color: #C5A374;
-  box-shadow: 0 4px 16px rgba(197,163,116,0.22);
+  color: #5E5248 !important;
+}
+.nav-link-premium.nav-active::before {
+  width: 70%;
+  left: 15%;
 }
 
 /* ── Dark mode nav ── */
 html.dark .nav-link-premium {
-  color: #D9BF9A !important;
-  background: rgba(35,30,22,0.55) !important;
-  border: 1px solid rgba(197,163,116,0.35) !important;
-  box-shadow: 0 2px 14px rgba(0,0,0,0.22) !important;
+  color: #D4B189 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
-html.dark .nav-link-premium:hover,
+html.dark .nav-link-premium:hover {
+  color: #E6B4AE !important;
+}
 html.dark .nav-link-premium.nav-active {
-  background: rgba(197,163,116,0.12) !important;
-  color: #EFDBC3 !important;
-  border-color: rgba(197,163,116,0.55) !important;
-  box-shadow: 0 4px 20px rgba(197,163,116,0.18) !important;
+  color: #D4B189 !important;
 }
 
 /* ── Simulateur button ── */
 @keyframes softPulse {
   0% {
     box-shadow:
-      0 3px 18px rgba(197,163,116,0.22),
+      0 3px 18px rgba(200,155,109,0.22),
       inset 0 0.5px 0 rgba(255,255,255,0.45);
     transform: scale(1);
   }
   50% {
     box-shadow:
-      0 6px 28px rgba(197,163,116,0.38),
-      0 0 0 0.5px rgba(197,163,116,0.35),
+      0 6px 28px rgba(200,155,109,0.38),
+      0 0 0 0.5px rgba(200,155,109,0.35),
       inset 0 0.5px 0 rgba(255,255,255,0.50);
     transform: scale(1.020);
   }
   100% {
     box-shadow:
-      0 3px 18px rgba(197,163,116,0.22),
+      0 3px 18px rgba(200,155,109,0.22),
       inset 0 0.5px 0 rgba(255,255,255,0.45);
     transform: scale(1);
   }
@@ -944,6 +977,79 @@ html.dark .nav-link-premium.nav-active {
 @keyframes modal-slide-up {
   from { opacity: 0; transform: translateY(24px) scale(0.97); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Simulateur — pop ludique sur sélection ── */
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(0.4) rotate(-20deg); }
+  60%  { opacity: 1; transform: scale(1.18) rotate(8deg); }
+  80%  { transform: scale(0.94) rotate(-3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ── Simulateur — wiggle léger au hover ── */
+@keyframes meliya-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-2deg); }
+  75%      { transform: rotate(2deg); }
+}
+
+/* ── Simulateur — slider de quantité, charte MELIYA ── */
+.meliya-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 100px;
+  background: linear-gradient(
+    to right,
+    var(--slider-color, #C89B6D) 0%,
+    var(--slider-color-mid, #B0875A) var(--slider-fill, 50%),
+    rgba(200, 155, 109, 0.14) var(--slider-fill, 50%),
+    rgba(200, 155, 109, 0.14) 100%
+  );
+  outline: none;
+  cursor: pointer;
+  transition: filter 0.25s ease;
+}
+.meliya-slider:hover {
+  filter: brightness(1.04);
+}
+
+/* Thumb WebKit */
+.meliya-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 28%, #FFFFFF 0%, var(--slider-color, #C89B6D) 60%, var(--slider-color-mid, #B0875A) 100%);
+  border: 1.5px solid #FFFFFF;
+  box-shadow:
+    0 4px 14px rgba(200, 155, 109, 0.35),
+    0 2px 5px rgba(200, 155, 109, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  cursor: grab;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+}
+.meliya-slider::-webkit-slider-thumb:hover { transform: scale(1.12); }
+.meliya-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.18);
+  box-shadow: 0 6px 22px rgba(230, 180, 174, 0.42), 0 2px 6px rgba(200, 155, 109, 0.28);
+}
+
+/* Thumb Firefox */
+.meliya-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 28%, #FFFFFF 0%, var(--slider-color, #C89B6D) 60%, var(--slider-color-mid, #B0875A) 100%);
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 4px 14px rgba(200, 155, 109, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  cursor: grab;
+}
+.meliya-slider::-moz-range-track {
+  background: transparent;
 }
 
 /* ── MELICAT animations ── */
@@ -1001,7 +1107,7 @@ html.dark .nav-link-premium.nav-active {
 
 /* ── Logo ── */
 .logo-meliya { transition: filter 0.3s ease; }
-.dark .logo-meliya { filter: drop-shadow(0 0 10px rgba(197,163,116,0.3)); }
+.dark .logo-meliya { filter: drop-shadow(0 0 10px rgba(200,155,109,0.3)); }
 .logo-wrap {
   display: inline-flex;
   align-items: center;
@@ -1011,7 +1117,7 @@ html.dark .nav-link-premium.nav-active {
 
 /* ── Hero bg ── */
 .hero-bg-animate {
-  background: #F6F0EC;
+  background: #F7F2EE;
   background-size: 400% 400%;
   animation: none;
 }
@@ -1048,9 +1154,9 @@ html.dark .hero-bg-animate {
 
 /* ── Glow palette ── */
 @keyframes glow-pastel {
-  0%,  100% { box-shadow: 0 0 55px 14px rgba(217,191,154,0.22); }
+  0%,  100% { box-shadow: 0 0 55px 14px rgba(212,177,137,0.22); }
   33%        { box-shadow: 0 0 55px 14px rgba(239,219,195,0.22); }
-  66%        { box-shadow: 0 0 55px 14px rgba(197,163,116,0.18); }
+  66%        { box-shadow: 0 0 55px 14px rgba(200,155,109,0.18); }
 }
 .glow-pastel       { animation: glow-pastel 9s ease-in-out infinite; }
 .glow-pastel-slow  { animation: glow-pastel 12s ease-in-out infinite; }
